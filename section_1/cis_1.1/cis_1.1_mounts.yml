@@ -1,0 +1,74 @@
+{{ if .Vars.rhel7cis_level1 }}
+mount:
+  /tmp:
+  {{ if .Vars.rhel7cis_rule_1_1_2 }}
+    title: 1.1.2_5 Ensure /tmp is configured (Automated) with mount options
+    exists: true
+    opts:
+    {{ if .Vars.rhel7cis_rule_1_1_3 }} 
+    - noexec
+    {{ end }}
+    {{ if .Vars.rhel7cis_rule_1_1_4 }}
+    - nodev
+    {{ end }}
+    {{ if .Vars.rhel7cis_rule_1_1_5 }}
+    - nosuid
+    {{ end }}
+  {{ end }}
+  /dev/shm:
+  {{ if .Vars.rhel7cis_rule_1_1_6 }}
+    title: 1.1.6_9 Ensure /dev/shm is configured
+    exists: true
+    opts:
+    {{ if .Vars.rhel7cis_rule_1_1_7 }}
+    - noexec
+    {{ end }}
+    {{ if .Vars.rhel7cis_rule_1_1_8 }}
+    - nodev
+    {{ end }}
+    {{ if .Vars.rhel7cis_rule_1_1_9 }}
+    - nosuid
+    {{ end }}
+  {{ end }}
+  /var/tmp:
+  {{ if .Vars.rhel7cis_rule_1_1_11 }}
+    title: 1.1.11_14 Ensure separate partition exists for /var/tmp with mount options (Automated)
+    exists: true
+    opts:
+    {{ if .Vars.rhel7cis_rule_1_1_12 }}
+    - noexec
+    {{ end }}
+    {{ if .Vars.rhel7cis_rule_1_1_13 }}
+    - nodev
+    {{ end }}
+    {{ if .Vars.rhel7cis_rule_1_1_14 }}
+    - nosuid
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ if .Vars.rhel7cis_level2 }}
+  /var:
+  {{ if .Vars.rhel7cis_rule_1_1_10 }}
+    title: (L2) 1.1.10 Ensure separate partition exists for /var (Automated)
+    exists: true
+  {{ end }}
+  /var/log:
+  {{ if .Vars.rhel7cis_rule_1_1_15 }}
+    title: (L2) 1.1.15 Ensure separate partition exists for /var/log (Automated)
+    exists: true
+  {{ end }}
+  /var/log/audit:
+  {{ if .Vars.rhel7cis_rule_1_1_16 }}
+    title: (L2) 1.1.16  Ensure separate partition exists for /var/log/audit (Automated)
+    exists: true
+  {{ end }}
+  /home:
+  {{ if .Vars.rhel7cis_rule_1_1_17 }}
+    title: (L2) 1.1.17 Ensure separate partition exists for /home with mount options (Automated)
+    exists: true
+    opts:
+    {{ if .Vars.rhel7cis_rule_1_1_18 }}
+    - nodev
+    {{ end }}
+  {{ end }}
+{{ end }}

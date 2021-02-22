@@ -1,0 +1,9 @@
+{{ if .Vars.rhel7cis_level2 }}
+service:
+  {{ if .Vars.rhel7cis_rule_1_2_5 }}
+  rhnsd:
+    title: 1.2.5 Disable the rhnsd Daemon (Manual)
+    enabled: false
+    running: false
+  {{ end }}
+{{ end }}

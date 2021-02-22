@@ -1,0 +1,19 @@
+gossfile:
+  {{ if .Vars.rhel7cis_section1 }}
+  section_1/*/*.yml: {}
+  {{ end }}
+  {{ if .Vars.rhel7cis_section2 }}
+  section_2/*/*.yml: {}
+  {{ end }}
+  {{ if .Vars.rhel7cis_section3 }}
+  section_3/*/*.yml: {}
+  {{ end }}
+  {{ if .Vars.rhel7cis_section4 }}
+  section_4/*/*.yml: {}
+  {{ end }}
+  {{ if .Vars.rhel7cis_section5 }}
+  section_5/*/*.yml: {}
+  {{ end }}
+  {{ if .Vars.rhel7cis_section6 }}
+  section_6/*/*.yml: {}
+  {{ end }}

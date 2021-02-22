@@ -1,0 +1,10 @@
+{{ if .Vars.rhel7cis_rule_4_1_2_3 }}
+file:
+  /etc/audit/auditd.conf:
+    title: (L2) 4.1.2.3 Ensure system is disabled when audit logs are full (Automated)
+    exists: true
+    contains:
+    - space_left_action = {{ .Vars.rhel7cis_auditd.space_left_action }}
+    - action_mail_acct = {{ .Vars.rhel7cis_auditd.action_mail_acct }}
+    - '/^admin_space_left_action = {{ .Vars.rhel7cis_auditd.admin_space_left_action }}/'
+{{ end }}

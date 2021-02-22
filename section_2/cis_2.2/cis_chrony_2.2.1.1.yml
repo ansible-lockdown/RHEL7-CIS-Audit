@@ -1,0 +1,26 @@
+# CIS for Chrony
+{{ if ((eq .Vars.rhel7cis_time_synchronization "chrony") and .Vars.rhel7cis_level1 ) }}
+package:
+  {{ if .Vars.rhel7cis_rule_2_2_1_1 }}
+  chrony:
+    title: 2.2.1.1 Ensure time synchronization is in use (Manual)_chrony
+    installed: true
+  {{ end }}
+## chrony settings
+file:
+  {{ if .Vars.rhel7cis_rule_2_2_1_2 }}
+  /etc/chrony.conf:
+    title: 2.2.1.2 Ensure chrony is configured (Automated)_conf
+    exists: true
+    contains:
+    - server
+    skip: false
+  /etc/sysconfig/chronyd:
+    title: 2.2.1.2 Ensure chrony is configured (Automated)_sysconf
+    exists: true
+    contains:
+    - 'OPTIONS="-u chrony"'
+    skip: false
+  {{ end }}
+{{ end }}
+

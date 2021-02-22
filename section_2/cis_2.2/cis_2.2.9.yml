@@ -1,0 +1,10 @@
+{{ if not .Vars.rhel7cis_bind }}
+  {{ if .Vars.rhel7cis_level1 }}
+package:
+  bind:
+    {{ if .Vars.rhel7cis_rule_2_2_9 }}
+    title: 2.2.9 Ensure DNS Server is not installed (Automated)
+    installed: false
+    {{ end }}
+  {{ end }}
+{{ end }}

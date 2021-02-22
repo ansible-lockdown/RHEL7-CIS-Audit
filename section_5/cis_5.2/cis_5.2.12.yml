@@ -1,0 +1,11 @@
+{{ if .Vars.rhel7cis_level1 }}
+  {{ if .Vars.rhel7cis_rule_5_2_12 }}
+file:
+  /etc/ssh/sshd_config:
+    title: 5.2.12 Ensure SSH PermitUserEnvironment is disabled
+    exists: true
+    contains:
+    - 'PermitUserEnvironment no'
+    - '!/^PermitUserEnvironment yes/'
+  {{ end }}
+{{ end }}

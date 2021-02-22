@@ -1,0 +1,10 @@
+{{ if not .Vars.rhel7cis_avahi_server }}
+  {{ if .Vars.rhel7cis_level1 }}
+package:
+  avahi:
+    {{ if .Vars.rhel7cis_rule_2_2_3 }}
+    title: 2.2.3 Ensure Avahi Server is not installed (Automated)
+    installed: false
+    {{ end }}
+  {{ end }}
+{{ end }}

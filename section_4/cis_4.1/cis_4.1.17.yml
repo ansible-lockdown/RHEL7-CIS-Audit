@@ -1,0 +1,9 @@
+{{ if .Vars.rhel7cis_rule_4_1_17 }}
+command:
+  auditd_immutable:
+    title: 4.1.17 Ensure the audit configuration is immutable (Automated)
+    exec: 'grep "-e 2" /etc/audit/rules.d/*.rules | cut -d ":" -f2'
+    exit-status: 0
+    stdout:
+    - '-e 2'
+{{ end }}

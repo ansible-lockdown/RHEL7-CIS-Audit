@@ -1,0 +1,10 @@
+{{ if not .Vars.rhel7cis_nis_server }}
+  {{ if .Vars.rhel7cis_level1 }}
+package:
+  ypserver:
+    {{ if .Vars.rhel7cis_rule_2_2_18 }}
+    title: 2.2.18 Ensure NIS server is not installed (Automated)
+    installed: false
+    {{ end }}
+  {{ end }}
+{{ end }}

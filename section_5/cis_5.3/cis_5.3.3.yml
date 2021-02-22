@@ -1,0 +1,16 @@
+{{ if .Vars.rhel7cis_level1 }}
+  {{ if .Vars.rhel7cis_rule_5_3_3 }}
+title: 5.3.3 Ensure password hashing algorithm is SHA-512
+file:
+  /etc/pam.d/password-auth:
+    exists: true
+    contains:
+    - '/^password sufficient pam_unix.so sha512/'
+    - '!/^password sufficient pam_unix.so md5/'
+  /etc/pam.d/system-auth:
+    exists: true
+    contains:
+    - '/^password sufficient pam_unix.so sha512/'
+    - '!/^password sufficient pam_unix.so md5/'
+  {{ end }}
+{{ end }}

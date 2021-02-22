@@ -1,0 +1,147 @@
+########################
+# Server Services: 2.2 #
+########################
+# cis 2.2.3
+avahi:
+- false
+# cis 2.2.4
+cups:
+- false
+# cis 2.2.5
+dhcp:
+- false
+# cis 2.2.6
+openldap_server:
+- false
+# cis 2.2.7
+nfs_utils:
+- false
+nfs_server_skip:
+- true
+# cis 2.2.8
+rpcbind: 
+- false
+rpcbind_server_skip:
+- true
+# cis 2.2.9
+bind:
+- false
+# cis 2.2.10
+vsftpd:
+- false
+# cis 2.2.11
+httpd:
+- false
+# cis 2.2.12
+dovecot:
+- false
+# cis 2.2.13
+samba:
+- false
+# cis 2.2.14
+squid:
+- false
+# cis 2.2.15
+net_snmp:
+- false
+# cis 2.2.17
+rsync:
+- false
+rsync_masked_skip:
+- true
+# cis 2.2.18
+ypserv: 
+- false    
+# cis 2.2.19
+telnet_server:
+- false
+########################
+# Client Services: 2.3 #
+########################
+# 2.3.1
+ypbind: 
+- false
+# 2.3.2
+rsh:
+- false
+# 2.3.3
+talk:
+- false
+# 2.3.4
+telnet:
+- false
+# 2.3.5
+openldap_clients:
+- false
+########################
+# Network settings 3.1 #
+########################
+#### NOTE They settings below are 1 for on and 0 for off based on kernel
+# 3.1.1
+disable_ipv6_grub_check:
+- true
+disable_ipv6_sysctl_check:
+- 1
+# 3.1.2
+skip_wireless_check:
+- true
+# 3.2.1
+ipv4_forward:
+- 0
+ipv6_forward:
+- 0
+ipv4_all_send_redirects:
+- 0
+ipv4_default_send_redirects:
+- 0
+# 3.3.1
+ipv4_all_routed:
+- 0
+ipv4_default_routed:
+- 0
+ipv6_all_routed:
+- 0
+ipv6_default_routed:
+- 0
+# 3.3.2
+ipv4_icmp_redirects:
+- 0
+ipv4_icmp_default_redirects:
+- 0
+ipv6_icmp_redirects:
+- 0
+ipv6_icmp_default_redirects:
+- 0
+ipv4_secure_all_redirects:
+- 0
+ipv4_secure_default_redirects:
+- 0
+# 3.3.4
+ipv4_all_log_martians:
+- 1
+ipv4_default_log_martians:
+- 1
+# 3.3.5
+icmp_ignore_broadcast:
+- 1
+# 3.3.6
+icmp_ignore_bogus:
+- 1
+# 3.3.7
+rp_all_filter: 
+- 1
+rp_default_filter: 
+- 1
+# 3.3.8
+tcp_syncookies_enable:
+- 1
+# 3.3.9
+ipv6_ra_all_accept:
+- 0
+ipv6_ra_default_accept:
+- 0
+# 3.4.1
+skip_dccp_check:
+- false
+skip_sctp_check:
+- false

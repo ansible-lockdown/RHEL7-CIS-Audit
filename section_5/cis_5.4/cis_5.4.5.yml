@@ -1,0 +1,11 @@
+{{ if .Vars.rhel7cis_level1 }}
+  {{ if .Vars.rhel7cis_rule_5_4_5 }}
+file:
+  /etc/profile:
+    title: 5.4.5 Ensure default user umask is configured (Automated)
+    exists: true
+    contains:
+    - '/^\s+umask\s0(2|7)(2|7)/'
+    - '!/^\s+umask\s[1-7][0-7][0-7]/'
+  {{ end }}
+{{ end }}

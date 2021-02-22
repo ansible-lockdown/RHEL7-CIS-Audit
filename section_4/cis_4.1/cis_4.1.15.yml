@@ -1,0 +1,15 @@
+{{ if .Vars.rhel7cis_rule_4_1_15 }}
+command:
+  auditd_sudolog_cnf:
+    title: 4.1.15 Ensure system administrator actions (sudolog) are collected (Automated)
+    exec: grep '^-w \/var\/log\/sudo.log -p wa -k actions$' /etc/audit/rules.d/*.rules
+    exit-status: 0
+    stdout:
+    - '-w /var/log/sudo.log -p wa -k actions'
+  auditd_sudolog_live:
+    title: 4.1.15 Ensure system administrator actions (sudolog) are collected (Automated)
+    exec: auditctl -l | grep actions
+    exit-status: 0
+    stdout:
+    - '-w /var/log/sudo.log -p wa -k actions'
+{{ end }}

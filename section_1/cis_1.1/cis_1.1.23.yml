@@ -1,0 +1,9 @@
+{{ if .Vars.rhel7cis_level1 }}
+service:
+  {{ if .Vars.rhel7cis_rule_1_1_23 }}
+  autofs:
+    title: 1.1.23 Disable Automounting
+    enabled: false
+    running: false
+  {{ end }}
+{{ end }}

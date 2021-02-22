@@ -1,0 +1,24 @@
+{{ if .Vars.rhel7cis_rule_4_1_1_1 }}
+package:
+  auditd:
+    title: (L2) 4.1.1.1 Ensure auditd is installed (Automated)
+    installed: true
+  audit-libs:
+    title: 4.1.1.1 Ensure auditd is installed (Automated)
+    installed: true
+{{ end }}
+{{ if .Vars.rhel7cis_rule_4_1_1_2 }}
+service:
+  auditd:
+    title: (L2) 4.1.1.2 Ensure auditd service is enabled and running (Automated)
+    enabled: true
+    running: true
+{{ end }}
+{{ if .Vars.rhel7cis_rule_4_1_1_3 }}
+command:
+  auditd_grub:
+    title: (L2) 4.1.1.3 Ensure auditing for processes that start prior to auditd is enabled (Automated)
+    exec: 'grep "^\s*linux" /boot/grub2/grub.cfg | grep -Ev "audit=1|rescue"'
+    exit-status: 0
+    stdout: ['!/./']
+{{ end }}
