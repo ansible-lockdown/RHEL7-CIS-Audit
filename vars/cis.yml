@@ -390,7 +390,7 @@ rhel7cis_auditd:
   auditd_backlog_limit: 8192
 
 ## syslog
-rhel7_cis_rsyslog: true
+rhel7cis_rsyslog: true
 
 ### Section 5
 rhel7cis_sshd_limited: false
