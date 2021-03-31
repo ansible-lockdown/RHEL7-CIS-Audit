@@ -5,7 +5,7 @@ file:
     title: 5.4.1.2 Ensure minimum days between password changes is configured
     exists: true
     contains:
-    - '/^PASS_MIN_DAYS\s*{{ .Vars.rhel7_cis_pass_min_days }}/'
+    - '/^PASS_MIN_DAYS\s*{{ .Vars.rhel7cis_pass_min_days }}/'
     - '!/^PASS_MIN_DAYS\s*([2-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])/'
   {{ end }}
 {{ end }}

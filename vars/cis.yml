@@ -8,7 +8,7 @@ rhel7cis_section5: false
 rhel7cis_section6: true
 
 rhel7cis_selinux_disable: false
-
+rhel7cis_selinux_state: enforcing
 
 rhel7cis_level1: true
 rhel7cis_level2: true
@@ -390,7 +390,7 @@ rhel7cis_auditd:
   auditd_backlog_limit: 8192
 
 ## syslog
-rhel7_cis_rsyslog: true
+rhel7cis_rsyslog: true
 
 ### Section 5
 rhel7cis_sshd_limited: false
@@ -457,7 +457,7 @@ rhel7cis_unix_so: false
 rhel7cis_passwd_remember: "5"
 
 # logins.def password settings
-rhel7_cis_pass_max_days: 365
-rhel7_cis_pass_min_days: 1
-rhel7_cis_pass_warn_age: 7
+rhel7cis_pass_max_days: 365
+rhel7cis_pass_min_days: 1
+rhel7cis_pass_warn_age: 7
 
