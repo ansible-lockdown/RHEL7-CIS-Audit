@@ -61,6 +61,7 @@ command:
   {{ end }}
 {{ if .Vars.rhel7cis_level2 }}
   selinux_run_enforcing:
+  {{ if eq .Vars.rhel7cis_selinux_state "enforcing" }}
     {{ if .Vars.rhel7cis_rule_1_7_1_5 }}
     title: (L2) 1.7.1.5 Ensure the SELinux mode is enforcing (Automated)_running
     exit-status: 0
@@ -77,5 +78,6 @@ command:
     stdout:
     - SELINUX=enforcing
     {{ end }}
+  {{ end }}
   {{ end }}
 {{ end }}
