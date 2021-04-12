@@ -8,7 +8,7 @@ rhel7cis_section5: false
 rhel7cis_section6: true
 
 rhel7cis_selinux_disable: false
-
+rhel7cis_selinux_state: enforcing
 
 rhel7cis_level1: true
 rhel7cis_level2: true
