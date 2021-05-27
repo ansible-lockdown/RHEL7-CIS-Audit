@@ -11,9 +11,10 @@ command:
     {{ end }}
 
 # Can be enabled if using timer and service files
+  
+service:
   aidecheck:
     {{ if eq .Vars.rhel7cis_aide_checks "timer" }}
-service:
     title: 1.4.2 Ensure filesystem integrity is regularly checked (Automated)
     enabled: true
     running: true
