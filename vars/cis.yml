@@ -305,7 +305,9 @@ rhel7cis_aide_cron:
   aide_month: '*'
   aide_weekday: '*'
 
-# 1.5.1 Bootloader password
+# 1.5.1 Bootloader password and file
+# note this changes dependant if bios or efi bootloader
+rhel7cis_bootloader_file: /etc/default/grub.conf
 rhel7cis_bootloader_password: random
 rhel7cis_set_boot_pass: false
 
