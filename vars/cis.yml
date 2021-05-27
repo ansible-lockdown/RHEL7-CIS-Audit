@@ -292,7 +292,8 @@ rhel7cis_rule_6_2_18: true
 
 # AIDE
 rhel7cis_config_aide: true
-
+# can check if using service and timer - options: cron or timer
+rhel7cis_aide_checks: cron
 # AIDE cron settings
 rhel7cis_aide_cron:
   cron_user: root
