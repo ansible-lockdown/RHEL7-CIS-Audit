@@ -1,23 +1,26 @@
-{{ if .Vars.rhel7cis_level1 }}
+{{ if ((.Vars.rhel7cis_config_aide) and .Vars.rhel7_level_1) }}
+  {{ if (( eq .Vars.rhel7cis_aide_checks "cron") and .Vars.rhel7cis_rule_1_4_2 ) }}
 command:
-  {{ if  (( .Vars.rhel7cis_config_aide ) and .Vars.rhel7cis_rule_1_4_2 ) }}
   aide_cron:
     title: 1.4.2 Ensure filesystem integrity is regularly checked (Automated)
     exit-status: 0
     exec: "grep -r aide /etc/cron.* /etc/crontab /var/spool/cron/*"
     stdout: 
     - "!#"
+  {{ end }}
+
 # Can be enabled if using timer and service files
-#service:
-#  aidecheck:
-#    title: 1.4.2 Ensure filesystem integrity is regularly checked (Automated)
-#    enabled: true
-#    running: true
-#    skip: false
-#  aidecheck.timer:
-#    title: 1.4.2 Ensure filesystem integrity is regularly checked (Automated)
-#    enabled: true
-#    running: true
-#    skip: false
+  {{ if (( eq .Vars.rhel7cis_aide_checks "timer") and .Vars.rhel7cis_rule_1_4_2 ) }}
+service:
+  aidecheck:
+    title: 1.4.2 Ensure filesystem integrity is regularly checked (Automated)
+    enabled: true
+    running: true
+    skip: false
+  aidecheck.timer:
+    title: 1.4.2 Ensure filesystem integrity is regularly checked (Automated)
+    enabled: true
+    running: true
+    skip: false
   {{ end }}
 {{ end }}

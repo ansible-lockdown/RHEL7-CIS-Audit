@@ -11,7 +11,7 @@ file:
     contains: [GRUB2_PASSWORD=<encrypted-password>]
     {{ end }}
   {{ end }}
-  /boot/grub2/grub.cfg:
+  {{ .Vars.rhel7cis_bootloader_file }}:
   {{ if .Vars.rhel7cis_rule_1_5_2 }}
     title: 1.5.2 Ensure permissions on bootloader config are configured
     exists: true

@@ -1,4 +1,4 @@
-{{ if not .Vars.rhel7cis_httpd_server}}
+{{ if not .Vars.rhel7cis_httpd_server }}
   {{ if .Vars.rhel7cis_level1 }}
 package:
   httpd:
