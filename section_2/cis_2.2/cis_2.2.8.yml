@@ -1,5 +1,6 @@
-{{ if ((not .Vars.rhel7cis_rpc_server) and .Vars.rhel7cis_rule_2_2_8 ) }}
-  {{ if .Vars.rhel7cis_level1 }}
+{{ if .Vars.rhel7cis_level1 }}
+{{ if not .Vars.rhel7cis_rpc_server }}
+{{ if .Vars.rhel7cis_rule_2_2_8 }}
 package:
   rpcbind:
     title: 2.2.8 Ensure rpcbind is not installed or the rpcbind services are masked (Automated)_installed
@@ -17,5 +18,6 @@ command:
     exec: systemctl is-enabled  rpcbind.socket
     stdout: 
     - masked
-  {{ end }}
+{{ end }}
+{{ end }}
 {{ end }}

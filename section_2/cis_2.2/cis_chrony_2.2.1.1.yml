@@ -1,5 +1,6 @@
 # CIS for Chrony
-{{ if ((eq .Vars.rhel7cis_time_synchronization "chrony") and .Vars.rhel7cis_level1 ) }}
+{{ if .Vars.rhel7cis_level1 }}
+{{ if eq .Vars.rhel7cis_time_synchronization "chrony" }}
 package:
   {{ if .Vars.rhel7cis_rule_2_2_1_1 }}
   chrony:
@@ -22,5 +23,6 @@ file:
     - 'OPTIONS="-u chrony"'
     skip: false
   {{ end }}
+{{ end }}
 {{ end }}
 
