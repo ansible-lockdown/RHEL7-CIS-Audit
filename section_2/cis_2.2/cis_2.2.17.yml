@@ -1,5 +1,6 @@
-{{ if (( not .Vars.rhel7cis_rsyncd_server) and .Vars.rhel7cis_rule_2_2_17 ) }}
-  {{ if .Vars.rhel7cis_level1 }}
+{{ if .Vars.rhel7cis_level1 }}
+{{ if not .Vars.rhel7cis_rsyncd_server }}
+{{ if .Vars.rhel7cis_rule_2_2_17 }}
 package:
   rsync:
     title: 2.2.17 Ensure rsync is not installed or the rsyncd service is masked (Automated)_installed
@@ -11,5 +12,6 @@ command:
     exec: systemctl is-enabled rsync
     stdout:
     - masked
-  {{ end }}
+{{ end }}
+{{ end }}
 {{ end }}

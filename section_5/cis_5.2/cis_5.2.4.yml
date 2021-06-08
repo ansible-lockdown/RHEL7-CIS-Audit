@@ -1,5 +1,6 @@
 {{ if .Vars.rhel7cis_level1 }}
-  {{ if (.Vars.rhel7cis_rule_5_2_4) and .Vars.rhel7cis_sshd.limited }}
+{{ if .Vars.rhel7cis_rule_5_2_4 }}
+{{ if .Vars.rhel7cis_sshd.limited }}
 file:
   /etc/ssh/sshd_config:
     title: 5.2.4 Ensure SSH access is limited 
@@ -8,5 +9,6 @@ file:
     {{ range .Vars.rhel7cis_sshd_access }}
     - {{ . }}
     {{ end }}
-  {{ end }}
+{{ end }}
+{{ end }}
 {{ end }}
