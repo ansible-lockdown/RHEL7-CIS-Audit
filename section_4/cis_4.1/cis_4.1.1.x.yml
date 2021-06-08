@@ -17,6 +17,6 @@ command:
   auditd_grub:
     title: (L2) 4.1.1.3 Ensure auditing for processes that start prior to auditd is enabled (Automated)
     exec: 'grep "^\s*linux" /boot/grub2/grub.cfg | grep -Ev "audit=1|rescue"'
-    exit-status: 0
+    exit-status: 1
     stdout: ['!/./']
 {{ end }}
