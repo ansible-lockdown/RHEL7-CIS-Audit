@@ -26,7 +26,7 @@ command:
     stdout:
     - install /bin/true
     {{ end }}
-  {{ if not .Vars.rhel7cis_legacy_boot }}
+  {{ if .Vars.rhel7cis_legacy_boot }}
   fat:
     {{ if .Vars.rhel7cis_rule_1_1_1_4 }}
     title: 1.1.1.4 Ensure mounting of fat filesystems is disabled (Automated)
@@ -43,19 +43,11 @@ command:
     stdout: 
     - install /bin/true
     {{ end }}
-  msdos:
-    {{ if .Vars.rhel7cis_rule_1_1_1_4 }}
-    title: 1.1.1.4 Ensure mounting of fat filesystems is disabled (Automated)
-    exit-status: 0
-    exec: "modprobe -n -v msdos | grep -E '(msdos|install)'"
-    stdout: 
-    - install /bin/true
-    {{ end }}
   fat_live:
     {{ if .Vars.rhel7cis_rule_1_1_1_4 }}
     title: 1.1.1.4 Ensure mounting of fat filesystems is disabled (Automated)
     exit-status: 0
-    exec: "if [ `lsmod | egrep -c 'vfat|msdos|fat'` = 0 ]; then echo 'Passed_Check'; else echo 'FAIL'; fi"
+    exec: "if [ `lsmod | egrep -c 'vfat|fat'` = 0 ]; then echo 'Passed_Check'; else echo 'FAIL'; fi"
     stdout: 
     - Passed_Check
     {{ end }}
