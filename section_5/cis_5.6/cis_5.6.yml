@@ -5,12 +5,11 @@ file:
     title: 5.6 Ensure access to the su command is restricted (Automated) | pam.d/su
     exists: true
     contains:
-    {{ if eq .Vars.rhel7cis_sugroup "wheel" }}
-    - '/^auth.*required.*pam_wheel.so\suse_uid$/'
-    {{ end }}
-    {{ if not eq .Vars.rhel7cis_sugroup "wheel" }}
-    - '/^auth.*required.*pam_wheel.so\suse_uid$\sgroup={{ .Vars.rhel7cis_sugroup }}/'
-    {{ end }}
+      {{ if eq .Vars.rhel7cis_sugroup "wheel" }}
+      - '/^auth.*required.*pam_wheel.so\suse_uid/'
+      {{ else }}
+      - '/^auth.*required.*pam_wheel.so\suse_uid$\sgroup={{ .Vars.rhel7cis_sugroup }}/'
+      {{ end }}
   /etc/group:
     title: 5.6 Ensure access to the su command is restricted (Automated) | /etc/group
     exists: true
