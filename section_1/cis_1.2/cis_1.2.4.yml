@@ -3,11 +3,9 @@ command:
   {{ if .Vars.rhel7cis_rule_1_2_4 }}
  subscription:
     title: 1.2.4 Ensure Redhat Subscription Manager connection configured
-    exit-status: 
-      or: 
-      - 0
-      - 127
-    exec: subscription-manager identity
-    stderr: [command not found]
+    exec: subscription-manager list --consumed | grep -A4 'Roles:\s*Red Hat Enterprise Linux Server'
+    exit-status: 0
+    stdout:
+    - 'Subscription is current'
   {{ end }}
 {{ end }}
