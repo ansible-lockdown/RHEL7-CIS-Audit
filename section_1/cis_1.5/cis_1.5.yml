@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_level1 }}
 file:
-  /boot/grub2/user.cfg:
   {{ if .Vars.rhel7cis_rule_1_5_1 }}
+  /boot/grub2/user.cfg:
     title: 1.5.1 Ensure bootloader password is set (Automated) and permissions
     exists: true
     owner: root
@@ -11,8 +11,8 @@ file:
     contains: [GRUB2_PASSWORD=<encrypted-password>]
     {{ end }}
   {{ end }}
-  /boot/grub2/grub.cfg:
   {{ if .Vars.rhel7cis_rule_1_5_2 }}
+  {{ .Vars.rhel7cis_bootloader_file }}:
     title: 1.5.2 Ensure permissions on bootloader config are configured
     exists: true
     owner: root

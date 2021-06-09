@@ -20,7 +20,7 @@ command:
     exec: firewall-cmd --get-default-zone
     exit-status: 0
     stdout: 
-    - {{ .Vars.rhel7cis_default_firewall_zone }}
+    - '{{ .Vars.rhel7cis_default_firewall_zone }}'
   {{ end }}
   nic_assigned:
   {{ if .Vars.rhel7cis_rule_3_5_1_6 }}
