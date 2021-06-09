@@ -4,7 +4,7 @@ command:
   ipv6_grub:
     title: 3.1.1 disable IPv6 (Manual)_grub
     exit-status: 0
-    exec: 'grep "^\s*linux" /boot/grub2/grub.cfg | grep -v ipv6.disable=1'
+    exec: 'grep "^\s*linux" {{ .Vars.rhel7cis_bootloader_file }} | grep -v ipv6.disable=1'
     # looking for it not to return anything
     # will error if anything is returned
     stdout: ['!/./']
