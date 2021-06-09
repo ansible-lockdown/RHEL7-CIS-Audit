@@ -7,5 +7,6 @@ command:
     exit-status: 0
     stdout:
     - '!/./'
+    timeout: 20000
     {{ end }}
 {{ end }}
