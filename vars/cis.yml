@@ -1,3 +1,14 @@
+## metadata for Audit benchmark
+rhel7cis_benchmark:
+- "type: CIS"
+- "version: '3.0.1'"
+- "os: RHEL 7"
+#- "epoch: {{ ansible_date_time.epoch }}" # To be populated via wrapper script using inline vars
+#- "hostname: {{ ansible_hostname }}" # To be populated via wrapper script using inline vars
+
+rhel7cis_os_distribution: redhat # ensure this is changed accordingly for centos/oel
+
+
 # Taken from LE rhel7-cis
 rhel7cis_notauto: false
 rhel7cis_section1: true
@@ -297,6 +308,9 @@ rhel7cis_rule_6_2_18: true
 # AIDE
 rhel7cis_config_aide: true
 
+
+# aide setup via - cron, timer
+rhel7_aide_scan: cron
 # AIDE cron settings
 rhel7cis_aide_cron:
   cron_user: root
