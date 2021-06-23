@@ -1,9 +1,9 @@
 {{ if not .Vars.rhel7cis_httpd_server}}
   {{ if .Vars.rhel7cis_level1 }}
+    {{ if .Vars.rhel7cis_rule_2_2_11 }}
 package:
   httpd:
-    {{ if .Vars.rhel7cis_rule_2_2_11 }}
-    title: 2.2.11 Ensure HTTP Server is not installed (Automated)
+    title: 2.2.11 | L1 | Ensure HTTP Server is not installed (Automated)
     installed: false
     {{ end }}
   {{ end }}

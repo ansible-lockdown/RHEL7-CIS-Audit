@@ -1,9 +1,9 @@
 {{ if not .Vars.rhel7cis_dovecot_server}}
   {{ if .Vars.rhel7cis_level1 }}
+    {{ if .Vars.rhel7cis_rule_2_2_12 }}
 package:
   dovecot:
-    {{ if .Vars.rhel7cis_rule_2_2_12 }}
-    title: 2.2.12 Ensure IMAP and POP3 Server is not installed (Automated)
+    title: 2.2.12 | L1 | Ensure IMAP and POP3 Server is not installed (Automated)
     installed: false
     {{ end }}
   {{ end }}

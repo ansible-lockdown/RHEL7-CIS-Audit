@@ -1,28 +1,38 @@
 {{ if .Vars.rhel7cis_level1 }}
 package:
+  {{ if not .Vars.rhel7cis_ypbind_required }}
+    {{ if .Vars.rhel7cis_rule_2_3_1 }}
   ypbind:
-    {{ if (( not .Vars.rhel7cis_ypbind_required) and .Vars.rhel7cis_rule_2_3_1 ) }}
     title: 2.3.1 Ensure NIS Client is not installed (Automated)
     installed: false
     {{ end }}
+  {{ end }}
+  {{ if not .Vars.rhel7cis_rsh_required }}
+    {{ .Vars.rhel7cis_rule_2_3_2 }}
   rsh:
-    {{ if (( not .Vars.rhel7cis_rsh_required) and .Vars.rhel7cis_rule_2_3_2 ) }}
     title: 2.3.2 Ensure rsh client is not installed (Automated)
     installed: false
     {{ end }}
+  {{ end }}
+  {{ if not .Vars.rhel7cis_talk_required }}
+    {{ if .Vars.rhel7cis_rule_2_3_3 }}
   talk:
-    {{ if (( not .Vars.rhel7cis_talk_required) and .Vars.rhel7cis_rule_2_3_3 ) }}
     title: 2.3.3 Ensure talk client is not installed (Automated)
     installed: false
     {{ end }}
+  {{ end }}
+  {{ if not .Vars.rhel7cis_telnet_required }}
+    {{ .Vars.rhel7cis_rule_2_3_4 }}
   telnet:
-    {{ if (( not .Vars.rhel7cis_telnet_required) and .Vars.rhel7cis_rule_2_3_4 ) }}
     title: 2.3.4 Ensure telnet client is not installed (Automated)
     installed: false
     {{ end }}
+  {{ end }}
+  {{ if not .Vars.rhel7cis_openldap_clients_required }}
+    {{ if .Vars.rhel7cis_rule_2_3_5 }}  
   openldap-clients:
-    {{ if (( not .Vars.rhel7cis_openldap_clients_required) and .Vars.rhel7cis_rule_2_3_5 ) }}
     title: 2.3.5 Ensure LDAP client is not installed (Automated)
     installed: false
     {{ end }}
+  {{ end }}
 {{ end }}

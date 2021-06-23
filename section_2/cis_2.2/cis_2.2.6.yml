@@ -1,9 +1,9 @@
 {{ if not .Vars.rhel7cis_ldap_server }}
   {{ if .Vars.rhel7cis_level1 }}
+    {{ if .Vars.rhel7cis_rule_2_2_6 }}
 package:
   openldap-servers:
-    {{ if .Vars.rhel7cis_rule_2_2_6 }}
-    title: 2.2.6 Ensure LDAP server is not installed (Automated)
+    title: 2.2.6 | L1 | Ensure LDAP server is not installed (Automated)
     installed: false
     {{ end }}
   {{ end }}
