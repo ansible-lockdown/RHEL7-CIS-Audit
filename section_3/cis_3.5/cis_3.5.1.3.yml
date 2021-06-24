@@ -4,12 +4,11 @@ package:
   nftables:
     title: 3.5.1.3 | L1 | Ensure nftables is not installed or stopped and masked
     installed: false
-command:
-  nftables_masked:
-    exec: systemctl is-enabled nftables
+service:
+  nftables:
     title: 3.5.1.3 | L1 | Ensure nftables is not installed or stopped and masked
-    exit-status: 0
-    stdout: 
-    - 'masked'
+    enabled: false
+    running: false
+    skip: false
   {{ end }}
 {{ end }}
