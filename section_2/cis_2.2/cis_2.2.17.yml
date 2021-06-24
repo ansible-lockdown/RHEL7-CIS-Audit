@@ -5,13 +5,12 @@ package:
   rsync:
     title: 2.2.17 | L1 | Ensure rsync is not installed or the rsyncd service is masked (Automated)_installed
     installed: false
-command:
-  rsync_masked:
-    title: 2.2.17 | L1 | Ensure rsync is not installed or the rsyncd service is masked (Automated)_masked
-    exit-status: 0
-    exec: systemctl is-enabled rsync
-    stdout:
-    - masked
+
+service:
+  rsync:
+    enabled: false
+    running: false
+    skip: false
     {{ end }}
   {{ end }}
 {{ end }}

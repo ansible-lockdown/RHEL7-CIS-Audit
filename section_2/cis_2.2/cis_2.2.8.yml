@@ -5,19 +5,17 @@ package:
   rpcbind:
     title: 2.2.8 | L1 | Ensure rpcbind is not installed or the rpcbind services are masked (Automated)_installed
     installed: false
-command:
-  rpcbind_masked:
+service:
+  rpcbind:
     title: 2.2.8 | L1 | Ensure rpcbind is not installed or the rpcbind services are masked (Automated)_masked
-    exit-status: 1
-    exec: systemctl is-enabled rpcbind
-    stdout: 
-    - masked
-  rpcbind_socket:
-    title: 2.2.8 | L1 | Ensure rpcbind is not installed or the rpcbind services are masked (Automated)_socket
-    exit-status: 1
-    exec: systemctl is-enabled  rpcbind.socket
-    stdout: 
-    - masked
+    enabled: false
+    running: false
+    skip: false
+  rpcbind.socket:
+    title: 2.2.8 | L1 | Ensure rpcbind is not installed or the rpcbind services are masked (Automated)_masked
+    enabled: false
+    running: false
+    skip: false
     {{ end }}
   {{ end }}
 {{ end }}
