@@ -9,5 +9,5 @@ command:
     stdout:
     - 'Subscription is current'
   {{ end }}
-  {{ exit }}
+  {{ end }}
 {{ end }}
