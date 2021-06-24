@@ -1,9 +1,11 @@
-{{ if .Vars.rhel7cis_rule_6_1_4 }}
+{{ if .Vars.rhel7cis_level1 }}
+  {{ if .Vars.rhel7cis_rule_6_1_4 }}
 command:
   group_perms:
-    title: 6.1.4 Ensure permissions on /etc/group are configured
+    title: 6.1.4 | L1 | Ensure permissions on /etc/group are configured
     exec:  stat -L -c "%a %U %G" /etc/group
     exit-status: 0
     stdout:
     -  '/6[0,4][0,4] root root/'
+  {{ end }}
 {{ end }}

@@ -1,12 +1,14 @@
 {{ if .Vars.run_heavy_tests }}
+  {{ if .Vars.rhel7cis_level1 }}
+  {{ if .Vars.rhel7cis_rule_6_1_11 }}
 command:
   unowned:
-    {{ if .Vars.rhel7cis_rule_6_1_11 }}
-    title: 6.1.11 Ensure no unowned files or directories exist
+    title: 6.1.11 | L1 | Ensure no unowned files or directories exist
     exec: "df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -nouser"
     exit-status: 0
     stdout:
     - '!/./'
     timeout: 20000
     {{ end }}
+  {{ end }}
 {{ end }}

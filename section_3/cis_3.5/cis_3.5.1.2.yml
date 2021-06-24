@@ -1,11 +1,12 @@
-{{ if ((eq .Vars.rhel7cis_firewall "iptables") and .Vars.rhel7cis_rule_3_5_1_2) }}
+{{ if eq .Vars.rhel7cis_firewall "firewalld" }}
+  {{ if .Vars.rhel7cis_rule_3_5_1_2 }}
 package:
   iptables-services:
-    title: 3.5.1.2 Ensure iptables-service package is installed (Automated)
-    installed: true
-  ip6tables-services:
+    title: 3.5.1.2 | L1 | Ensure iptables-service package is installed (Automated)
+    installed: false
     {{ if .Vars.rhel7cis_ipv6_required }}
-    title: 3.5.1.2 Ensure iptables-service package is installed (Automated)
-    installed: true
+  ip6tables-services:
+    title: 3.5.1.2 | L1 | Ensure iptables-service package is installed (Automated)
+    installed: false
     {{ end }}
 {{ end }}

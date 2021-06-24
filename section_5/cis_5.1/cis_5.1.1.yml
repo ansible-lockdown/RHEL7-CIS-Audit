@@ -2,11 +2,11 @@
   {{ if .Vars.rhel7cis_rule_5_1_1 }}
 package:
   cronie:
-    title: 5.1.1 Ensure cron daemon is enabled and running (Automated)| cronie
+    title: 5.1.1 | L1 | Ensure cron daemon is enabled and running (Automated)| cronie
     installed: true
 service:
   crond:
-    title: 5.1.1 Ensure cron daemon is enabled and running (Automated)| crond
+    title: 5.1.1 | L1 | Ensure cron daemon is enabled and running (Automated)| crond
     running: true
     enabled: true
   {{ end }}

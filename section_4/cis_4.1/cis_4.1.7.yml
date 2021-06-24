@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_rule_4_1_7 }}
 command:
   auditd_logins_cnf:
-    title: 4.1.7 Ensure login and logout events are collected
+    title: 4.1.7 | L2 | Ensure login and logout events are collected
     exec: grep logins /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
@@ -14,7 +14,7 @@ command:
     - '/-w /var/log/tallylog -p wa -k logins/'
     {{ end }}
   auditd_logins_live:
-    title: 4.1.7 Ensure login and logout events are collected
+    title: 4.1.7 | L2 | Ensure login and logout events are collected
     exec: auditctl -l | grep logins
     exit-status: 0
     stdout:
@@ -27,4 +27,3 @@ command:
     - '-w /var/log/tallylog -p wa -k logins'
     {{ end }}
 {{ end }}
-
