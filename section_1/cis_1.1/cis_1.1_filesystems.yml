@@ -28,13 +28,6 @@ command:
   {{ end }}
   {{ if .Vars.rhel7cis_legacy_boot }}
   {{ if .Vars.rhel7cis_rule_1_1_1_4 }}
-  fat:
-    title: 1.1.1.4 | L2 | Ensure mounting of fat filesystems is disabled (Automated)
-    exit-status: 0
-    exec: "modprobe -n -v fat | grep -E '(fat|install)'"
-    stdout: 
-    - install /bin/true
-  {{ end }}
   {{ if .Vars.rhel7cis_rule_1_1_1_4 }}
   vfat:
     title: 1.1.1.4 | L2 | Ensure mounting of fat filesystems is disabled (Automated)
