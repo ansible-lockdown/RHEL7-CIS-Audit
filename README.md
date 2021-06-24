@@ -137,3 +137,5 @@ e.g.
 - [CIS standards](https://www.cisecurity.org)
 
 ## Outstanding
+- 3.5.3.1.x - iptables and ip6tables not completed although not rh7 default fw
+- manual or not scored tasks are not included

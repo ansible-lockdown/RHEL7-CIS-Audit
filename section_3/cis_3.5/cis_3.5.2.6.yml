@@ -1,9 +1,11 @@
-{{ if ((eq .Vars.rhel7cis_firewall "nftables") and .Vars.rhel7cis_rule_3_5_2_6) }}
+{{ if eq .Vars.rhel7cis_firewall "nftables" }}
+  {{ if .Vars.rhel7cis_rule_3_5_2_6 }}
 command:
   nft_list:
-   title: 3.5.2.6 Ensure base chains exists (Automated)
+   title: 3.5.2.6 | L1 | Ensure base chains exists (Automated)
    exec: nft list ruleset | egrep -c "input|forward|output"
    exit-status: 0
    stdout: 3
    stdout:  ['inet filter']
+  {{ end }}
 {{ end }}

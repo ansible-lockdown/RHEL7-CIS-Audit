@@ -1,12 +1,14 @@
-{{ if .Vars.run_heavy_tests }}
+{{ if .Vars.rhel7cis_level1 }}
+  {{ if .Vars.run_heavy_tests }}
+    {{ if .Vars.rhel7cis_rule_6_1_12 }}
 command:
   ungrouped:
-    {{ if .Vars.rhel7cis_rule_6_1_12 }}
-    title: 6.1.12 Ensure no ungrouped files or directories exist
+    title: 6.1.12 | L1 | Ensure no ungrouped files or directories exist
     exec: "df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -nogroup"
     exit-status: 0
     stdout:
     - '!/./'
     timeout: 20000
     {{ end }}
+  {{ end }}
 {{ end }}

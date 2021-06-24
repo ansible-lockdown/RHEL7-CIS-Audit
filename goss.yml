@@ -9,7 +9,10 @@ gossfile:
   section_3/*/*.yml: {}
   {{ end }}
   {{ if .Vars.rhel7cis_section4 }}
-  section_4/*/*.yml: {}
+  {{ if .Vars.rhel7cis_level2 }}
+  section_4/cis_4.1/*.yml: {}
+  {{ end }}
+  section_4/cis_4.2/*.yml: {}
   {{ end }}
   {{ if .Vars.rhel7cis_section5 }}
   section_5/*/*.yml: {}
@@ -17,3 +20,14 @@ gossfile:
   {{ if .Vars.rhel7cis_section6 }}
   section_6/*/*.yml: {}
   {{ end }}
+
+command:
+  output_meta:
+    title: Benchmark MetaData
+    exec: echo BenchMark MetaData
+    exit-status: 0
+    {{ range .Vars.rhel7cis_benchmark }}
+    meta:
+      benchmark_{{ . }}
+    {{ end }}
+      host_os: {{ .Vars.rhel7cis_os_distribution }}

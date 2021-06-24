@@ -1,9 +1,9 @@
 {{ if not .Vars.rhel7cis_vsftpd_server}}
   {{ if .Vars.rhel7cis_level1 }}
+    {{ if .Vars.rhel7cis_rule_2_2_10 }}
 package:
   vsftpd:
-    {{ if .Vars.rhel7cis_rule_2_2_10 }}
-    title: 2.2.10 Ensure FTP Server is not installed (Automated)
+    title: 2.2.10 | L1 | Ensure FTP Server is not installed (Automated)
     installed: {{ false }}
     {{ end }}
   {{ end }}

@@ -1,19 +1,32 @@
 {{ if .Vars.rhel7cis_level1 }}
 file:
   {{ if .Vars.rhel7cis_rule_1_5_1 }}
-  /boot/grub2/user.cfg:
-    title: 1.5.1 Ensure bootloader password is set (Automated) and permissions
+  {{ if .Vars.rhel7cis_legacy_boot }}
+  /etc/grub.d/01_users:
+    title: 1.5.1 | L1 | Ensure bootloader password is set (Automated) and permissions
     exists: true
     owner: root
     group: root
-    mode: "0600"
-    {{ if .Vars.rhel7cis_set_boot_pass }}
-    contains: [GRUB2_PASSWORD=<encrypted-password>]
-    {{ end }}
+    mode: "0755"
+      {{ if .Vars.rhel7cis_set_boot_pass }}
+    contains: [password_pbkdf2 root \${GRUB2_PASSWORD}]
+      {{ end }}
+  {{ end }}
+  {{ if not .Vars.rhel7cis_legacy_boot }}
+  /boot/grub2/user.cfg:
+     title: 1.5.1 | L1 | Ensure bootloader password is set (Automated) and permissions
+     exists: true
+     owner: root
+     group: root
+     mode: "0755"
+       {{ if .Vars.rhel7cis_set_boot_pass }}
+     contains: [GRUB2_PASSWORD=<encrypted-password>]
+       {{ end }}
+  {{ end }}
   {{ end }}
   {{ if .Vars.rhel7cis_rule_1_5_2 }}
   {{ .Vars.rhel7cis_bootloader_file }}:
-    title: 1.5.2 Ensure permissions on bootloader config are configured
+    title: 1.5.2 | L1 | Ensure permissions on bootloader config are configured
     exists: true
     owner: root
     group: root

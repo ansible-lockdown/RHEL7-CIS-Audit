@@ -1,18 +1,18 @@
 # CIS for NTP
 {{ if eq .Vars.rhel7cis_time_synchronization "ntp" }}
   {{ if .Vars.rhel7cis_level1 }}
+    {{ if .Vars.rhel7cis_rule_2_2_1_1 }}
 package:
   ntp:
-    {{ if .Vars.rhel7cis_rule_2_2_1_1 }}
-    title: 2.2.1.1 Ensure time synchronization is in use (Manual)_ntp
+    title: 2.2.1.1 | L1 | Ensure time synchronization is in use (Manual)_ntp
     installed: true
     skip: false
     {{ end }}
 ## ntp settings
+    {{ if .Vars.rhel7cis_rule_2_2_1_3 }}
 file:
   /etc/ntp.conf:
-    {{ if .Vars.rhel7cis_rule_2_2_1_3 }}
-    title: 2.2.1.3 Ensure ntp is configured (Automated)_conf
+    title: 2.2.1.3 | L1 | Ensure ntp is configured (Automated)_conf
     exists: true
     contains:
     - restrict -4 default kod nomodify notrap nopeer noquery

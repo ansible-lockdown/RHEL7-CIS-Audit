@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_5_4_4 }}
 file:
   /etc/profile.d/tmout.sh:
-    title: 5.4.4 Ensure default user shell timeout is configured (Automated) | profile.d
+    title: 5.4.4 | L1 | Ensure default user shell timeout is configured (Automated) | profile.d
     exists: true
     contains:
     - '/^TMOUT=([1-8][0-9]{0,2}|900)/'

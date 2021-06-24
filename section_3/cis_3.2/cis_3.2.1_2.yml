@@ -1,21 +1,21 @@
 {{ if not .Vars.rhel7cis_is_router }}
 kernel-param:
-    net.ipv4.ip_forward:
     {{ if .Vars.rhel7cis_rule_3_2_1 }}
-      title: 3.2.1 Ensure IP forwarding is disabled (Automated)_ipv4
+    net.ipv4.ip_forward:
+      title: 3.2.1 | L1 | Ensure IP forwarding is disabled (Automated)_ipv4
       value: '0'
-    {{ if .Vars.rhel7cis_ipv6_required }}
+      {{ if .Vars.rhel7cis_ipv6_required }}
     net.ipv6.conf.all.forwarding:
-      title: 3.2.1 Ensure IP forwarding is disabled (Automated)_ipv6
+      title: 3.2.1 | L1 | Ensure IP forwarding is disabled (Automated)_ipv6
       value: '0'
+      {{ end }}
     {{ end }}
-    {{ end }}
-    net.ipv4.conf.all.send_redirects:
     {{ if .Vars.rhel7cis_rule_3_2_2 }}
-      title: 3.2.2 Ensure packet redirect sending is disabled (Automated)_all
+    net.ipv4.conf.all.send_redirects:
+      title: 3.2.2 | L1 | Ensure packet redirect sending is disabled (Automated)_all
       value: '0'
     net.ipv4.conf.default.send_redirects:
-      title: 3.2.2 Ensure packet redirect sending is disabled (Automated)_default
+      title: 3.2.2 | L1 | Ensure packet redirect sending is disabled (Automated)_default
       value: '0'
     {{ end }}
 {{ end }}
