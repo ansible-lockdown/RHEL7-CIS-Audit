@@ -1,14 +1,14 @@
 {{ if .Vars.rhel7cis_level1 }}
-command:
   {{ if .Vars.rhel7cis_rule_1_5_3 }}
+command:
   single_user_1:
-    title: 1.5.3 Ensure authentication required for single user mode (Automated)
+    title: 1.5.3 | L1 | Ensure authentication required for single user mode (Automated)
     exit-status: 0
     exec: "grep /sbin/sulogin /usr/lib/systemd/system/rescue.service"
     stdout:
     - '/^ExecStart=-/bin/sh -c "/usr/sbin/sulogin/'
   single_user_2:
-    title: 1.5.3 Ensure authentication required for single user mode (Automated)
+    title: 1.5.3 | L1 | Ensure authentication required for single user mode (Automated)
     exit-status: 0
     exec: "grep /sbin/sulogin /usr/lib/systemd/system/emergency.service"
     stdout:

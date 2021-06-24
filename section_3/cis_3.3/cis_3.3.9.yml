@@ -1,10 +1,11 @@
 {{ if .Vars.rhel7cis_rule_3_3_9 }}
+{{ if .Vars.rhel7cis_ipv6_required }}
 kernel-param:
   net.ipv6.conf.all.accept_ra:
-    title: 3.3.9 Ensure IPv6 router advertisements are not accepted (Automated)
+    title: 3.3.9 | L1 | Ensure IPv6 router advertisements are not accepted (Automated)
     value: '0'
   net.ipv6.conf.default.accept_ra:
-    title: 3.3.9 Ensure IPv6 router advertisements are not accepted (Automated)
+    title: 3.3.9 | L1 | Ensure IPv6 router advertisements are not accepted (Automated)
     value: '0'
 {{ end }}
-   
+{{ end }}

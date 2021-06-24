@@ -1,15 +1,15 @@
 {{ if .Vars.rhel7cis_level1 }}
-file:
   {{ if .Vars.rhel7cis_rule_1_3_2 }}
+file:
   /etc/sudoers:
-    title: 1.3.2 Ensure sudo commands use pty (Automated)
+    title: 1.3.2 | L1 | Ensure sudo commands use pty (Automated)
     exists: true
     contains: 
     - '/^Defaults.*\suse_pty/'
 
 command:
   pty_sudoers_d:
-    title: 1.3.2 Ensure sudo commands use pty (Automated)
+    title: 1.3.2 | L1 | Ensure sudo commands use pty (Automated)
     exec: "ls -1 /etc/sudoers.d/* > /dev/null 2>&1; if [ '$?' = '0' ]; then grep -c '^Defaults.*\\suse_pty' /etc/sudoers.d/*; else echo 99;fi"
     exit-status: 0
     stdout:

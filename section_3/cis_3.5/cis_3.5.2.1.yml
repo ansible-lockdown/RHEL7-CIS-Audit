@@ -1,16 +1,21 @@
-{{ if ((eq .Vars.rhel7cis_firewall "nftables") and .Vars.rhel7cis_rule_3_5_2_1) }}
+{{ if eq .Vars.rhel7cis_firewall "nftables" }}
+  {{ if .Vars.rhel7cis_rule_3_5_2_1 }}
 package:
   nftables:
-    title: 3.5.2.1 Ensure nftables is installed (Automated)
+    title: 3.5.2.1 | L1 | Ensure nftables is installed (Automated)
     installed: true
-  firewalld:
+  {{ end }}
   {{ if .Vars.rhel7cis_rule_3_5_2_2 }}
-    title: 3.5.2.2 Ensure firewalld is not installed or stopped and masked (Automated)
+  firewalld:
+    title: 3.5.2.2 | L1 | Ensure firewalld is not installed or stopped and masked (Automated)
     installed: false    
   {{ end }}
-  iptables-services:
   {{ if .Vars.rhel7cis_rule_3_5_2_3 }}
-    title: 3.5.2.3 Ensure iptables-services package is not installed (Automated)
+  iptables-services:
+    title: 3.5.2.3 | L1 | Ensure iptables-services package is not installed (Automated)
+    installed: false
+  iptables6-services:
+    title: 3.5.2.3 | L1 | Ensure iptables6-services package is not installed (Automated)
     installed: false
   {{ end }}
 {{ end }}   

@@ -1,8 +1,8 @@
 {{ if .Vars.rhel7cis_level1 }}
 file:
+  {{ if .Vars.rhel7cis_rule_1_8_1_1 }}
   /etc/motd:
-    {{ if .Vars.rhel7cis_rule_1_8_1_1 }}
-    title: 1.8.1.1 & 4 Ensure message of the day is configured properly (Automated)
+    title: 1.8.1.1 & 4 | L1 | Ensure message of the day is configured properly (Automated)
     exists: true
     mode: "0644"
     owner: root
@@ -13,10 +13,10 @@ file:
       - "![Rr]ed[Hh]at"
       - "!x86_64"
       - "![Ll]inux"
-    {{ end }}
+  {{ end }}
+  {{ if .Vars.rhel7cis_rule_1_8_1_2 }}
   /etc/issue:
-    {{ if .Vars.rhel7cis_rule_1_8_1_2 }}
-    title: 1.8.1.2 & 5 Ensure local login warning banner is configured properly (Automated)
+    title: 1.8.1.2 & 5 | L1 | Ensure local login warning banner is configured properly (Automated)
     exists: true
     mode: "0644"
     owner: root
@@ -27,10 +27,10 @@ file:
     - "![Rr]ed[Hh]at"
     - "!x86_64"
     - "![Ll]inux"
-    {{ end }}
+  {{ end }}
+  {{ if .Vars.rhel7cis_rule_1_8_1_3 }}
   /etc/issue.net:
-    {{ if .Vars.rhel7cis_rule_1_8_1_3 }}
-    title: 1.8.1.3 & 6 Ensure remote login warning banner is configured properly (Automated)
+    title: 1.8.1.3 & 6 | L1 | Ensure remote login warning banner is configured properly (Automated)
     exists: true
     mode: "0644"
     owner: root
@@ -41,5 +41,5 @@ file:
     - "![Rr]ed[Hh]at"
     - "!x86_64"
     - "![Ll]inux"
-    {{ end }}
+  {{ end }}
 {{ end }}

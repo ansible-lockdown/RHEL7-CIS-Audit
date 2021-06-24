@@ -1,9 +1,9 @@
 {{ if not .Vars.rhel7cis_smb_server }}
   {{ if .Vars.rhel7cis_level1 }}
+    {{ if .Vars.rhel7cis_rule_2_2_13 }}
 package:
   samba:
-    {{ if .Vars.rhel7cis_rule_2_2_13 }}
-    title: 2.2.13 Ensure Samba is not installed (Automated)
+    title: 2.2.13 | L1 | Ensure Samba is not installed (Automated)
     installed: false
     {{ end }}
   {{ end }}
