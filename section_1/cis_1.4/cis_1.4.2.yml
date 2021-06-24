@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_level1 }}
   {{ if .Vars.rhel7cis_config_aide }}
     {{ if .Vars.rhel7cis_rule_1_4_2 }}
-      {{ if eq .Vars.rhel8_aide_scan "cron" }}
+      {{ if eq .Vars.rhel7_aide_scan "cron" }}
 command:
   aide_cron:
     title: 1.4.2 Ensure filesystem integrity is regularly checked (Automated)

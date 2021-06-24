@@ -1,5 +1,5 @@
 {{ if .Vars.rhel7cis_rsyslog }} 
-  {{ .Vars.rhel7cis_rule_4_2_1_1 }}
+  {{ if .Vars.rhel7cis_rule_4_2_1_1 }}
 package:
   rsyslog:
     title: 4.2.1.1| L1 | Ensure rsyslog is installed (Automated)

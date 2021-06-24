@@ -9,4 +9,5 @@ package:
     title: 3.5.1.2 | L1 | Ensure iptables-service package is installed (Automated)
     installed: false
     {{ end }}
+  {{ end }}
 {{ end }}

@@ -31,5 +31,6 @@ command:
     exit-status: 0
     {{ range .Vars.rhel7cis_firewall_interface }}
     stdout: {{ . }}
+    {{ end }}
   {{ end }}
 {{ end }}

@@ -479,3 +479,9 @@ rhel7cis_pass_max_days: 365
 rhel7cis_pass_min_days: 1
 rhel7cis_pass_warn_age: 7
 
+# set sugroup if differs from wheel
+rhel7cis_sugroup: wheel
+
+# sugroup users list
+rhel7cis_sugroup_users: "root"
+

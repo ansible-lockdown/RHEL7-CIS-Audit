@@ -8,7 +8,7 @@ package:
     {{ end }}
   {{ end }}
   {{ if not .Vars.rhel7cis_rsh_required }}
-    {{ .Vars.rhel7cis_rule_2_3_2 }}
+    {{ if .Vars.rhel7cis_rule_2_3_2 }}
   rsh:
     title: 2.3.2 | L1 | Ensure rsh client is not installed (Automated)
     installed: false
@@ -22,7 +22,7 @@ package:
     {{ end }}
   {{ end }}
   {{ if not .Vars.rhel7cis_telnet_required }}
-    {{ .Vars.rhel7cis_rule_2_3_4 }}
+    {{ if .Vars.rhel7cis_rule_2_3_4 }}
   telnet:
     title: 2.3.4 | L1 | Ensure telnet client is not installed (Automated)
     installed: false
