@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_rule_4_1_10 }}
 command:
   auditd_access_cnf:
-    title: 4.1.10 | L2 | Ensure unsuccessful unauthorized file access attempts are collected | cnf
+    title: 4.1.10 | L2 | Ensure unsuccessful unauthorized file access attempts are collected | Conf
     exec: sh -c "grep auid /etc/audit/rules.d/*.rules"
     exit-status: 0
     stdout:
@@ -10,7 +10,7 @@ command:
     - '/-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=4294967295 -k access/'
     - '/-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=4294967295 -k access/'
   auditd_access_live:
-    title: 4.1.10 | L2 |Ensure unsuccessful unauthorized file access attempts are collected | live
+    title: 4.1.10 | L2 |Ensure unsuccessful unauthorized file access attempts are collected | Live
     exec: auditctl -l | grep access
     exit-status: 0
     stdout:

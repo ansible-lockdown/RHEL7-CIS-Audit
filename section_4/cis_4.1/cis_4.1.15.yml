@@ -1,15 +1,17 @@
 {{ if .Vars.rhel7cis_rule_4_1_15 }}
 command:
   auditd_sudolog_cnf:
-    title: 4.1.15 | L2 | Ensure system administrator actions (sudolog) are collected (Automated)
-    exec: grep '^-w \/var\/log\/sudo.log -p wa -k actions$' /etc/audit/rules.d/*.rules
+    title: 4.1.15 | L2 | Ensure system administrator command executions (sudo) are collected | Config
+    exec: grep actions /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
-    - '-w /var/log/sudo.log -p wa -k actions'
+    - '-a exit,always -F arch=b64 -C euid!=uid -F euid=0 -Fauid>=1000 -F auid!=4294967295 -S execve -k actions'
+    - '-a exit,always -F arch=b32 -C euid!=uid -F euid=0 -Fauid>=1000 -F auid!=4294967295 -S execve -k actions'
   auditd_sudolog_live:
-    title: 4.1.15 | L2 | Ensure system administrator actions (sudolog) are collected (Automated)
+    title: 4.1.15 | L2 | Ensure system administrator command executions (sudo) are collected | Live
     exec: auditctl -l | grep actions
     exit-status: 0
     stdout:
-    - '-w /var/log/sudo.log -p wa -k actions'
+    - '-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F auid>=1000 -F auid!=-1 -F key=actions'
+    - '-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F auid>=1000 -F auid!=-1 -F key=actions'
 {{ end }}

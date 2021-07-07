@@ -2,7 +2,6 @@
 file:
   /etc/default/grub:
     exists: true
-    title: 4.1.2.4 | L2 | Ensure audit_backlog_limit is sufficient (Automated)
+    title: 4.1.2.4 | L2 | Ensure audit_backlog_limit is sufficient
     contains: ['/GRUB_CMDLINE_LINUX=".*audit_backlog_limit={{ .Vars.rhel7cis_auditd.auditd_backlog_limit }}/']
 {{ end }}
-
