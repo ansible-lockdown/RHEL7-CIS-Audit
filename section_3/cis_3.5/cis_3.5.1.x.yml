@@ -1,0 +1,58 @@
+{{ if .Vars.rhel7cis_level1 }}
+{{ if eq .Vars.rhel7cis_firewall "firewalld" }}
+  {{ if .Vars.rhel7cis_rule_3_5_1_1 }}
+package:
+  firewalld:
+    title: 3.5.1.1 | L1 | Ensure FirewallD is installed
+    installed: true
+  iptables:
+    title: 3.5.1.1 | L1 | Ensure FirewallD is installed
+    installed: true
+  {{ end }}
+  {{ if .Vars.rhel7cis_rule_3_5_1_2 }}
+  iptables-services:
+    title: 3.5.1.2 | L1 | Ensure iptables-services not installed with firewalld | IPv4
+    installed: false
+    {{ if .Vars.rhel7cis_ipv6_required }}
+  ip6tables-services:
+    title: 3.5.1.2 | L1 | Ensure iptables-services not installed with firewalld | IPv6
+    installed: false
+    {{ end }}
+  {{ end }}
+  {{ if .Vars.rhel7cis_rule_3_5_1_3 }}
+  nftables:
+    title: 3.5.1.3 | L1 | Ensure nftables either not installed or masked with firewalld | package
+    installed: false
+service:
+  nftables:
+    title: 3.5.1.3 | L1 | Ensure nftables either not installed or masked with firewalld | masked
+    enabled: false
+    running: false
+    skip: false
+  {{ end }}
+  {{ if .Vars.rhel7cis_rule_3_5_1_4 }}
+  firewalld:
+    title: 3.5.1.4 | L1 | Ensure firewalld service is enabled and running
+    enabled: true
+    running: true
+  {{ end }}
+command:
+  {{ if .Vars.rhel7cis_rule_3_5_1_5 }}
+  default_zone:
+    title: 3.5.1.5 | L1 | Ensure default zone is set
+    exec: firewall-cmd --get-default-zone
+    exit-status: 0
+    stdout: 
+    - '{{ .Vars.rhel7cis_default_firewall_zone }}'
+  {{ end }}
+  {{ if .Vars.rhel7cis_rule_3_5_1_6 }}
+  nic_assigned:
+    title: 3.5.1.6 | L1 | Ensure network interfaces are assigned to appropriate zone
+    exec:  "nmcli -t connection show | awk -F ':' '{if($4){print $4}}' | while read INT; do firewall-cmd --get-active-zones | grep -B1 $INT; done"
+    exit-status: 0
+    {{ range .Vars.rhel7cis_firewall_interface }}
+    stdout: {{ . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ end }}

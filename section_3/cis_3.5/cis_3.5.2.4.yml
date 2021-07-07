@@ -1,8 +1,9 @@
+{{ if .Vars.rhel7cis_level1 }}
 {{ if eq .Vars.rhel7cis_firewall "iptables" }}
   {{ if .Vars.rhel7cis_rule_3_5_2_4 }}
 command:
   iptables_list:
-    title: 3.5.2.4 | L1 | Ensure iptables are flushed (Manual)
+    title: 3.5.2.4 | L1 | Ensure iptables are flushed
     exec: iptables -L
     # looking for it not to return anything
     # will error if anything is returned
@@ -10,11 +11,12 @@ command:
     exit-status: 0
 command:
   iptables6_list:
-    title: 3.5.2.4 | L1 | Ensure ip6tables are flushed (Manual)
+    title: 3.5.2.4 | L1 | Ensure ip6tables are flushed
     exec: ipi6tables -L
     # looking for it not to return anything
     # will error if anything is returned
     stdout: ['!/./']
     exit-status: 0
   {{ end }}
+{{ end }}
 {{ end }}

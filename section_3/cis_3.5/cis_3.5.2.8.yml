@@ -1,10 +1,12 @@
+{{ if .Vars.rhel7cis_level1 }}
 {{ if eq .Vars.rhel7cis_firewall "nftables" }}
   {{ if .Vars.rhel7cis_rule_3_5_2_8 }}
 command:
   nft_list:
-   title: 3.5.2.8 Ensure outbound and established connections are configured (Manual)
+   title: 3.5.2.8 | L1 | Ensure outbound and established connections are configured
    exec: nft list ruleset | awk '/hook input/,/}/' | grep -E 'ip protocol (tcp|udp|icmp) ct state'
    exit-status: 0
    stdout:  ['accept']
   {{ end }}
+{{ end }}
 {{ end }}

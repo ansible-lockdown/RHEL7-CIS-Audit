@@ -1,8 +1,10 @@
+{{ if .Vars.rhel7cis_level1 }}
 {{ if eq .Vars.rhel7cis_firewall "nftables" }}
   {{ if .Vars.rhel7cis_rule_3_5_2_10 }}
 service:
   nftables:
-   title: 3.5.2.10 | L1 | Ensure nftables service is enabled (Automated)
+   title: 3.5.2.10 | L1 | Ensure nftables service is enabled
    enabled: true
   {{ end }}
+{{ end }}
 {{ end }}
