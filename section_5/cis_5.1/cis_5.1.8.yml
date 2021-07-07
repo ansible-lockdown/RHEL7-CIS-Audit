@@ -5,7 +5,7 @@ file:
     title: 5.1.8 | L1 | Ensure cron is restricted to authorized users
     exists: false
   /etc/cron.allow:
-    title: 5.1.8 Ensure cron is restricted to authorized users
+    title: 5.1.8 | L1 | Ensure cron is restricted to authorized users
     exists: true
     owner: root
     group: root
