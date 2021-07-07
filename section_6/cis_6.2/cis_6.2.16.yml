@@ -1,11 +1,11 @@
 {{ if .Vars.rhel7cis_level1 }}
   {{ if .Vars.rhel7cis_rule_6_2_16 }}
 command:
-  no_dup_username:
-    title: 6.2.16 | L1 | Ensure no duplicate user names exist
-    exec: "cat /etc/passwd | cut -d: -f1 | uniq -d"
+  dot_netrc_files:
+    title: 6.2.16 | L1 | Ensure no users have .netrc files
+    exec: 'find /home/ -name .netrc'
     exit-status: 0
-    stdout:
+    stdout: 
     - '!/./'
   {{ end }}
 {{ end }}

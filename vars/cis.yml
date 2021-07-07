@@ -282,7 +282,6 @@ rhel7cis_rule_6_2_14: true
 rhel7cis_rule_6_2_15: true
 rhel7cis_rule_6_2_16: true
 rhel7cis_rule_6_2_17: true
-rhel7cis_rule_6_2_18: true
 
 # AIDE
 rhel7cis_config_aide: true

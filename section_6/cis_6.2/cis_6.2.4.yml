@@ -1,11 +1,8 @@
 {{ if .Vars.rhel7cis_level1 }}
   {{ if .Vars.rhel7cis_rule_6_2_4 }}
-command:
-  root_path_check:
-    title: 6.2.4 | L1 | Ensure root PATH Integrity
-    exec: "/bin/bash --login -c 'env | grep ^PATH=' | sed -e 's/PATH=//' -e 's/::/:/' -e 's/:$//' -e 's/:/\\n/g'"
-    exit-status: 0
-    stdout:
-    - '!/\\./'
+group:
+  shadow:
+    title: 6.2.4 | L1 | Ensure shadow group is empty
+    exists: false
   {{ end }}
-{{ end }}
+{{ end }}    

@@ -1,11 +1,11 @@
 {{ if .Vars.rhel7cis_level1 }}
   {{ if .Vars.rhel7cis_rule_6_1_6 }}
 command:
-  passwd-_perms:
-    title: 6.1.6 | L1 | Ensure permissions on /etc/passwd- are configured
-    exec:  stat -L -c "%a %U %G" /etc/passwd-
+  gshadow-_perms:
+    title: 6.1.6 | L1 | Ensure permissions on /etc/gshadow- are configured
+    exec:  stat -L -c "%a %U %G" /etc/gshadow-
     exit-status: 0
     stdout:
-    -  '/6[0,4][0,4] root root/'
+    -  '/0 root root/'
   {{ end }}
 {{ end }}
