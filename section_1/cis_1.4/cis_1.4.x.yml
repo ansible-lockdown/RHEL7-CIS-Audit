@@ -1,9 +1,9 @@
 {{ if .Vars.rhel7cis_level1 }}
 file:
-  {{ if .Vars.rhel7cis_rule_1_5_1 }}
+  {{ if .Vars.rhel7cis_rule_1_4_1 }}
   {{ if .Vars.rhel7cis_legacy_boot }}
   /etc/grub.d/01_users:
-    title: 1.5.1 | L1 | Ensure bootloader password is set (Automated) and permissions
+    title: 1.4.1 | L1 | Ensure bootloader password is set and permissions
     exists: true
     owner: root
     group: root
@@ -14,7 +14,7 @@ file:
   {{ end }}
   {{ if not .Vars.rhel7cis_legacy_boot }}
   /boot/grub2/user.cfg:
-     title: 1.5.1 | L1 | Ensure bootloader password is set (Automated) and permissions
+     title: 1.4.1 | L1 | Ensure bootloader password is set and permissions
      exists: true
      owner: root
      group: root
@@ -24,9 +24,9 @@ file:
        {{ end }}
   {{ end }}
   {{ end }}
-  {{ if .Vars.rhel7cis_rule_1_5_2 }}
+  {{ if .Vars.rhel7cis_rule_1_4_2 }}
   {{ .Vars.rhel7cis_bootloader_file }}:
-    title: 1.5.2 | L1 | Ensure permissions on bootloader config are configured
+    title: 1.4.2 | L1 | Ensure permissions on bootloader config are configured
     exists: true
     owner: root
     group: root

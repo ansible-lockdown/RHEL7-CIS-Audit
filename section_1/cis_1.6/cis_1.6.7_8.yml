@@ -1,0 +1,13 @@
+{{ if .Vars.rhel7cis_level1 }}
+package:
+  {{ if .Vars.rhel7cis_rule_1_6_1_7 }}
+  setroubleshoot:
+    title: 1.6.1.7 | L1 | Ensure SETroubleshoot is not installed
+    installed: false
+  {{ end }}
+  {{ if .Vars.rhel7cis_rule_1_6_1_8 }}
+  mcstrans:
+    title: 1.6.1.8 | L1 | Ensure the MCS Translation Service (mcstrans) is not installed
+    installed: false
+  {{ end }}
+{{ end }}

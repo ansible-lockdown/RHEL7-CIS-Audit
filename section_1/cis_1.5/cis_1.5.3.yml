@@ -1,17 +1,15 @@
 {{ if .Vars.rhel7cis_level1 }}
   {{ if .Vars.rhel7cis_rule_1_5_3 }}
+kernel-param:
+  kernel.randomize_va_space:
+    title: 1.5.3 | L1 | Ensure address space layout randomization (ASLR) is enabled | sysctl_live
+    value: '2'
 command:
-  single_user_1:
-    title: 1.5.3 | L1 | Ensure authentication required for single user mode (Automated)
+  aslr_enabled_2:
+    title: 1.5.3 | L1 | Ensure address space layout randomization (ASLR) is enabled | sysctl_configured
     exit-status: 0
-    exec: "grep /sbin/sulogin /usr/lib/systemd/system/rescue.service"
-    stdout:
-    - '/^ExecStart=-/bin/sh -c "/usr/sbin/sulogin/'
-  single_user_2:
-    title: 1.5.3 | L1 | Ensure authentication required for single user mode (Automated)
-    exit-status: 0
-    exec: "grep /sbin/sulogin /usr/lib/systemd/system/emergency.service"
-    stdout:
-    - '/^ExecStart=-/bin/sh -c "/usr/sbin/sulogin/'
+    exec: 'grep "kernel\.randomize_va_space" /etc/sysctl.conf /etc/sysctl.d/* | cut -d ":" -f2'
+    stdout: 
+    - '/^kernel.randomize_va_space=2/'
   {{ end }}
 {{ end }}

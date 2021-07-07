@@ -3,7 +3,7 @@
     {{ if .Vars.rhel7cis_rule_1_9 }}
 command:
   security-updates:
-    title: 1.9 | L1 | Ensure updates, patches, and additional security software are installed (Automated)
+    title: 1.9 | L1 | Ensure updates, patches, and additional security software are installed
     exit-status: 0
     timeout: 20000 #milliseconds
     exec: yum check-update
