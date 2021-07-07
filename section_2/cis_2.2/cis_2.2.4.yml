@@ -3,7 +3,7 @@
     {{ if .Vars.rhel7cis_rule_2_2_4 }}
 package:
   cups:
-    title: 2.2.4 | L1 | Ensure CUPS is not installed (Automated)
+    title: 2.2.4 | L1 | Ensure CUPS is not installed
     installed: false
     {{ end }}
   {{ end }}

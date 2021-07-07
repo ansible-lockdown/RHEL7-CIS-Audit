@@ -1,12 +1,13 @@
-{{ if not .Vars.rhel7cis_rsyncd_server }}
-  {{ if .Vars.rhel7cis_rule_2_2_17 }}
+{{ if not .Vars.rhel7cis_nfs_server }}
+  {{ if .Vars.rhel7cis_rule_2_2_17  }}
     {{ if .Vars.rhel7cis_level1 }}
 package:
-  rsync:
-    title: 2.2.17 | L1 | Ensure rsync is not installed or the rsyncd service is masked (Automated)_installed
+  nfs-utils:
+    title: 2.2.17 | L1 | Ensure nfs-utils is not installed or the nfs-server service is masked | Installed
     installed: false
 service:
-  rsync:
+  nfs-server:
+    title: 2.2.17 | L1 | Ensure nfs-utils is not installed or the nfs-server service is masked | masked
     enabled: false
     running: false
     skip: false

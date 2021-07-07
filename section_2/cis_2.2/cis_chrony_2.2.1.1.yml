@@ -4,20 +4,20 @@
     {{ if .Vars.rhel7cis_rule_2_2_1_1 }}
 package:
   chrony:
-    title: 2.2.1.1 | L1 | Ensure time synchronization is in use (Manual)_chrony
+    title: 2.2.1.1 | L1 | Ensure time synchronization is in use | chrony
     installed: true
     {{ end }}
 ## chrony settings
     {{ if .Vars.rhel7cis_rule_2_2_1_2 }}
 file:
   /etc/chrony.conf:
-    title: 2.2.1.2 | L1 | Ensure chrony is configured (Automated)_conf
+    title: 2.2.1.2 | L1 | Ensure chrony is configured |chrony.conf
     exists: true
     contains:
     - server
     skip: false
   /etc/sysconfig/chronyd:
-    title: 2.2.1.2 | L1 | Ensure chrony is configured (Automated)_sysconf
+    title: 2.2.1.2 | L1 | Ensure chrony is configured | sysconf
     exists: true
     contains:
     - 'OPTIONS="-u chrony"'

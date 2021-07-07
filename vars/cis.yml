@@ -101,12 +101,6 @@ rhel7cis_rule_1_9: true
 
 # section 2 rules
 rhel7cis_rule_2_1_1: true
-rhel7cis_rule_2_1_2: true
-rhel7cis_rule_2_1_3: true
-rhel7cis_rule_2_1_4: true
-rhel7cis_rule_2_1_5: true
-rhel7cis_rule_2_1_6: true
-rhel7cis_rule_2_1_7: true
 rhel7cis_rule_2_2_1_1: true
 rhel7cis_rule_2_2_1_2: true
 rhel7cis_rule_2_2_1_3: true
@@ -128,8 +122,6 @@ rhel7cis_rule_2_2_16: true
 rhel7cis_rule_2_2_17: true
 rhel7cis_rule_2_2_18: true
 rhel7cis_rule_2_2_19: true
-rhel7cis_rule_2_2_20: true
-rhel7cis_rule_2_2_21: true
 rhel7cis_rule_2_3_1: true
 rhel7cis_rule_2_3_2: true
 rhel7cis_rule_2_3_3: true

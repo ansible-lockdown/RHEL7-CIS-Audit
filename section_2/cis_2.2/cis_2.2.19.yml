@@ -1,10 +1,15 @@
-{{ if not .Vars.rhel7cis_telnet_server }}
-  {{ if .Vars.rhel7cis_level1 }}
-    {{ if .Vars.rhel7cis_rule_2_2_19 }}
+{{ if not .Vars.rhel7cis_rsyncd_server }}
+  {{ if .Vars.rhel7cis_rule_2_2_19 }}
+    {{ if .Vars.rhel7cis_level1 }}
 package:
-  telnet-server:
-    title: 2.2.19 | L1 | Ensure telnet-server is not installed (Automated)
+  rsync:
+    title: 2.2.19 | L1 | Ensure rsync is not installed or the rsyncd service is masked 
     installed: false
+service:
+  rsync:
+    enabled: false
+    running: false
+    skip: false
     {{ end }}
   {{ end }}
 {{ end }}

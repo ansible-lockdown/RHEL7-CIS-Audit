@@ -1,9 +1,9 @@
-{{ if not .Vars.rhel7cis_squid_server }}
+{{ if not .Vars.rhel7cis_nis_server }}
   {{ if .Vars.rhel7cis_level1 }}
     {{ if .Vars.rhel7cis_rule_2_2_14 }}
 package:
-  squid:
-    title: 2.2.14 | L1 | Ensure http proxy Server is not installed (Automated)
+  ypserver:
+    title: 2.2.14 | L1 | Ensure NIS server is not installed
     installed: false
     {{ end }}
   {{ end }}

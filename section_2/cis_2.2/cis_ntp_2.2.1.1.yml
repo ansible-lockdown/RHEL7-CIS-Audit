@@ -4,7 +4,7 @@
     {{ if .Vars.rhel7cis_rule_2_2_1_1 }}
 package:
   ntp:
-    title: 2.2.1.1 | L1 | Ensure time synchronization is in use (Manual)_ntp
+    title: 2.2.1.1 | L1 | Ensure time synchronization is in use | ntp
     installed: true
     skip: false
     {{ end }}
@@ -12,12 +12,17 @@ package:
     {{ if .Vars.rhel7cis_rule_2_2_1_3 }}
 file:
   /etc/ntp.conf:
-    title: 2.2.1.3 | L1 | Ensure ntp is configured (Automated)_conf
+    title: 2.2.1.3 | L1 | Ensure ntp is configured | ntp.conf
     exists: true
     contains:
-    - restrict -4 default kod nomodify notrap nopeer noquery
-    - restrict -6 default kod nomodify notrap nopeer noquery
-    - server
+    - 'restrict -4 default kod nomodify notrap nopeer noquery'
+    - 'restrict -6 default kod nomodify notrap nopeer noquery'
+    - 'server'
+  /etc/sysconfig/ntpd:
+    title: 2.2.1.3 | L1 | Ensure ntp is configured | ntp.conf
+    exists: true
+    contains:
+    - '/^(OPTIONS|ExecStart)=.*-u ntp:ntp/'
     {{ end }}
   {{ end }}
 {{ end }}

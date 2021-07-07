@@ -1,21 +1,10 @@
-{{ if not .Vars.rhel7cis_rpc_server }}
-  {{ if .Vars.rhel7cis_rule_2_2_8 }}
-    {{ if .Vars.rhel7cis_level1 }}
+{{ if not .Vars.rhel7cis_vsftpd_server}}
+  {{ if .Vars.rhel7cis_level1 }}
+    {{ if .Vars.rhel7cis_rule_2_2_8 }}
 package:
-  rpcbind:
-    title: 2.2.8 | L1 | Ensure rpcbind is not installed or the rpcbind services are masked (Automated)_installed
-    installed: false
-service:
-  rpcbind:
-    title: 2.2.8 | L1 | Ensure rpcbind is not installed or the rpcbind services are masked (Automated)_masked
-    enabled: false
-    running: false
-    skip: false
-  rpcbind.socket:
-    title: 2.2.8 | L1 | Ensure rpcbind is not installed or the rpcbind services are masked (Automated)_masked
-    enabled: false
-    running: false
-    skip: false
+  vsftpd:
+    title: 2.2.8 | L1 | Ensure FTP Server is not installed
+    installed: {{ false }}
     {{ end }}
   {{ end }}
 {{ end }}
