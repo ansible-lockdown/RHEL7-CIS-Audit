@@ -6,12 +6,12 @@ command:
     exit-status: 0
     exec: "grep /sbin/sulogin /usr/lib/systemd/system/rescue.service"
     stdout:
-    - '/^ExecStart=-/bin/sh -c "/usr/sbin/sulogin/'
+    - '/^ExecStart=-/bin/sh -c "/sbin/sulogin; /usr/bin/systemctl --fail --no-block default/'
   single_user_2:
     title: 1.4.3 | L1 | Ensure authentication required for single user mode
     exit-status: 0
     exec: "grep /sbin/sulogin /usr/lib/systemd/system/emergency.service"
     stdout:
-    - '/^ExecStart=-/bin/sh -c "/usr/sbin/sulogin/'
+    - '/^ExecStart=-/bin/sh -c "/sbin/sulogin; /usr/bin/systemctl --fail --no-block default/'
   {{ end }}
 {{ end }}
