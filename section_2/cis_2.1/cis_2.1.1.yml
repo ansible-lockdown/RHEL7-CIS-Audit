@@ -1,6 +1,6 @@
 {{ if not .Vars.rhel7cis_xinetd_required }}
   {{ if .Vars.rhel7cis_level1 }}
-    {{ if .Vars.rhel7cis_rule_2_1_2 }}
+    {{ if .Vars.rhel7cis_rule_2_1_1 }}
 package:
   xinetd:
     title: 2.1.1 | L1 | Ensure xinetd is not installed
