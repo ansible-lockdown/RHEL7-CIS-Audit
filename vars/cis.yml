@@ -87,12 +87,12 @@ rhel7cis_rule_1_6_1_5: true
 rhel7cis_rule_1_6_1_6: true
 rhel7cis_rule_1_6_1_7: true
 rhel7cis_rule_1_6_1_8: true
-rhel7cis_rule_1_7_1_1: true
-rhel7cis_rule_1_7_1_2: true
-rhel7cis_rule_1_7_1_3: true
-rhel7cis_rule_1_7_1_4: true
-rhel7cis_rule_1_7_1_5: true
-rhel7cis_rule_1_7_1_6: true
+rhel7cis_rule_1_7_1: true
+rhel7cis_rule_1_7_2: true
+rhel7cis_rule_1_7_3: true
+rhel7cis_rule_1_7_4: true
+rhel7cis_rule_1_7_5: true
+rhel7cis_rule_1_7_6: true
 rhel7cis_rule_1_8_1: true
 rhel7cis_rule_1_8_2: true
 rhel7cis_rule_1_8_3: true
@@ -162,9 +162,9 @@ rhel7cis_rule_3_5_2_8: false
 rhel7cis_rule_3_5_2_9: false
 rhel7cis_rule_3_5_2_10: true
 rhel7cis_rule_3_5_2_11: true
-rhel7cis_rule_3_5_3_1: true
-rhel7cis_rule_3_5_3_2: true
-rhel7cis_rule_3_5_3_3: true
+rhel7cis_rule_3_5_3_1_1: true
+rhel7cis_rule_3_5_3_1_2: true
+rhel7cis_rule_3_5_3_1_3: true
 
 # Section 4 rules
 rhel7cis_rule_4_1_1_1: true
