@@ -1,6 +1,8 @@
+
 {{ if .Vars.rhel7cis_rule_1_4_2 }}
   {{ if .Vars.rhel7cis_legacy_boot }}
-  {{ if .Vars.rhel7cis_bootloader_file }}:
+file:
+  {{ .Vars.rhel7cis_bootloader_file }}:
     title: 1.4.2 | L1 | Ensure permissions on bootloader config are configured
     exists: true
     owner: root
@@ -21,4 +23,4 @@ mount:
     - uid=0
     - gid=0
 {{ end }}
-{{ end}}
+{{ end }}
