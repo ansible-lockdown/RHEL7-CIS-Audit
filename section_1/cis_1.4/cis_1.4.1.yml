@@ -1,26 +1,19 @@
 {{ if .Vars.rhel7cis_level1 }}
-file:
   {{ if .Vars.rhel7cis_rule_1_4_1 }}
-  {{ if .Vars.rhel7cis_legacy_boot }}
-  /etc/grub.d/01_users:
-    title: 1.4.1 | L1 | Ensure bootloader password is set and permissions
+file:
+  {{ .Vars.rhel7cis_bootloader_user }}:
+    title: 1.4.1 | L1 | Ensure bootloader password is set and permissions | efi
     exists: true
     owner: root
     group: root
-    mode: "0755"
-      {{ if .Vars.rhel7cis_set_boot_pass }}
-    contains: [password_pbkdf2 root \${GRUB2_PASSWORD}]
-      {{ end }}
+  {{ if .Vars.rhel7cis_legacy_boot }}
+    mode: "0600"
   {{ end }}
   {{ if not .Vars.rhel7cis_legacy_boot }}
-  {{ .Vars.rhel7cis_bootloader_user }}:
-     title: 1.4.1 | L1 | Ensure bootloader password is set and permissions
-     exists: true
-     owner: root
-     group: root
-       {{ if .Vars.rhel7cis_set_boot_pass }}
-     contains: [GRUB2_PASSWORD={{ .Vars.rhel7cis_bootloader_password }}]
-       {{ end }}
+    mode: "0700"
   {{ end }}
+      {{ if .Vars.rhel7cis_set_boot_pass }}
+    contains: [GRUB2_PASSWORD={{ .Vars.rhel7cis_bootloader_password }}]
+      {{ end }}
   {{ end }}
 {{ end }}
