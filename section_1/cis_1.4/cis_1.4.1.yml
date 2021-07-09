@@ -13,14 +13,13 @@ file:
       {{ end }}
   {{ end }}
   {{ if not .Vars.rhel7cis_legacy_boot }}
-  /boot/grub2/user.cfg:
+  {{ .Vars.rhel7cis_bootloader_user }}:
      title: 1.4.1 | L1 | Ensure bootloader password is set and permissions
      exists: true
      owner: root
      group: root
-     mode: "0755"
        {{ if .Vars.rhel7cis_set_boot_pass }}
-     contains: [GRUB2_PASSWORD=<encrypted-password>]
+     contains: [GRUB2_PASSWORD={{ .Vars.rhel7cis_bootloader_password }}]
        {{ end }}
   {{ end }}
   {{ end }}
