@@ -29,9 +29,11 @@ run_heavy_tests: true
 # if Bios boot
 rhel7cis_legacy_boot: true
 rhel7cis_bootloader_file: /boot/grub2/grub.cfg
-# if UEFI - note checnges from redhat to centos depenadent on OS
+rhel7cis_bootloader_user: /boot/grub2/user.cfg
+# if UEFI - note changes from redhat to centos depenadent on OS
 #rhel7cis_legacy_boot: false
 #rhel7cis_bootloader_file: /boot/efi/EFI/redhat/grub.cfg
+#rhel7cis_bootloader_user: /boot/efi/EFI/redhat/user.cfg
 
 
 # These variables correspond with the CIS rule IDs or paragraph numbers defined in
@@ -301,7 +303,8 @@ rhel7cis_aide_cron:
   aide_weekday: '*'
 
 # 1.5.1 Bootloader password
-rhel7cis_bootloader_password: random
+rhel7cis_bootloader_user:
+rhel7cis_bootloader_password: grub.pbkdf2.sha512.changethispart
 rhel7cis_set_boot_pass: false
 
 # Warning Banner Content (issue, issue.net, motd)
