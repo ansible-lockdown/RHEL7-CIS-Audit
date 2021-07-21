@@ -9,6 +9,16 @@ command:
     - '/-a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=4294967295 -k access/'
     - '/-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=4294967295 -k access/'
     - '/-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=4294967295 -k access/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID: 
+      - 4.1.10
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
   auditd_access_live:
     title: 4.1.10 | L2 |Ensure unsuccessful unauthorized file access attempts are collected | Live
     exec: auditctl -l | grep access
@@ -18,4 +28,14 @@ command:
     - '-a always,exit -F arch=b32 -S open,creat,truncate,ftruncate,openat -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=access'
     - '-a always,exit -F arch=b64 -S open,truncate,ftruncate,creat,openat -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=access'
     - '-a always,exit -F arch=b32 -S open,creat,truncate,ftruncate,openat -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=access'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID: 
+      - 4.1.10
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

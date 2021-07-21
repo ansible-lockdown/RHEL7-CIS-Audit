@@ -7,6 +7,16 @@ command:
     stdout:
     - '-a always,exit -F arch=b64 -C euid!=uid -F euid=0 -F auid>=1000 -F auid!=4294967295 -S execve -k actions'
     - '-a always,exit -F arch=b32 -C euid!=uid -F euid=0 -F auid>=1000 -F auid!=4294967295 -S execve -k actions'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID: 
+      - 4.1.15
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
   auditd_sudolog_live:
     title: 4.1.15 | L2 | Ensure system administrator command executions (sudo) are collected | Live
     exec: auditctl -l | grep actions
@@ -14,4 +24,14 @@ command:
     stdout:
     - '-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F auid>=1000 -F auid!=-1 -F key=actions'
     - '-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F auid>=1000 -F auid!=-1 -F key=actions'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID: 
+      - 4.1.15
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

@@ -7,6 +7,16 @@ command:
     stdout:
     - '-w /etc/sudoers -p wa -k scope'
     - '-w /etc/sudoers.d/ -p wa -k scope'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID: 
+      - 4.1.14
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
   auditd_admin_scope_live:
     title: 4.1.14 | L2 | Ensure changes to system administration scope (sudoers) is collected | Live
     exec: auditctl -l | grep scope
@@ -14,5 +24,15 @@ command:
     stdout:
     - '-w /etc/sudoers -p wa -k scope'
     - '-w /etc/sudoers.d -p wa -k scope'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID: 
+      - 4.1.14
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}
 
