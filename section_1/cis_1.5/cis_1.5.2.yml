@@ -7,5 +7,15 @@ command:
     exec: "journalctl | grep 'protection: active'"
     stdout:
     - "kernel: NX (Execute Disable) protection: active"
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.5.2
+      CISv8:
+      - 10.5
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}

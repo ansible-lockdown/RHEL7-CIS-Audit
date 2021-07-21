@@ -11,16 +11,34 @@ file:
     {{ if .Vars.rhel7cis_set_boot_pass }}
     contains: [GRUB2_PASSWORD=<encrypted-password>]
     {{ end }}
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.4.2
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ if not .Vars.rhel7cis_legacy_boot }}
-mount:
-  /boot/efi:
+command:
+  check_efi mount_opts:
     title: 1.4.2 | L1 | Ensure permissions on bootloader config are configured
-    exists: true
-    opts:
-    - umask=0027
-    - fmask=0077
-    - uid=0
-    - gid=0
-{{ end }}
+    exec: grep /boot/efi /etc/fstab
+    exit-status: 0
+    stdout:
+    - '/.*\s/boot/efi vfat defaults,umask=0027,fmask=0077,uid=0,gid=0 0 0/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.4.2
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  {{ end }}
 {{ end }}

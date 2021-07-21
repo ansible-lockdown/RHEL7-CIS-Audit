@@ -6,7 +6,16 @@ package:
     title: 1.6.1.1 | L1 | Ensure SELinux is installed
     installed: true
     {{ end }}
-
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.6.1.1
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 command:
     {{ if .Vars.rhel7cis_rule_1_6_1_2 }}
   selinux_disabled_boot:
@@ -16,6 +25,16 @@ command:
     # looking for it not to return anything
     # will error if anything is returned
     stdout: ['!/./']
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.6.1.2
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
     {{ end }}
     {{ if .Vars.rhel7cis_rule_1_6_1_3 }}
   selinux_policy:
@@ -24,27 +43,63 @@ command:
     exec: 'grep SELINUXTYPE= /etc/selinux/config'
     stdout:
     - SELINUXTYPE=targeted 
-    {{ end }}
-    {{ if .Vars.rhel7cis_rule_1_6_1_3 }}
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.6.1.3
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   selinux_sestatus:
     title: 1.6.1.3 | L1 | Ensure SELinux policy is configured | sestatus
     exit-status: 0
     exec: "sestatus | grep 'Loaded policy'"
     stdout:
     - "Loaded policy name:             targeted"
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.6.1.3
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
     {{ end }}
     {{ if .Vars.rhel7cis_rule_1_6_1_4 }}
   selinux_running_mode:
     title: 1.6.1.4 | L1 | Ensure the SELinux mode is enforcing or permissive | running
     exit-status: 0
     exec: "getenforce"
-    stdout: ["![Dd]isabled"] 
-    {{ end }}
-    {{ if .Vars.rhel7cis_rule_1_6_1_4 }}
+    stdout: ["![Dd]isabled"]
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.6.1.4
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   selinux_config_mode:
     title: 1.6.1.4 | L1 | Ensure the SELinux mode is enforcing or permissive | config
     exit-status: 0
     exec: 'grep -Ei "^\s*SELINUX=(enforcing|permissive)" /etc/selinux/config'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.6.1.4
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
     {{ end }}
     {{ if .Vars.rhel7cis_rule_1_6_1_6 }}
   selinux_unconfined:
@@ -52,6 +107,16 @@ command:
     exit-status: 1
     exec: "ps -eZ | grep unconfined_service_t"
     stdout: ['!/./']
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.6.1.6
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
     {{ end }}
   {{ end }}
 {{ if .Vars.rhel7cis_level2 }}
@@ -63,14 +128,32 @@ command:
     exec: "getenforce"
     stdout:
     - "Enforcing"
-    {{ end }}
-    {{ if .Vars.rhel7cis_rule_1_6_1_5 }}
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.6.1.5
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   selinux_config_enforcing:
     title: 1.6.1.5 | L2 | Ensure the SELinux mode is enforcing | config
     exit-status: 0
     exec: 'grep -Ei "^\s*SELINUX=[Ee]nforcing" /etc/selinux/config'
     stdout:
     - SELINUX=enforcing
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.6.1.5
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
     {{ end }}
   {{ end }}
   {{ end }}

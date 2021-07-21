@@ -7,11 +7,31 @@ command:
     exec: "grep /sbin/sulogin /usr/lib/systemd/system/rescue.service"
     stdout:
     - '/^ExecStart=-/bin/sh -c "/sbin/sulogin; /usr/bin/systemctl --fail --no-block default/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.4.3
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   single_user_2:
     title: 1.4.3 | L1 | Ensure authentication required for single user mode
     exit-status: 0
     exec: "grep /sbin/sulogin /usr/lib/systemd/system/emergency.service"
     stdout:
     - '/^ExecStart=-/bin/sh -c "/sbin/sulogin; /usr/bin/systemctl --fail --no-block default/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.4.3
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}
