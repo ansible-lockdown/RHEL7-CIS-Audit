@@ -5,6 +5,16 @@ package:
   cups:
     title: 2.2.4 | L1 | Ensure CUPS is not installed
     installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID: 
+      - 2.2.4
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
     {{ end }}
   {{ end }}
 {{ end }}

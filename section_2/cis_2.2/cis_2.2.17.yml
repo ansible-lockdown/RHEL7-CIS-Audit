@@ -5,12 +5,32 @@ package:
   nfs-utils:
     title: 2.2.17 | L1 | Ensure nfs-utils is not installed or the nfs-server service is masked | Installed
     installed: false
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 2.2.17
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
 service:
   nfs-server:
     title: 2.2.17 | L1 | Ensure nfs-utils is not installed or the nfs-server service is masked | masked
     enabled: false
     running: false
     skip: false
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 2.2.17
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
     {{ end }}
   {{ end }}
 {{ end }}
