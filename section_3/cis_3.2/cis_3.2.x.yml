@@ -5,19 +5,59 @@ kernel-param:
     net.ipv4.ip_forward:
       title: 3.2.1 | L1 | Ensure IP forwarding is disabled | IPv4
       value: '0'
+      meta:
+        server: 1
+        workstation: 1
+        CIS_ID: 
+        - 3.2.1
+        CISv8:
+        - 4.1
+        CISv8_IG1: true
+        CISv8_IG2: true
+        CISv8_IG3: true
       {{ if .Vars.rhel7cis_ipv6_required }}
     net.ipv6.conf.all.forwarding:
       title: 3.2.1 | L1 | Ensure IP forwarding is disabled  | IPv6
       value: '0'
+      meta:
+        server: 1
+        workstation: 1
+        CIS_ID: 
+        - 3.2.1
+        CISv8:
+        - 4.1
+        CISv8_IG1: true
+        CISv8_IG2: true
+        CISv8_IG3: true
       {{ end }}
     {{ end }}
     {{ if .Vars.rhel7cis_rule_3_2_2 }}
     net.ipv4.conf.all.send_redirects:
       title: 3.2.2 | L1 | Ensure packet redirect sending is disabled | all
       value: '0'
+      meta:
+        server: 1
+        workstation: 1
+        CIS_ID: 
+        - 3.2.2
+        CISv8:
+        - 4.1
+        CISv8_IG1: true
+        CISv8_IG2: true
+        CISv8_IG3: true
     net.ipv4.conf.default.send_redirects:
       title: 3.2.2 | L1 | Ensure packet redirect sending is disabled | default
       value: '0'
+      meta:
+        server: 1
+        workstation: 1
+        CIS_ID: 
+        - 3.2.2
+        CISv8:
+        - 4.1
+        CISv8_IG1: true
+        CISv8_IG2: true
+        CISv8_IG3: true
     {{ end }}
   {{ end }}
 {{ end }}

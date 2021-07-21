@@ -3,15 +3,55 @@ kernel-param:
   net.ipv4.conf.all.accept_source_route:
     title: 3.3.1 | L1 | Ensure source routed packets are not accepted  | IPv4_all
     value: '0'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 3.3.1
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   net.ipv4.conf.default.accept_source_route:
     title: 3.3.1 | L1 | Ensure source routed packets are not accepted | IPv4_default
     value: '0'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 3.3.1
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ if .Vars.rhel7cis_ipv6_required }}
   net.ipv6.conf.all.accept_source_route:
     title: 3.3.1 | L1 | Ensure source routed packets are not accepted | IPv6_all
     value: '0'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 3.3.1
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   net.ipv6.conf.default.accept_source_route:
     title: 3.3.1 | L1 | Ensure source routed packets are not accepted | IPv6_default
     value: '0'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 3.3.1
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}

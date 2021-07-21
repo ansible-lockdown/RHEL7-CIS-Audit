@@ -5,6 +5,16 @@ service:
   nftables:
    title: 3.5.2.10 | L1 | Ensure nftables service is enabled
    enabled: true
+   meta:
+     server: 1
+     workstation: 1
+     CIS_ID: 
+     - 3.5.2.10
+     CISv8:
+     - 4.4
+     CISv8_IG1: true
+     CISv8_IG2: true
+     CISv8_IG3: true
   {{ end }}
 {{ end }}
 {{ end }}

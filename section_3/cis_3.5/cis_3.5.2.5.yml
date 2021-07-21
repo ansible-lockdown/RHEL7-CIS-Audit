@@ -7,6 +7,16 @@ command:
    exec: nft list tables
    exit-status: 0
    stdout:  ['inet filter']
+   meta:
+     server: 1
+     workstation: 1
+     CIS_ID: 
+     - 3.5.2.5
+     CISv8:
+     - 4.4
+     CISv8_IG1: true
+     CISv8_IG2: true
+     CISv8_IG3: true
   {{ end }}
 {{ end }}
 {{ end }}

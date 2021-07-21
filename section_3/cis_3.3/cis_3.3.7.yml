@@ -3,7 +3,27 @@ kernel-param:
   net.ipv4.conf.all.rp_filter:
     title: 3.3.7 | L1 | Ensure Reverse Path Filtering is enabled | all
     value: '1'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 3.3.7
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   net.ipv4.conf.all.rp_filter:
     title: 3.3.7 | L1 | Ensure Reverse Path Filtering is enabled | default
     value: '1'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 3.3.7
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

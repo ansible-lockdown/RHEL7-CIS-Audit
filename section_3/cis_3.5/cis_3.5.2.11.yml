@@ -6,6 +6,16 @@ command:
    title: 3.5.2.11 | L1 | Ensure nftables rules are permanent
    exec: awk '/hook input/,/}/' $(awk '$1 ~ /^\s*include/ { gsub("\"","",$2);print $2 }' /etc/sysconfig/nftables.conf)
    exit-status: 0
+   meta:
+     server: 1
+     workstation: 1
+     CIS_ID: 
+     - 3.5.2.11
+     CISv8:
+     - 4.4
+     CISv8_IG1: true
+     CISv8_IG2: true
+     CISv8_IG3: true
   {{ end }}
 {{ end }}
 {{ end }}

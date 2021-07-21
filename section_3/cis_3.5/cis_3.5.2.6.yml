@@ -6,8 +6,18 @@ command:
    title: 3.5.2.6 | L1 | Ensure base chains exists
    exec: nft list ruleset | egrep -c "input|forward|output"
    exit-status: 0
-   stdout: 3
-   stdout:  ['inet filter']
+   stdout: 
+   - '3'
+   meta:
+     server: 1
+     workstation: 1
+     CIS_ID: 
+     - 3.5.2.6
+     CISv8:
+     - 4.4
+     CISv8_IG1: true
+     CISv8_IG2: true
+     CISv8_IG3: true
   {{ end }}
 {{ end }}
 {{ end }}
