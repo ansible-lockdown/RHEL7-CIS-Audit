@@ -6,6 +6,16 @@ file:
     exists: true
     contains: 
     - '/^Defaults.*\suse_pty/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 5.2.2
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 
 command:
   pty_sudoers_d:
@@ -13,6 +23,16 @@ command:
     exec: "ls -1 /etc/sudoers.d/* > /dev/null 2>&1; if [ '$?' = '0' ]; then grep -c '^Defaults.*\\suse_pty' /etc/sudoers.d/*; else echo 99;fi"
     exit-status: 0
     stdout:
-    - '/[0-99]/' 
+    - '/[0-99]/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 5.2.2
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}

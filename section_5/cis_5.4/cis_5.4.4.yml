@@ -6,10 +6,30 @@ file:
     exists: true
     contains:
     - '/^password.*required.*pam_pwhistory.so.*remember=\b(?:[1-5]\d+|5)\b/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 5.4.4
+      CISv8:
+      - 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   /etc/pam.d/system-auth:
     title: 5.4.4 | L1 | Ensure password reuse is limited | system-auth
     exists: true
     contains:
     - '/^password.*required.*pam_pwhistory.so.*remember=\b(?:[1-5]\d+|5)\b/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 5.4.4
+      CISv8:
+      - 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}

@@ -7,5 +7,15 @@ file:
     contains:
     - '/^PASS_MIN_DAYS\s*{{ .Vars.rhel7cis_pass_min_days }}/'
     - '!/^PASS_MIN_DAYS\s*([2-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 5.5.1.2
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}

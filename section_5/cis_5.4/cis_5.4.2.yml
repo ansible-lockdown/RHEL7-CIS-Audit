@@ -6,10 +6,30 @@ file:
     exists: true
     contains:
     - '/^account\s*required\s*pam_{{ .Vars.rhel7cis_accountlock }}.so/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 5.4.2
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   /etc/pam.d/system-auth:
     title: 5.4.2 | L1 | Ensure lockout for failed password attempts is configured for {{ .Vars.rhel7cis_accountlock }} | system-auth
     exists: true
     contains:
     - '/^account\s*required\s*pam_{{ .Vars.rhel7cis_accountlock }}.so/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 5.4.2
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}

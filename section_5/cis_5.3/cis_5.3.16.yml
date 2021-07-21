@@ -7,5 +7,15 @@ file:
     contains:
     - ClientAliveInterval {{ .Vars.rhel7cis_ssh_aliveinterval }} 
     - ClientAliveCountMax {{ .Vars.rhel7cis_ssh_countmax }}
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 5.3.16
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}

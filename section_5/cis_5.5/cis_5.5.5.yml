@@ -7,5 +7,15 @@ file:
     contains:
     - '/^\s+umask\s0(2|7)(2|7)/'
     - '!/^\s+umask\s[1-7][0-7][0-7]/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 5.5.5
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}

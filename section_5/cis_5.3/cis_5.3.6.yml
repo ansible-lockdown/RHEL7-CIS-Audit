@@ -7,5 +7,15 @@ file:
     contains:
     - 'X11forwarding no'
     - '!/^X11forwarding yes/'
+    meta:
+      server: 2
+      workstation: 1
+      CIS_ID: 
+      - 5.3.6
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}

@@ -6,6 +6,16 @@ file:
     exists: true
     contains:
     - '/^Defaults\s+logfile="/var/log/sudo.log"/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 5.2.3
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
 
 command:
   log_sudoers_d: 
@@ -15,5 +25,15 @@ command:
       lt: 3
     stdout:
     - '/[1:99]/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 5.2.3
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}

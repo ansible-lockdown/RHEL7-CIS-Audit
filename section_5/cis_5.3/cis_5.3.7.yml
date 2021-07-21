@@ -7,5 +7,15 @@ file:
     contains:
     - '/maxauthtries [1:4]/'
     - '!/maxauthtries [5:0]/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 5.3.7
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}
