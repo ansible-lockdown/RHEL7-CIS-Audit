@@ -374,8 +374,8 @@ rhel7cis_firewall: firewalld
 #rhel7cis_firewall: iptables
 rhel7cis_default_firewall_zone: 'public'
 rhel7cis_firewall_interface: 
-- 'ens224'
-- 'ens192'
+- ['ens224']
+- ['ens192']
 rhel7cis_firewall_services:
 - ssh
 - dhcpv6-client
