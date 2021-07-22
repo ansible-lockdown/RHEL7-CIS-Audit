@@ -8,6 +8,8 @@ rhel7cis_benchmark:
 
 rhel7cis_os_distribution: redhat # ensure this is changed accordingly for centos/oel
 
+# timeout for each command to run where set - default = 10seconds/10000ms
+timeout_ms: 30000
 
 # Taken from LE rhel7-cis
 rhel7cis_notauto: false
