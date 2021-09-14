@@ -6,8 +6,19 @@ command:
     title: 1.1.22 | L1 | Ensure sticky bit is set on all world-writable directories
     exit-status: 0
     exec: "df --local -P 2> /dev/null | awk '{if (NR!=1) print $6}' | xargs -I '{}' find '{}' -xdev -type d \\( -perm -0002 -a ! -perm -1000 \\) 2>/dev/null"
-    timeout: 10000
+    timeout: {{ .Vars.timeout_ms }}
     stdout: ['!/./']
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.1.22
+      CISv8:
+      - 3.3
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
     {{ end }}
   {{ end }}
 {{ end }}

@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_rule_4_1_7 }}
 command:
   auditd_logins_cnf:
-    title: 4.1.7 | L2 | Ensure login and logout events are collected
+    title: 4.1.7 | L2 | Ensure login and logout events are collected | Config
     exec: grep logins /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
@@ -13,8 +13,18 @@ command:
     {{ if eq .Vars.rhel7cis_accountlock "tally2" }}
     - '/-w /var/log/tallylog -p wa -k logins/'
     {{ end }}
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID: 
+      - 4.1.7
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
   auditd_logins_live:
-    title: 4.1.7 | L2 | Ensure login and logout events are collected
+    title: 4.1.7 | L2 | Ensure login and logout events are collected | Live
     exec: auditctl -l | grep logins
     exit-status: 0
     stdout:
@@ -26,4 +36,14 @@ command:
     {{ if eq .Vars.rhel7cis_accountlock "tally2" }}
     - '-w /var/log/tallylog -p wa -k logins'
     {{ end }}
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID: 
+      - 4.1.7
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

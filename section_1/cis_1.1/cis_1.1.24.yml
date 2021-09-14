@@ -2,10 +2,20 @@
   {{ if .Vars.rhel7cis_rule_1_1_24 }}
 command:
   cramfs:
-    title: 1.1.24 | L1 | Ensure mounting of usb-storage is disabled (Automated)
+    title: 1.1.24 | L1 | Disable USB Storage
     exit-status: 0
     exec: "modprobe -n -v usb-storage | grep -E '(usb-storage|install)'"
     stdout: 
     - install /bin/true
+    meta:
+      server: 1
+      workstation: 2
+      CIS_ID: 
+      - 1.1.24
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}

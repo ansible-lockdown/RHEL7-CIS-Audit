@@ -1,0 +1,18 @@
+{{ if .Vars.rhel7cis_level1 }}
+  {{ if .Vars.rhel7cis_rule_1_5_4 }}
+package:
+  prelink:
+    title: 1.5.4 | L1 | Ensure prelink is disabled
+    installed: false
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.5.4
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  {{ end }}
+{{ end }}

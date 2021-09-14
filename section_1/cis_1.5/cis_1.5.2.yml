@@ -1,0 +1,21 @@
+{{ if .Vars.rhel7cis_level1 }}
+  {{ if .Vars.rhel7cis_rule_1_5_2 }}
+command:
+  kernel_nx:
+    title: 1.5.2 | L1 | Ensure XD/NX support is enabled
+    exit-status: 0
+    exec: "journalctl | grep 'protection: active'"
+    stdout:
+    - "kernel: NX (Execute Disable) protection: active"
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.5.2
+      CISv8:
+      - 10.5
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  {{ end }}
+{{ end }}
