@@ -3,8 +3,18 @@
     {{ if .Vars.rhel7cis_rule_2_2_6 }}
 package:
   openldap-servers:
-    title: 2.2.6 | L1 | Ensure LDAP server is not installed (Automated)
+    title: 2.2.6 | L1 | Ensure LDAP server is not installed
     installed: false
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 2.2.6
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
     {{ end }}
   {{ end }}
 {{ end }}

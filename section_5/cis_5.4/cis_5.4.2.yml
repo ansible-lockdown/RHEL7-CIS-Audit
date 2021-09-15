@@ -1,17 +1,35 @@
 {{ if .Vars.rhel7cis_level1 }}
   {{ if .Vars.rhel7cis_rule_5_4_2 }}
-command:
-  secure_system_accts:
-    title: 5.4.2 | L1 | Ensure system accounts are secured (Automated)
-    exec: "/awk -F: '$3<1000' /etc/passwd | egrep -v 'root|sync|halt|shutdown|/sbin/nologin|/bin/false'/"
-    exit-status: 1
-    stdout:
-    - '!/./'
-  secure_system_LK:
-    title: 5.4.2 | L1 | Ensure system accounts are secured (Automated)
-    exec: "/awk -F: '$3<1000' /etc/passwd | egrep -wv 'root' | cut -d: -f1 | xargs -I '{}' passwd -S '{}' | egrep -cvw 'LK|L'/"
-    exit-status: 1
-    stdout:
-    - '0'
+file:
+  /etc/pam.d/password-auth:
+    title: 5.4.2 | L1 | Ensure lockout for failed password attempts is configured for {{ .Vars.rhel7cis_accountlock }}  | password-auth
+    exists: true
+    contains:
+    - '/^account\s*required\s*pam_{{ .Vars.rhel7cis_accountlock }}.so/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 5.4.2
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  /etc/pam.d/system-auth:
+    title: 5.4.2 | L1 | Ensure lockout for failed password attempts is configured for {{ .Vars.rhel7cis_accountlock }} | system-auth
+    exists: true
+    contains:
+    - '/^account\s*required\s*pam_{{ .Vars.rhel7cis_accountlock }}.so/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 5.4.2
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}

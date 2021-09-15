@@ -1,11 +1,21 @@
 {{ if .Vars.rhel7cis_level1 }}
   {{ if .Vars.rhel7cis_rule_6_2_5 }}
 command:
-  home_dirs_exist:
-    title: 6.2.5 | L1 | Ensure all users' home directories exist
-    exec: "set -o pipefail; pwck -r | grep -P \"^user '(?P<user>.*)': directory '(?P<dir>.*)' does not exist$\""
-    exit-status: 2
+  no_dup_username:
+    title: 6.2.5 | L1 | Ensure no duplicate user names exist
+    exec: "cat /etc/passwd | cut -d: -f1 | uniq -d"
+    exit-status: 0
     stdout:
     - '!/./'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 6.2.5
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}

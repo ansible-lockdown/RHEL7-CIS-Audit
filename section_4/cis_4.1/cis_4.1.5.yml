@@ -11,6 +11,16 @@ command:
     - '-w /etc/issue.net -p wa -k system-locale'
     - '-w /etc/hosts -p wa -k system-locale'
     - '-w /etc/sysconfig/network -p wa -k system-locale'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID: 
+      - 4.1.5
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
   auditd_locale_live:
     title: 4.1.5 | L2 | Ensure events that modify the system's network environment are collected | Live
     exec: auditctl -l | grep system-locale
@@ -22,4 +32,14 @@ command:
     - '-w /etc/issue.net -p wa -k system-locale'
     - '-w /etc/hosts -p wa -k system-locale'
     - '-w /etc/sysconfig/network -p wa -k system-locale'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID: 
+      - 4.1.5
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}
