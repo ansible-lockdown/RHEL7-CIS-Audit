@@ -122,6 +122,8 @@ audit_json_vars='{"benchmark":"'"$BENCHMARK"'","machine_uuid":"'"$machine_uuid"'
 echo
 echo "## Pre-Checks Start"
 echo
+
+export FAILURE=0
 if [ -s "$AUDIT_BIN" ]; then
    echo "OK Audit binary $AUDIT_BIN is available"
 else
@@ -135,7 +137,7 @@ else
 fi
 
 
-if [ "${FAILURE}" > 0 ]; then
+if [ `echo $FAILURE` != 0 ]; then
    echo "## Pre-checks failed please see output"
    exit 1
 else
