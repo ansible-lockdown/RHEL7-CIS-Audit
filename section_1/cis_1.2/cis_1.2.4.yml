@@ -1,4 +1,4 @@
-{{ if eq .Vars.rhel7cis_os_distribution "redhat" }}
+{{ if .Vars.rhel7cis_is_redhat_os }}
   {{ if .Vars.rhel7cis_level1 }}
   {{ if .Vars.rhel7cis_rule_1_2_4 }}
 command:
