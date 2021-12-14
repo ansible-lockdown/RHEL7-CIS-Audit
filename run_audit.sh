@@ -1,3 +1,4 @@
+#! /bin/bash
 # script to run audit while populating local host data
 # 13th Sept 2021 - Initial
 # 9th Nov 2021 - Added root user check - more posix compliant for multiple OS types
@@ -146,7 +147,6 @@ else
    echo
 fi
 
-echo $audit_out
 
 ## Run commands
 echo "#############"
@@ -156,7 +156,7 @@ echo
 $AUDIT_BIN -g $audit_content_dir/$AUDIT_FILE --vars $varfile_path  --vars-inline $audit_json_vars v -f json -o pretty > $audit_out
 
 # create screen output
-if [ `grep -c $BENCHMARK $audit_out` > 0 ]; then
+if [ `grep -c $BENCHMARK $audit_out` != 0 ]; then
 echo "
 `tail -7 $audit_out`
 
