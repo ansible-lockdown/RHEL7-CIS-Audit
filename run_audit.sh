@@ -116,7 +116,7 @@ fi
 
 
 ## Set the AUDIT json string
-audit_json_vars='{"benchmark":"'"$BENCHMARK"'","machine_uuid":"'"$machine_uuid"'","epoch":"'"$epoch"'","os_locale":"'"$os_locale"'","audit_run":"wrapper","os_release":"'"$os_version"'","os_distribution":"'"$os_name"'","os_hostname":"'"$os_hostname"'","auto_group":"'"$auto_group"'"}'
+audit_json_vars='{"benchmark":"'"$BENCHMARK"'","machine_uuid":"'"$machine_uuid"'","epoch":"'"$epoch"'","os_locale":"'"$os_locale"'","os_release":"'"$os_version"'","os_distribution":"'"$os_name"'","os_hostname":"'"$os_hostname"'","auto_group":"'"$auto_group"'"}'
 
 ## Run pre checks
 
