@@ -1,12 +1,8 @@
 ## metadata for Audit benchmark
-rhel7cis_benchmark:
-  - "type: CIS"
-  - "version: '3.1.1'"
-  - "os: RHEL 7"
-  # - "epoch: {{ ansible_date_time.epoch }}" # To be populated via wrapper script using inline vars
-  # - "hostname: {{ ansible_hostname }}" # To be populated via wrapper script using inline vars
+benchmark_version: '3.1.1'
 
-rhel7cis_os_distribution: redhat  # ensure this is changed accordingly for centos/oel
+# Set if genuine RHEL (subscription manager check) not for derivatives e.g. CentOS
+is_redhat_os: true
 
 # timeout for each command to run where set - default = 10seconds/10000ms
 timeout_ms: 30000
