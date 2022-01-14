@@ -2,7 +2,7 @@
 
 ## Overview
 
-based on CIS 3.01
+based on CIS 3.1.1
 
 Set of configuration files and directories to run the first stages of CIS of RHEL/CentOS 7 servers
 
@@ -11,6 +11,27 @@ This is configured in a directory structure level.
 This could do with further testing but sections 1.x should be complete
 
 Goss is run based on the goss.yml file in the top level directory. This specifies the configuration.
+
+## Requirements
+
+You must have [goss](https://github.com/aelsabbahy/goss/) available to your host you would like to test.
+
+You must have sudo/root access to the system as some commands require privilege information.
+
+Assuming you have already clone this repository you can run goss from where you wish.
+
+Please refer to the audit documentation for usage.
+
+- [Audit Documents](https://github.com/ansible-lockdown/RHEL7-CIS-Audit/docs/Security_remediation_and_auditing.md)
+
+This also works alongside the [Ansible Lockdown RHEL7-CIS role](https://github.com/ansible-lockdown/RHEL7-CIS)
+
+Which will:
+
+- install
+- audit
+- remediate
+- audit
 
 ## variables
 
