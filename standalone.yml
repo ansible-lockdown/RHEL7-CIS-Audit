@@ -1,0 +1,38 @@
+gossfile:
+  {{ if .Vars.rhel7cis_section1 }}
+  section_1/*/*.yml: {}
+  {{ end }}
+  {{ if .Vars.rhel7cis_section2 }}
+  section_2/*/*.yml: {}
+  {{ end }}
+
+  {{ if .Vars.rhel7cis_section3 }}
+  section_3/cis_3.1/*.yml: {}
+  section_3/cis_3.2/*.yml: {}
+  section_3/cis_3.3/*.yml: {}
+  section_3/cis_3.4/*.yml: {}
+  {{ end }}
+  {{ if eq .Vars.rhel7cis_firewall "firewalld" }}
+  section_3/cis_3.5/cis_3.5.1.*.yml: {}
+  {{ end }}
+  {{ if eq .Vars.rhel7cis_firewall "nftables" }}
+  section_3/cis_3.5/cis_3.5.2.*.yml: {}
+  {{ end }}
+  {{ if eq .Vars.rhel7cis_firewall "iptables" }}
+  section_3/cis_3.5/cis_3.5.3.*.yml: {}
+  {{ end }}
+
+  {{ if .Vars.rhel7cis_section4 }}
+  {{ if .Vars.rhel7cis_level2 }}
+  section_4/cis_4.1/*.yml: {}
+  {{ end }}
+  section_4/cis_4.2/*.yml: {}
+  {{ end }}
+
+  {{ if .Vars.rhel7cis_section5 }}
+  section_5/*/*.yml: {}
+  {{ end }}
+
+  {{ if .Vars.rhel7cis_section6 }}
+  section_6/*/*.yml: {}
+  {{ end }}
