@@ -281,7 +281,7 @@ This is written that:
 
 - Uppercase variable are the only ones that should need changing
 - lowercase variables are the ones that are discovered or built from existing.
-- Utilises the goss.yml script by default and loades extra variables that are discovered
+- Utilises the goss.yml script by default and loads extra variables that are discovered as part of the output
 
 script variables
 example:
