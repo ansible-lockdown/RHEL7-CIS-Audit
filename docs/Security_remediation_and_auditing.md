@@ -251,7 +251,9 @@ The following requirements are needed OS independant
 
 ## Defining the audit
 
-Each script runs against a configures variables file found in the content location in
+### Using the script
+
+The script runs against a configured variables file found in the content location in
 
 > {downloaded content}/vars/{benchmark}.yml
 
@@ -271,12 +273,15 @@ If more than one group this can be comma seperated
 
 ## Linux
 
+### Using the script provided
+
 The run_audit.sh script
 
 This is written that:
 
 - Uppercase variable are the only ones that should need changing
 - lowercase variables are the ones that are discovered or built from existing.
+- Utilises the goss.yml script by default and loades extra variables that are discovered
 
 script variables
 example:
@@ -301,6 +306,15 @@ options:
   -h     Print this Help.
 
 Other options can be assigned in the script itself
+```
+
+### Running without the script
+
+This can be run using the commandline goss options.
+Due to the discovered variables contained in the script there is an alternate file that can be loaded to enable this to be run seperatley from the script.
+
+```sh
+goss -g standlone.yml --vars {{ path to vars file }} v
 ```
 
 ## Windows
