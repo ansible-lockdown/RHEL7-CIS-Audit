@@ -311,7 +311,7 @@ Other options can be assigned in the script itself
 ### Running without the script
 
 This can be run using the commandline goss options.
-Due to the discovered variables contained in the script there is an alternate file that can be loaded to enable this to be run seperatley from the script.
+Due to the discovered variables contained in the script there is an alternate file that can be loaded to enable this to be run seperatley from the script. WIthout causing an error.
 
 ```sh
 goss -g standlone.yml --vars {{ path to vars file }} v
