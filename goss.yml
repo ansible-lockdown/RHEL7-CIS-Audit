@@ -2,6 +2,7 @@ gossfile:
   {{ if .Vars.rhel7cis_section1 }}
   section_1/*/*.yml: {}
   {{ end }}
+
   {{ if .Vars.rhel7cis_section2 }}
   section_2/*/*.yml: {}
   {{ end }}
@@ -12,6 +13,7 @@ gossfile:
   section_3/cis_3.3/*.yml: {}
   section_3/cis_3.4/*.yml: {}
   {{ end }}
+  
   {{ if eq .Vars.rhel7cis_firewall "firewalld" }}
   section_3/cis_3.5/cis_3.5.1.*.yml: {}
   {{ end }}
