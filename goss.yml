@@ -49,10 +49,10 @@ command:
       host_epoch: {{ .Vars.epoch }}
       host_os_locale: {{ .Vars.os_locale }}
       host_os_release: {{ .Vars.os_release }}
-      host_type: {{ .Vars.benchmark }}
       host_os_distribution: {{ .Vars.os_distribution }}
       host_automation_group: {{ .Vars.auto_group }}
       host_hostname: {{ .Vars.os_hostname }}
-      benchmark_type: {{ .Vars.benchmark_version }}
+      host_system_type: {{ .Vars.system_type }}
+      benchmark_type: {{ .Vars.benchmark_type }}
       benchmark_version: {{ .Vars.benchmark_version }}
-      benchmark_os: {{ .Vars.system_type }}
+      benchmark_os: {{ .Vars.benchmark_os }}
