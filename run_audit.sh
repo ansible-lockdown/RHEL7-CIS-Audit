@@ -13,11 +13,18 @@
 # Variables in upper case tend to be able to be adjusted
 # lower case variables are discovered or built from other variables
 
-# Goss Variables
-BENCHMARK=CIS  # Benchmark Name aligns to the audit
+# Goss host Variables
 AUDIT_BIN=/usr/local/bin/goss  # location of the goss executable
 AUDIT_FILE=goss.yml  # the default goss file used by the audit provided by the audit configuration
 AUDIT_CONTENT_LOCATION=/var/tmp  # Location of the audit configuration file as available to the OS
+
+
+# Goss benchmark variables (these should not need changing unless new release)
+BENCHMARK=CIS  # Benchmark Name aligns to the audit
+BENCHMARK_VER=3.1.1
+BENCHMARK_OS=RHEL7
+
+
 
 # help output
 Help()
@@ -120,7 +127,7 @@ fi
 
 
 ## Set the AUDIT json string
-audit_json_vars='{"benchmark":"'"$BENCHMARK"'","machine_uuid":"'"$machine_uuid"'","epoch":"'"$epoch"'","os_locale":"'"$os_locale"'","os_release":"'"$os_version"'","os_distribution":"'"$os_name"'","os_hostname":"'"$os_hostname"'","auto_group":"'"$auto_group"'","system_type":"'"$system_type"'"}'
+audit_json_vars='{"benchmark_type":"'"$BENCHMARK"'","benchmark_os":"'"$BENCHMARK_OS"'","benchmark_version":"'"$BENCHMARK_VER"'","host_machine_uuid":"'"$machine_uuid"'","host_epoch":"'"$epoch"'","host_os_locale":"'"$os_locale"'","host_os_release":"'"$os_version"'","host_os_distribution":"'"$os_name"'","host_os_hostname":"'"$os_hostname"'","host_auto_group":"'"$auto_group"'","system_type":"'"$system_type"'"}'
 
 ## Run pre checks
 
