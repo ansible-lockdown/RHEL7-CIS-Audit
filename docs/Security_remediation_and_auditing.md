@@ -308,7 +308,6 @@ Other options can be assigned in the script itself
 Similar to the Linux variables that can be set within the script
 
 ```sh
-$BENCHMARK = "CIS"
 $AUDIT_BIN = "C:\vagrant\goss.exe"
 $AUDIT_FILE = "goss.yml"
 $AUDIT_VARS = "vars\$BENCHMARK.yml"
