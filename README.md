@@ -12,6 +12,10 @@ This could do with further testing but sections 1.x should be complete
 
 Goss is run based on the goss.yml file in the top level directory. This specifies the configuration.
 
+## Join us
+
+On our [Discord Server](https://discord.gg/JFxpSgPFEJ) to ask questions, discuss features, or just chat with other Ansible-Lockdown users
+
 ## Requirements
 
 You must have [goss](https://github.com/aelsabbahy/goss/) available to your host you would like to test.
