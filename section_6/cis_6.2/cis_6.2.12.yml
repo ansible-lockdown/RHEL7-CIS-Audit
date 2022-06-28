@@ -7,6 +7,7 @@ command:
     exit-status: 0
     stdout:
     - '!/./'
+    timeout: {{ .Vars.timeout_ms }}
     meta:
       server: 1
       workstation: 1
