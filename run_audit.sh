@@ -11,9 +11,6 @@
 # 03 May 2022 - update for audit variables improvement added by @pavloos - https://github.com/ansible-lockdown/RHEL8-CIS-Audit/pull/29
 
 
-#!/bin/bash
-
-
 # Variables in upper case tend to be able to be adjusted
 # lower case variables are discovered or built from other variables
 
