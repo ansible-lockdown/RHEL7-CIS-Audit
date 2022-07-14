@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_rule_4_1_1_1 }}
 package:
   audit:
-    title: 4.1.1.1 | L2 | Ensure auditd is installed
+    title: 4.1.1.1 | Ensure auditd is installed
     installed: true
     meta:
       server: 2
@@ -14,7 +14,7 @@ package:
       CISv8_IG2: true
       CISv8_IG3: true
   audit-libs:
-    title: 4.1.1.1 | L2 | Ensure auditd is installed
+    title: 4.1.1.1 | Ensure auditd is installed
     installed: true
     meta:
       server: 2
@@ -30,7 +30,7 @@ package:
 {{ if .Vars.rhel7cis_rule_4_1_1_2 }}
 service:
   auditd:
-    title: 4.1.1.2 | L2 | Ensure auditd service is enabled and running
+    title: 4.1.1.2 | Ensure auditd service is enabled and running
     enabled: true
     running: true
     meta:
@@ -47,7 +47,7 @@ service:
 {{ if .Vars.rhel7cis_rule_4_1_1_3 }}
 command:
   auditd_grub:
-    title: 4.1.1.3 | L2 | Ensure auditing for processes that start prior to auditd is enabled
+    title: 4.1.1.3 | Ensure auditing for processes that start prior to auditd is enabled
     exec: grep "^\s*linux" {{ .Vars.rhel7cis_bootloader_file }} | grep -Evc "(audit=1|rescue)"
     exit-status: 1
     stdout:

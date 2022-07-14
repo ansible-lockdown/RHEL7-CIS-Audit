@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_rule_4_1_2_4 }}
 command:
   audit_grub_backlog:
-    title: 4.1.2.4 | L2 | Ensure audit_backlog_limit is sufficient
+    title: 4.1.2.4 | Ensure audit_backlog_limit is sufficient
     exec: grep audit_backlog_limit /etc/default/grub
     exit-status: 0
     stdout: ['/GRUB_CMDLINE_LINUX=".*audit_backlog_limit={{ .Vars.rhel7cis_auditd.auditd_backlog_limit }}/']

@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_rule_4_1_2_1 }}
 command:
   auditd_max_log:
-    title: 4.1.2.1 | L2 | Ensure audit log storage size is configured
+    title: 4.1.2.1 | Ensure audit log storage size is configured
     exec: grep max_log_file /etc/audit/auditd.conf
     exit-status: 0
     stdout: ['max_log_file = /\d/' ]

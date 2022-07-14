@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_rule_4_1_13 }}
 command:
   auditd_delete_cnf:
-    title: 4.1.13 | L2 | Ensure file deletion events by users are collected | Conf
+    title: 4.1.13 | Ensure file deletion events by users are collected | Conf
     exec: grep delete /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
@@ -18,7 +18,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
   auditd_delete_live:
-    title: 4.1.13 | L2 | Ensure file deletion events by users are collected | Live
+    title: 4.1.13 | Ensure file deletion events by users are collected | Live
     exec: auditctl -l | grep delete
     exit-status: 0
     stdout:
