@@ -18,27 +18,13 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  /etc/pam.d/password-auth:
+command:
+  passwd_auth_creation:
     title: 5.4.1 | L1 | Ensure password creation requirements are configured | password-auth
-    exists: true
+    exit-status: 0
     skip: {{ .Vars.skip_rhel7cis_pam_passwd_auth }}
-    contains:
-    - password requisite pam_pwquality.so try_first_pass retry={{ .Vars.rhel7cis_pam_passwd_retry }}
-    meta:
-      server: 1
-      workstation: 1
-      CIS_ID: 
-      - 5.4.1
-      CISv8:
-      - 5.2
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
-  /etc/pam.d/system-auth:
-    title: 5.4.1 | L1 | Ensure password creation requirements are configured | ystem-auth
-    exists: true
-    skip: {{ .Vars.skip_rhel7cis_pam_system_auth }}
-    contains:
+    exec: grep pam_pwquality.so /etc/pam.d/password-auth
+    stdout:
     - password requisite pam_pwquality.so try_first_pass retry={{ .Vars.rhel7cis_pam_passwd_retry }}
     meta:
       server: 1
