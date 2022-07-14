@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_5_4_1 }}
 file:
   /etc/security/pwquality.conf:
-    title: 5.4.1 | L1 | Ensure password creation requirements are configured | pwquality
+    title: 5.4.1 | Ensure password creation requirements are configured | pwquality
     exists: true
     contains:
     {{ range .Vars.rhel7cis_pam_password }}
@@ -20,7 +20,7 @@ file:
       CISv8_IG3: true
 command:
   passwd_auth_creation:
-    title: 5.4.1 | L1 | Ensure password creation requirements are configured | password-auth
+    title: 5.4.1 | Ensure password creation requirements are configured | password-auth
     exit-status: 0
     skip: {{ .Vars.skip_rhel7cis_pam_passwd_auth }}
     exec: grep pam_pwquality.so /etc/pam.d/password-auth

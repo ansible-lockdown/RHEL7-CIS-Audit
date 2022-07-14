@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_5_4_3 }}
 command:
   password_auth_sha:
-    title: 5.4.3 | L1 | Ensure password hashing algorithm is SHA-512 | password-auth
+    title: 5.4.3 | Ensure password hashing algorithm is SHA-512 | password-auth
     exec: grep sha512 /etc/pam.d/password-auth
     exit-status: 0
     stdout:
@@ -19,7 +19,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
 system_auth_sha:
-    title: 5.4.3 | L1 | Ensure password hashing algorithm is SHA-512 | password-auth
+    title: 5.4.3 | Ensure password hashing algorithm is SHA-512 | password-auth
     exec: grep sha512 /etc/pam.d/system-auth
     exit-status: 0
     stdout:

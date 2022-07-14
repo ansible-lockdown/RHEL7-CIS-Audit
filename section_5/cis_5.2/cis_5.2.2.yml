@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_5_2_2 }}
 command:
   sudoers_pty:
-    title: 5.2.2 | L1 | Ensure sudo commands use pty | Config
+    title: 5.2.2 | Ensure sudo commands use pty | Config
     exec: grep use_pty /etc/sudoers
     exit-status: 0
     stdout:
@@ -18,7 +18,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
   pty_sudoers_d:
-    title: 5.2.2 | L1 | Ensure sudo commands use pty | sudoers.d
+    title: 5.2.2 | Ensure sudo commands use pty | sudoers.d
     exec: "ls -1 /etc/sudoers.d/* > /dev/null 2>&1; if [ '$?' = '0' ]; then grep -c '^Defaults.*\\suse_pty' /etc/sudoers.d/*; else echo 99;fi"
     exit-status: 0
     stdout:
