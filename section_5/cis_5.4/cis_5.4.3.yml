@@ -4,7 +4,7 @@ command:
   password_auth_sha:
     title: 5.4.3 | L1 | Ensure password hashing algorithm is SHA-512 | password-auth
     exec: grep sha512 /etc/pam.d/password-auth
-    exit-status: o
+    exit-status: 0
     stdout:
     - '/^password sufficient pam_unix.so sha512/'
     - '!/^password sufficient pam_unix.so md5/'
@@ -21,7 +21,7 @@ command:
 system_auth_sha:
     title: 5.4.3 | L1 | Ensure password hashing algorithm is SHA-512 | password-auth
     exec: grep sha512 /etc/pam.d/system-auth
-    exit-status: o
+    exit-status: 0
     stdout:
     - '/^password sufficient pam_unix.so sha512/'
     - '!/^password sufficient pam_unix.so md5/'
