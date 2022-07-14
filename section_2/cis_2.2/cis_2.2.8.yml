@@ -3,7 +3,7 @@
     {{ if .Vars.rhel7cis_rule_2_2_8 }}
 package:
   vsftpd:
-    title: 2.2.8 | L1 | Ensure FTP Server is not installed
+    title: 2.2.8 | Ensure FTP Server is not installed
     installed: {{ false }}
     meta:
       server: 1
