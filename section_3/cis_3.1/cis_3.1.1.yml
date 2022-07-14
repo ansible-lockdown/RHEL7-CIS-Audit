@@ -2,10 +2,25 @@
 {{ if not .Vars.rhel7cis_ipv6_required }}
   {{ if .Vars.rhel7cis_rule_3_1_1 }}
 command:
-  ipv6_grub:
+  ipv6_boot_grub:
     title: 3.1.1 | L2 | disable IPv6 | grub
     exit-status: 0
     exec: 'grep "^\s*linux" {{ .Vars.rhel7cis_bootloader_file }} | grep -v ipv6.disable=1'
+    stdout: ['!/./']
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID: 
+      - 3.1.1
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+  ipv6_default_grub:
+    title: 3.1.1 | L2 | disable IPv6 | grub
+    exit-status: 0
+    exec: 'grep "^\s*linux" /etc/default/grub | grep -v ipv6.disable=1'
     stdout: ['!/./']
     meta:
       server: 2
@@ -33,22 +48,6 @@ kernel-param:
       CISv8_IG3: true
   net.ipv6.conf.default.disable_ipv6:
     value: '1'
-    meta:
-      server: 2
-      workstation: 2
-      CIS_ID: 
-      - 3.1.1
-      CISv8:
-      - 4.8
-      CISv8_IG1: false
-      CISv8_IG2: true
-      CISv8_IG3: true
-file:
-  /etc/default/grub:
-    title: 3.1.1 | L2 | Disable IPv6 | default_grub
-    exists: true
-    contains:
-    - '/(?=\S+\s(ipv6\.disable=1.*)$)^GRUB_CMDLINE_LINUX="/'
     meta:
       server: 2
       workstation: 2
