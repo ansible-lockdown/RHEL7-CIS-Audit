@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_1_5_4 }}
 package:
   prelink:
-    title: 1.5.4 | L1 | Ensure prelink is disabled
+    title: 1.5.4 | Ensure prelink is disabled
     installed: false
     meta:
       server: 1

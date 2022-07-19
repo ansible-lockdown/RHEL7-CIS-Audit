@@ -1,10 +1,11 @@
 {{ if .Vars.rhel7cis_level1 }}
   {{ if .Vars.rhel7cis_rule_5_2_2 }}
-file:
-  /etc/sudoers:
-    title: 5.2.2 | L1 | Ensure sudo commands use pty | Config
-    exists: true
-    contains: 
+command:
+  sudoers_pty:
+    title: 5.2.2 | Ensure sudo commands use pty | Config
+    exec: grep use_pty /etc/sudoers
+    exit-status: 0
+    stdout:
     - '/^Defaults.*\suse_pty/'
     meta:
       server: 1
@@ -16,10 +17,8 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-
-command:
   pty_sudoers_d:
-    title: 5.2.2 | L1 | Ensure sudo commands use pty | sudoers.d
+    title: 5.2.2 | Ensure sudo commands use pty | sudoers.d
     exec: "ls -1 /etc/sudoers.d/* > /dev/null 2>&1; if [ '$?' = '0' ]; then grep -c '^Defaults.*\\suse_pty' /etc/sudoers.d/*; else echo 99;fi"
     exit-status: 0
     stdout:

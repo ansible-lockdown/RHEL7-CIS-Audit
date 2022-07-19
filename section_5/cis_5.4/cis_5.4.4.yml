@@ -1,10 +1,11 @@
 {{ if .Vars.rhel7cis_level1 }}
   {{ if .Vars.rhel7cis_rule_5_4_4 }}
-file:
-  /etc/pam.d/password-auth:
-    title: 5.4.4 | L1 | Ensure password reuse is limited | password-auth
-    exists: true
-    contains:
+command:
+  password_auth_remember:
+    title: 5.4.4 | Ensure password reuse is limited | password-auth
+    exec: grep remember /etc/pam.d/password-auth
+    exit-status: 0
+    stdout:
     - '/^password.*required.*pam_pwhistory.so.*remember=\b(?:[1-5]\d+|5)\b/'
     meta:
       server: 1
@@ -16,10 +17,11 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  /etc/pam.d/system-auth:
-    title: 5.4.4 | L1 | Ensure password reuse is limited | system-auth
-    exists: true
-    contains:
+  system_auth_remember:
+    title: 5.4.4 | Ensure password reuse is limited | password-auth
+    exec: grep remember /etc/pam.d/system-auth
+    exit-status: 0
+    stdout:
     - '/^password.*required.*pam_pwhistory.so.*remember=\b(?:[1-5]\d+|5)\b/'
     meta:
       server: 1
