@@ -3,7 +3,7 @@
     {{ if .Vars.rhel7cis_rule_2_2_15 }}
 package:
   telnet-server:
-    title: 2.2.15 | Ensure telnet-server is not installed
+    title: 2.2.15 | L1 | Ensure telnet-server is not installed
     installed: false
     meta:
       server: 1

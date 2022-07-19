@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_5_5_1_4 }}
 command:
   inactive_passwd:
-    title: 5.5.1.4 | Ensure inactive password lock is 30 days or less | password
+    title: 5.5.1.4 | L1 | Ensure inactive password lock is 30 days or less | password
     exec: useradd -D | grep INACTIVE
     exit-status: 0
     stdout:
@@ -18,7 +18,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
   inactive_users:  
-    title: 5.5.1.4 | Ensure inactive password lock is 30 days or less | users
+    title: 5.5.1.4 | L1 | Ensure inactive password lock is 30 days or less | users
     exec: 'grep -E ^[^:]+:[^\!*] /etc/shadow | grep -vw root | cut -d : -f1,7'
     stdout:
     - '!/./'

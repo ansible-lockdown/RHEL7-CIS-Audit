@@ -1,11 +1,10 @@
 {{ if .Vars.rhel7cis_level1 }}
   {{ if .Vars.rhel7cis_rule_5_4_2 }}
-command:
-  password_auth_accountlock:
-    title: 5.4.2 | Ensure lockout for failed password attempts is configured for {{ .Vars.rhel7cis_accountlock }} | password-auth
-    exec: grep -E "account\s+required" /etc/pam.d/password-auth
-    exit-status: 0
-    stdout:
+file:
+  /etc/pam.d/password-auth:
+    title: 5.4.2 | L1 | Ensure lockout for failed password attempts is configured for {{ .Vars.rhel7cis_accountlock }}  | password-auth
+    exists: true
+    contains:
     - '/^account\s*required\s*pam_{{ .Vars.rhel7cis_accountlock }}.so/'
     meta:
       server: 1
@@ -17,11 +16,10 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-system_auth_accountlock:
-    title: 5.4.2 | Ensure lockout for failed password attempts is configured for {{ .Vars.rhel7cis_accountlock }} | password-auth
-    exec: grep -E "account\s+required" /etc/pam.d/system-auth
-    exit-status: 0
-    stdout:
+  /etc/pam.d/system-auth:
+    title: 5.4.2 | L1 | Ensure lockout for failed password attempts is configured for {{ .Vars.rhel7cis_accountlock }} | system-auth
+    exists: true
+    contains:
     - '/^account\s*required\s*pam_{{ .Vars.rhel7cis_accountlock }}.so/'
     meta:
       server: 1

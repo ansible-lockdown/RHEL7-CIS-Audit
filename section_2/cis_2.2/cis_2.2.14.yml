@@ -3,7 +3,7 @@
     {{ if .Vars.rhel7cis_rule_2_2_14 }}
 package:
   ypserver:
-    title: 2.2.14 | Ensure NIS server is not installed
+    title: 2.2.14 | L1 | Ensure NIS server is not installed
     installed: false
     meta:
       server: 1

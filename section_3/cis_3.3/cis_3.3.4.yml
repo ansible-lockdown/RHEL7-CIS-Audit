@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_rule_3_3_4 }}
 kernel-param:
   net.ipv4.conf.all.log_martians:
-    title: 3.3.4 | Ensure suspicious packets are logged | all
+    title: 3.3.4 | L1 | Ensure suspicious packets are logged | all
     value: '1'
     meta:
       server: 1
@@ -14,7 +14,7 @@ kernel-param:
       CISv8_IG2: true
       CISv8_IG3: true
   net.ipv4.conf.default.log_martians:
-    title: 3.3.4 | Ensure suspicious packets are logged | default
+    title: 3.3.4 | L1 | Ensure suspicious packets are logged | default
     value: '1'
     meta:
       server: 1

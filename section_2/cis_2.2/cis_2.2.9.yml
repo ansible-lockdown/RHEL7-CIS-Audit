@@ -3,7 +3,7 @@
     {{ if .Vars.rhel7cis_rule_2_2_9 }}
 package:
   httpd:
-    title: 2.2.9 | Ensure HTTP Server is not installed
+    title: 2.2.9 | L1 | Ensure HTTP Server is not installed
     installed: false
     meta:
       server: 1

@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_rule_4_1_12 }}
 command:
   auditd_mounts_cnf:
-    title: 4.1.12 | Ensure successful file system mounts are collected | Config
+    title: 4.1.12 | L2 | Ensure successful file system mounts are collected | Config
     exec: grep mounts /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
@@ -18,7 +18,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
   auditd_mounts_live:
-    title: 4.1.12 | Ensure successful file system mounts are collected | Live
+    title: 4.1.12 | L2 | Ensure successful file system mounts are collected | Live
     exec: auditctl -l | grep mounts
     exit-status: 0
     stdout:

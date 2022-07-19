@@ -3,7 +3,7 @@
   {{ if .Vars.rhel7cis_rule_3_5_2_4 }}
 command:
   iptables_list:
-    title: 3.5.2.4 | Ensure iptables are flushed with nftables
+    title: 3.5.2.4 | L1 | Ensure iptables are flushed with nftables
     exec: iptables -L
     stdout: ['!/./']
     exit-status: 0
@@ -18,7 +18,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
   iptables6_list:
-    title: 3.5.2.4 | Ensure ip6tables are flushed
+    title: 3.5.2.4 | L1 | Ensure ip6tables are flushed
     exec: ip6tables -L
     stdout: ['!/./']
     exit-status: 0

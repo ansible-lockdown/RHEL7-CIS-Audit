@@ -3,7 +3,7 @@
     {{ if .Vars.rhel7cis_ipv6_required }}
 kernel-param:
   net.ipv6.conf.all.accept_ra:
-    title: 3.3.9 | Ensure IPv6 router advertisements are not accepted | all
+    title: 3.3.9 | L1 | Ensure IPv6 router advertisements are not accepted | all
     value: '0'
     meta:
       server: 1
@@ -16,7 +16,7 @@ kernel-param:
       CISv8_IG2: true
       CISv8_IG3: true
   net.ipv6.conf.default.accept_ra:
-    title: 3.3.9 | Ensure IPv6 router advertisements are not accepted | default
+    title: 3.3.9 | L1 | Ensure IPv6 router advertisements are not accepted | default
     value: '0'
     meta:
       server: 1

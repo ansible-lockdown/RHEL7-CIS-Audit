@@ -3,7 +3,7 @@
   {{ if .Vars.rhel7cis_rule_3_5_2_6 }}
 command:
   nft_list:
-   title: 3.5.2.6 | Ensure base chains exists
+   title: 3.5.2.6 | L1 | Ensure base chains exists
    exec: nft list ruleset | egrep -c "input|forward|output"
    exit-status: 0
    stdout: 

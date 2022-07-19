@@ -3,7 +3,7 @@
   {{ if .Vars.rhel7cis_rule_3_5_2_9 }}
 command:
   nft_drop_input:
-   title: 3.5.2.9 | Ensure default deny firewall policy
+   title: 3.5.2.9 | L1 | Ensure default deny firewall policy
    exec: nft list ruleset | grep 'hook input'
    exit-status: 0
    stdout:  ['type filter hook input priority 0; policy drop']
@@ -18,7 +18,7 @@ command:
      CISv8_IG2: true
      CISv8_IG3: true
   nft_drop_forward:
-   title: 3.5.2.9 | Ensure default deny firewall policy
+   title: 3.5.2.9 | L1 | Ensure default deny firewall policy
    exec: nft list ruleset | grep 'hook forward'
    exit-status: 0
    stdout:  ['type filter hook forward priority 0; policy drop']
@@ -33,7 +33,7 @@ command:
      CISv8_IG2: true
      CISv8_IG3: true
   nft_drop_output:
-   title: 3.5.2.9 | Ensure default deny firewall policy
+   title: 3.5.2.9 | L1 | Ensure default deny firewall policy
    exec: nft list ruleset | grep 'hook output'
    exit-status: 0
    stdout:  ['type filter hook output priority 0; policy drop']

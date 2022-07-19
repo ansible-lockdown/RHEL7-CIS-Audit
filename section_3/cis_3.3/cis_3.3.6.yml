@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_rule_3_3_6 }}
 kernel-param:
   net.ipv4.icmp_ignore_bogus_error_responses:
-    title: 3.3.6 | Ensure bogus ICMP responses are ignored
+    title: 3.3.6 | L1 | Ensure bogus ICMP responses are ignored
     value: '1'
     meta:
       server: 1

@@ -4,7 +4,7 @@
     {{ if .Vars.rhel7cis_rule_2_2_1_1 }}
 package:
   ntp:
-    title: 2.2.1.1 | Ensure time synchronization is in use | ntp
+    title: 2.2.1.1 | L1 | Ensure time synchronization is in use | ntp
     installed: true
     skip: false
     meta:
@@ -22,7 +22,7 @@ package:
     {{ if .Vars.rhel7cis_rule_2_2_1_3 }}
 file:
   /etc/ntp.conf:
-    title: 2.2.1.3 | Ensure ntp is configured | ntp.conf
+    title: 2.2.1.3 | L1 | Ensure ntp is configured | ntp.conf
     exists: true
     contains:
     - 'restrict -4 default kod nomodify notrap nopeer noquery'
@@ -39,7 +39,7 @@ file:
       CISv8_IG2: true
       CISv8_IG3: true
   /etc/sysconfig/ntpd:
-    title: 2.2.1.3 | Ensure ntp is configured | sysconfig ntpd
+    title: 2.2.1.3 | L1 | Ensure ntp is configured | sysconfig ntpd
     exists: true
     contains:
     - '/^(OPTIONS|ExecStart)=.*-u ntp:ntp/'
@@ -55,7 +55,7 @@ file:
       CISv8_IG3: true
 service:
   ntpd: 
-    title: 2.2.1.3 | Ensure ntp is configured | running
+    title: 2.2.1.3 | L1 | Ensure ntp is configured | running
     enabled: true
     running: true
     meta:

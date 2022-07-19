@@ -3,7 +3,7 @@
   {{ if .Vars.rhel7cis_rule_3_5_2_5 }}
 command:
   nft_list:
-   title: 3.5.2.5 | Ensure a table exists
+   title: 3.5.2.5 | L1 | Ensure a table exists
    exec: nft list tables
    exit-status: 0
    stdout:  ['inet filter']

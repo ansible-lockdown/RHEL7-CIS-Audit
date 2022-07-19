@@ -3,7 +3,7 @@
     {{ if .Vars.rhel7cis_rule_2_2_5 }}
 package:
   dhcp:
-    title: 2.2.5 | Ensure DHCP Server is not installed
+    title: 2.2.5 | L1 | Ensure DHCP Server is not installed
     installed: false
     meta:
       server: 1

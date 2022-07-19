@@ -3,7 +3,7 @@ command:
   {{ if .Vars.run_heavy_tests }}
     {{ if .Vars.rhel7cis_rule_1_2_1 }}
   gpg_keys:
-    title: 1.2.1 | Ensure GPG keys are configured
+    title: 1.2.1 | L1 | Ensure GPG keys are configured
     exit-status: 0
     exec: "rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\n'"
     meta:

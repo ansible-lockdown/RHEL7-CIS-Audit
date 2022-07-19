@@ -1,14 +1,10 @@
 {{ if .Vars.rhel7cis_level1 }}
   {{ if .Vars.rhel7cis_rule_5_3_15 }}
-command:
-  sshd_KEX:
-    title: 5.3.15 | Ensure only strong Key Exchange algorithms are used
-    exec: grep -Ei "^KEX" /etc/ssh/sshd_config
-    exit-status:
-      or:
-      - 0
-      - 1
-    stdout:
+file:
+  /etc/ssh/sshd_config:
+    title: 5.3.15 | L1 | Ensure only strong Key Exchange algorithms are used
+    exists: true
+    contains:
     - {{ .Vars.rhel7cis_ssh_strong_kex }}
     {{ range .Vars.rhel7cis_ssh_weak_kex }}
     - !{{ . }}

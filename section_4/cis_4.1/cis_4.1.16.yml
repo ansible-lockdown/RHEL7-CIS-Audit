@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_rule_4_1_16 }}
 command:
   auditd_module_cnf:
-    title: 4.1.16 | Ensure kernel module loading and unloading is collected | Config
+    title: 4.1.16 | L2 | Ensure kernel module loading and unloading is collected | Config
     exec: grep modules /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
@@ -20,7 +20,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
   auditd_admin_module_live:
-    title: 4.1.16 | Ensure kernel module loading and unloading is collected | Live
+    title: 4.1.16 | L2 | Ensure kernel module loading and unloading is collected | Live
     exec: auditctl -l | grep modules
     exit-status: 0
     stdout:

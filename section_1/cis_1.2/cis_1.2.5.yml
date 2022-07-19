@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_1_2_5 }}
 service:
   rhnsd:
-    title: 1.2.5 | Disable the rhnsd Daemon (Manual)
+    title: 1.2.5 | L2 | Disable the rhnsd Daemon (Manual)
     enabled: false
     running: false
     meta:

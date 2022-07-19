@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_rule_4_1_10 }}
 command:
   auditd_access_cnf:
-    title: 4.1.10 | Ensure unsuccessful unauthorized file access attempts are collected | Conf
+    title: 4.1.10 | L2 | Ensure unsuccessful unauthorized file access attempts are collected | Conf
     exec: sh -c "grep auid /etc/audit/rules.d/*.rules"
     exit-status: 0
     stdout:

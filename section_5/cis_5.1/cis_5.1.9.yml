@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_5_1_9 }}
 file:
   /etc/at.deny:
-    title: 5.1.9 | Ensure at is restricted to authorized users
+    title: 5.1.9 | L1 | Ensure at is restricted to authorized users
     exists: false
     meta:
       server: 1
@@ -15,7 +15,7 @@ file:
       CISv8_IG2: true
       CISv8_IG3: true
   /etc/at.allow:
-    title: 5.1.9 | Ensure at is restricted to authorized users
+    title: 5.1.9 | L1 | Ensure at is restricted to authorized users
     exists: true
     owner: root
     group: root

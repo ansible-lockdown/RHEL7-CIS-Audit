@@ -3,7 +3,7 @@
     {{ if .Vars.rhel7cis_level1 }}
 package:
   nfs-utils:
-    title: 2.2.17 | Ensure nfs-utils is not installed or the nfs-server service is masked | Installed
+    title: 2.2.17 | L1 | Ensure nfs-utils is not installed or the nfs-server service is masked | Installed
     installed: false
     meta:
       server: 1
@@ -17,7 +17,7 @@ package:
       CISv8_IG3: true
 service:
   nfs-server:
-    title: 2.2.17 | Ensure nfs-utils is not installed or the nfs-server service is masked | masked
+    title: 2.2.17 | L1 | Ensure nfs-utils is not installed or the nfs-server service is masked | masked
     enabled: false
     running: false
     skip: false

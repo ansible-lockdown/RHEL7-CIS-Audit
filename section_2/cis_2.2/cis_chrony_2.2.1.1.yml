@@ -4,7 +4,7 @@
     {{ if .Vars.rhel7cis_rule_2_2_1_1 }}
 package:
   chrony:
-    title: 2.2.1.1 | Ensure time synchronization is in use | chrony
+    title: 2.2.1.1 | L1 | Ensure time synchronization is in use | chrony
     installed: true
     meta:
       server: 1
@@ -21,7 +21,7 @@ package:
     {{ if .Vars.rhel7cis_rule_2_2_1_2 }}
 file:
   /etc/chrony.conf:
-    title: 2.2.1.2 | Ensure chrony is configured | chrony.conf
+    title: 2.2.1.2 | L1 | Ensure chrony is configured | chrony.conf
     exists: true
     contains:
     - server
@@ -37,7 +37,7 @@ file:
       CISv8_IG2: true
       CISv8_IG3: true
   /etc/sysconfig/chronyd:
-    title: 2.2.1.2 | Ensure chrony is configured | sysconf
+    title: 2.2.1.2 | L1 | Ensure chrony is configured | sysconf
     exists: true
     contains:
     - 'OPTIONS="-u chrony"'
@@ -54,7 +54,7 @@ file:
       CISv8_IG3: true
 service:
   chronyd:
-    title: 2.2.1.2 | Ensure chrony is configured | running
+    title: 2.2.1.2 | L1 | Ensure chrony is configured | running
     enabled: true
     running: true
     meta:

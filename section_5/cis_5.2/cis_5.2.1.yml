@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_5_2_1 }}
 package:
   sudo: 
-    title: 5.2.1 | Ensure sudo is installed
+    title: 5.2.1 | L1 | Ensure sudo is installed
     installed: true
     meta:
       server: 1

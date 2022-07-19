@@ -1,10 +1,9 @@
 {{ if .Vars.rhel7cis_rule_4_1_2_2 }}
-command:
-  auditd_max_log_action:
-    title: 4.1.2.2 | Ensure audit logs are not automatically deleted
-    exec: grep max_log_file_action /etc/audit/auditd.conf
-    exit-status: 0
-    stdout: ['max_log_file_action = {{ .Vars.rhel7cis_auditd.max_log_file_action }}']
+file:
+  /etc/audit/auditd.conf:
+    exists: true
+    title: 4.1.2.2 | L2 | Ensure audit logs are not automatically deleted
+    contains: ['max_log_file_action = {{ .Vars.rhel7cis_auditd.max_log_file_action }}']
     meta:
       server: 2
       workstation: 2

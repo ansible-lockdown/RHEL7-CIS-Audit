@@ -3,7 +3,7 @@
 package:
   {{ if .Vars.rhel7cis_rule_1_8_1 }}
   gdm:
-    title: 1.8.1 | Ensure GNOME Display Manager is removed
+    title: 1.8.1 | L2 | Ensure GNOME Display Manager is removed
     installed: false
     skip: false
     meta:
@@ -24,7 +24,7 @@ package:
 file:
   {{ if .Vars.rhel7cis_rule_1_8_2 }}
   /etc/dconf/profile/gdm:
-    title: 1.8.2 | Ensure GDM login banner is configured | profile
+    title: 1.8.2 | L1 | Ensure GDM login banner is configured | profile
     exists: true
     contains:
     - 'user-db:user'
@@ -41,7 +41,7 @@ file:
       CISv8_IG2: true
       CISv8_IG3: true
   /etc/dconf/db/gdm.d/01-banner-message:
-    title: 1.8.2 | Ensure GDM is removed or login is configured | banner
+    title: 1.8.2 | L1 | Ensure GDM is removed or login is configured | banner
     exists: true
     contains:
     - "[org/gnome/login-screen]"
@@ -60,7 +60,7 @@ file:
   {{ end }}
   {{ if .Vars.rhel7cis_rule_1_8_3 }}
   /etc/dconf/db/gdm.d/00-login-screen:
-    title: 1.8.3 | Ensure GDM is removed or login is configured | login
+    title: 1.8.3 | L1 | Ensure GDM is removed or login is configured | login
     exists: true
     contains:
     - '[org/gnome/login-screen]'
@@ -78,7 +78,7 @@ file:
   {{ end }}
   {{ if .Vars.rhel7cis_rule_1_8_4 }}
   /etc/gdm/custom.conf:
-    title: 1.8.4 | Ensure XDCMP is not enabled
+    title: 1.8.4 | L1 | Ensure XDCMP is not enabled
     exists: true
     contains:
     '!/^Enable=true/'

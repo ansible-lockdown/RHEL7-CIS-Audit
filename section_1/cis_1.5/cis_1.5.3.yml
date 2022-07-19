@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_1_5_3 }}
 kernel-param:
   kernel.randomize_va_space:
-    title: 1.5.3 | Ensure address space layout randomization (ASLR) is enabled | sysctl_live
+    title: 1.5.3 | L1 | Ensure address space layout randomization (ASLR) is enabled | sysctl_live
     value: '2'
     meta:
       server: 1
@@ -16,7 +16,7 @@ kernel-param:
       CISv8_IG3: true
 command:
   aslr_enabled_2:
-    title: 1.5.3 | Ensure address space layout randomization (ASLR) is enabled | sysctl_configured
+    title: 1.5.3 | L1 | Ensure address space layout randomization (ASLR) is enabled | sysctl_configured
     exit-status: 0
     exec: 'grep "kernel\.randomize_va_space" /etc/sysctl.conf /etc/sysctl.d/* | cut -d ":" -f2'
     stdout: 

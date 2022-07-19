@@ -2,7 +2,7 @@
 command:
   {{ if .Vars.rhel7cis_rule_4_1_6 }}
   auditd_MAC_cnf:
-    title: 4.1.6 | Ensure events that modify the system's Mandatory Access Controls are collected | Config
+    title: 4.1.6 | L2 | Ensure events that modify the system's Mandatory Access Controls are collected | Config
     exec: grep MAC-policy /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
@@ -19,7 +19,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
   auditd_MAC_live:
-    title: 4.1.6 | Ensure events that modify the system's Mandatory Access Controls are collected | Live
+    title: 4.1.6 | L2 | Ensure events that modify the system's Mandatory Access Controls are collected | Live
     exec: auditctl -l | grep MAC-policy
     exit-status: 0
     stdout:
