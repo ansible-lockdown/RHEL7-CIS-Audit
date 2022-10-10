@@ -3,7 +3,7 @@
   {{ if .Vars.rhel7cis_rule_3_5_2_11 }}
 command:
   nftables:
-   title: 3.5.2.11 | L1 | Ensure nftables rules are permanent
+   title: 3.5.2.11 | Ensure nftables rules are permanent
    exec: awk '/hook input/,/}/' $(awk '$1 ~ /^\s*include/ { gsub("\"","",$2);print $2 }' /etc/sysconfig/nftables.conf)
    exit-status: 0
    meta:

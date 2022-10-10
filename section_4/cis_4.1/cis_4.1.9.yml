@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_rule_4_1_9 }}
 command:
   auditd_perms_cnf:
-    title: 4.1.9 | L2 | Ensure discretionary access control permission modification events are collected | Config
+    title: 4.1.9 | Ensure discretionary access control permission modification events are collected | Config
     exec: grep perm_mod /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
@@ -22,7 +22,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
   auditd_perms_live:
-    title: 4.1.9 | L2 | Ensure discretionary access control permission modification events are collected | Live
+    title: 4.1.9 | Ensure discretionary access control permission modification events are collected | Live
     exec: auditctl -l | grep perm_mod
     exit-status: 0
     stdout:

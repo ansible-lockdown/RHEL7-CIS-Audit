@@ -3,7 +3,7 @@
     {{ if .Vars.rhel7cis_level1 }}
 package:
   rsync:
-    title: 2.2.19 | L1 | Ensure rsync is not installed or the rsyncd service is masked | Package
+    title: 2.2.19 | Ensure rsync is not installed or the rsyncd service is masked | Package
     installed: false
     meta:
       server: 1
@@ -17,7 +17,7 @@ package:
       CISv8_IG3: true
 service:
   rsync:
-    title: 2.2.19 | L1 | Ensure rsync is not installed or the rsyncd service is masked | Service
+    title: 2.2.19 | Ensure rsync is not installed or the rsyncd service is masked | Service
     enabled: false
     running: false
     skip: false

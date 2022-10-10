@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_5_4_2 }}
 file:
   /etc/pam.d/password-auth:
-    title: 5.4.2 | L1 | Ensure lockout for failed password attempts is configured for {{ .Vars.rhel7cis_accountlock }}  | password-auth
+    title: 5.4.2 | Ensure lockout for failed password attempts is configured for {{ .Vars.rhel7cis_accountlock }}  | password-auth
     exists: true
     contains:
     - '/^account\s*required\s*pam_{{ .Vars.rhel7cis_accountlock }}.so/'
@@ -17,7 +17,7 @@ file:
       CISv8_IG2: true
       CISv8_IG3: true
   /etc/pam.d/system-auth:
-    title: 5.4.2 | L1 | Ensure lockout for failed password attempts is configured for {{ .Vars.rhel7cis_accountlock }} | system-auth
+    title: 5.4.2 | Ensure lockout for failed password attempts is configured for {{ .Vars.rhel7cis_accountlock }} | system-auth
     exists: true
     contains:
     - '/^account\s*required\s*pam_{{ .Vars.rhel7cis_accountlock }}.so/'

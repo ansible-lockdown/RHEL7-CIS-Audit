@@ -3,7 +3,7 @@
   {{ if .Vars.rhel7cis_legacy_boot }}
 file:
   {{ .Vars.rhel7cis_bootloader_file }}:
-    title: 1.4.2 | L1 | Ensure permissions on bootloader config are configured | grub file
+    title: 1.4.2 | Ensure permissions on bootloader config are configured | grub file
     exists: true
     owner: root
     group: root
@@ -25,7 +25,7 @@ file:
 {{ if not .Vars.rhel7cis_legacy_boot }}
 command:
   check_efi mount_opts:
-    title: 1.4.2 | L1 | Ensure permissions on bootloader config are configured | efi mount check
+    title: 1.4.2 | Ensure permissions on bootloader config are configured | efi mount check
     exec: grep /boot/efi /etc/fstab
     exit-status: 0
     stdout:

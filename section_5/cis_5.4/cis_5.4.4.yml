@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_5_4_4 }}
 file:
   /etc/pam.d/password-auth:
-    title: 5.4.4 | L1 | Ensure password reuse is limited | password-auth
+    title: 5.4.4 | Ensure password reuse is limited | password-auth
     exists: true
     contains:
     - '/^password.*required.*pam_pwhistory.so.*remember=\b(?:[1-5]\d+|5)\b/'
@@ -17,7 +17,7 @@ file:
       CISv8_IG2: true
       CISv8_IG3: true
   /etc/pam.d/system-auth:
-    title: 5.4.4 | L1 | Ensure password reuse is limited | system-auth
+    title: 5.4.4 | Ensure password reuse is limited | system-auth
     exists: true
     contains:
     - '/^password.*required.*pam_pwhistory.so.*remember=\b(?:[1-5]\d+|5)\b/'

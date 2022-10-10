@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_1_1_23 }}
 service:
   autofs:
-    title: 1.1.23 | L1 | Disable Automounting
+    title: 1.1.23 | Disable Automounting
     enabled: false
     running: false
     meta:
