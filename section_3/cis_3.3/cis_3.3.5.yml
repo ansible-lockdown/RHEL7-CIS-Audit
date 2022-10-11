@@ -1,7 +1,7 @@
 {{ if .Vars.rhel7cis_rule_3_3_5 }}
 kernel-param:
   net.ipv4.icmp_echo_ignore_broadcasts:
-    title: 3.3.5 | L1 | Ensure broadcast ICMP requests are ignored
+    title: 3.3.5 | Ensure broadcast ICMP requests are ignored
     value: '1'
     meta:
       server: 1

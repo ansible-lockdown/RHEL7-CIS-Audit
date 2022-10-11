@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_5_4_3 }}
 file:
   /etc/pam.d/password-auth:
-    title: 5.4.3 | L1 | Ensure password hashing algorithm is SHA-512 | password-auth
+    title: 5.4.3 | Ensure password hashing algorithm is SHA-512 | password-auth
     exists: true
     contains:
     - '/^password sufficient pam_unix.so sha512/'
@@ -18,7 +18,7 @@ file:
       CISv8_IG2: true
       CISv8_IG3: true
   /etc/pam.d/system-auth:
-    title: 5.4.3 | L1 | Ensure password hashing algorithm is SHA-512 | system-auth
+    title: 5.4.3 | Ensure password hashing algorithm is SHA-512 | system-auth
     exists: true
     contains:
     - '/^password sufficient pam_unix.so sha512/'

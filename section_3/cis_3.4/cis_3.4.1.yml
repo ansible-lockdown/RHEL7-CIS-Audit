@@ -2,7 +2,7 @@
   {{ if .Vars.rhel7cis_rule_3_4_1 }}
 command:
   modprobe_dccp:
-    title: 3.4.1 | L2 | Ensure DCCP is disabled
+    title: 3.4.1 | Ensure DCCP is disabled
     exit-status: 0
     exec: 'modprobe -n -v dccp'
     stdout: ['install /bin/true']
