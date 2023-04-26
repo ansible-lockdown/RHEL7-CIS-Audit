@@ -1,0 +1,19 @@
+{{ if .Vars.rhel7cis_level1 }}
+  {{ if .Vars.rhel7cis_rule_1_2_5 }}
+service:
+  rhnsd:
+    title: 1.2.5 | Disable the rhnsd Daemon
+    enabled: false
+    running: false
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.2.5
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+  {{ end }}
+{{ end }}
