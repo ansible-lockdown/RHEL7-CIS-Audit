@@ -6,7 +6,7 @@ gossfile:
   section_1/cis_1.4/*.yml: {}
   section_1/cis_1.5/*.yml: {}
   section_1/cis_1.6/*.yml: {}
-  {{ if eq .Vars.rhel7cis_gui}}
+  {{ if .Vars.rhel7cis_gui}}
   section_1/cis_1.7/*.yml: {}
   {{ end }}
   {{ end }}
@@ -20,8 +20,6 @@ gossfile:
   section_3/cis_3.2/*.yml: {}
   section_3/cis_3.3/*.yml: {}
   section_3/cis_3.4.1/*.yml: {}
-  {{ end }}
-
   {{ if eq .Vars.rhel7cis_system_firewall "firewalld" }}
   section_3/cis_3.4.2/cis_3.4.2.*.yml: {}
   {{ end }}
@@ -33,6 +31,7 @@ gossfile:
   section_3/cis_3.4.4/cis_3.4.4.2.*.yml: {}
   {{ if .Vars.rhel7cis_ipv6_required }}
   section_3/cis_3.4.4/cis_3.4.4.3.*.yml: {}
+  {{ end }}
   {{ end }}
   {{ end }}
 
