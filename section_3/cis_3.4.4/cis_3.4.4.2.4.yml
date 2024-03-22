@@ -1,0 +1,27 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+    {{ if .Vars.rhel7cis_rule_3_4_4_2_4 }}
+  iptable_def_deny:
+    title: 3.4.4.2.4 | Ensure iptables default deny firewall policy
+    exec: iptables -L | grep Chain
+    exit-status: 0
+    stdout:
+    - '/^Chain INPUT \(policy (DROP|REJECT)\)/'
+    - '/^Chain FORWARD \(policy (DROP|REJECT)\)/'
+    - '/^Chain OUTPUT \(policy (DROP|REJECT)\)/'
+    - '!/^Chain (INPUT|FORWARD|OUTPUT) \(policy (ACCEPT|RETURN)\)/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.4.4.2.4
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CA-9
+  {{ end }}
+{{ end }}

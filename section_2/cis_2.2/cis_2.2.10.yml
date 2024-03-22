@@ -1,20 +1,44 @@
-{{ if not .Vars.rhel7cis_dovecot_server }}
-  {{ if .Vars.rhel7cis_level1 }}
-    {{ if .Vars.rhel7cis_rule_2_2_10 }}
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_2_2_10 }}
+    {{ if not .Vars.rhel7cis_nis_server }}
 package:
-  dovecot:
-    title: 2.2.10 | Ensure IMAP and POP3 Server is not installed
+  ypserv_pkg:
+    title: 2.2.10 | Ensure nis server services are not in use | pkg removed
+    name: ypserv
     installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.10
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+      {{ end }}
+      {{ if .Vars.rhel7cis_nis_mask }}
+file:
+  ypserv_service_masked:
+    title: 2.2.10 | Ensure nis server services are not in use | masked
+    path: /etc/systemd/system/ypserv-server.service
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.10
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
     {{ end }}
   {{ end }}
 {{ end }}

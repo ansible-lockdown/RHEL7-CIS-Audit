@@ -1,20 +1,44 @@
-{{ if not .Vars.rhel7cis_nis_server }}
-  {{ if .Vars.rhel7cis_level1 }}
-    {{ if .Vars.rhel7cis_rule_2_2_14 }}
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_2_2_14 }}
+    {{ if not .Vars.rhel7cis_net_snmp_server }}
 package:
-  ypserver:
-    title: 2.2.14 | Ensure NIS server is not installed
+  snmp_pkg:
+    title: 2.2.14 | Ensure snmp services are not in use | pkg removed
+    name: net-snmp
     installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.14
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+      {{ end }}
+      {{ if .Vars.rhel7cis_net_snmp_mask }}
+file:
+  snmp_service_masked:
+    title: 2.2.14 | Ensure net_snmp services are not in use | masked
+    path: /etc/systemd/system/snmpd.service
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.14
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
     {{ end }}
   {{ end }}
 {{ end }}

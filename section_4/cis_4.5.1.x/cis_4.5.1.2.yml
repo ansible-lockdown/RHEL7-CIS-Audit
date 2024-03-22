@@ -1,0 +1,31 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_4_5_1_2 }}
+file:
+  login_passwd_expire:
+    title: 4.5.1.2 | Ensure password expiration is 365 days or less
+    path: /etc/login.defs
+    exists: true
+    contents:
+    - '/^PASS_MAX_DAYS\s+{{ .Vars.rhel7cis_pass_max_days }}/'
+    - '!/^PASS_MAX_DAYS\s+(36[6-9]|[4-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])/'
+    - '!/^PASS_MAX_DAYS\s+-1/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.5.1.2
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

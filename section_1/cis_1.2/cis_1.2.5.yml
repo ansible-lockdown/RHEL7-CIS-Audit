@@ -1,19 +1,31 @@
-{{ if .Vars.rhel7cis_level1 }}
-  {{ if .Vars.rhel7cis_rule_1_2_5 }}
-service:
-  rhnsd:
-    title: 1.2.5 | Disable the rhnsd Daemon
-    enabled: false
-    running: false
+{{ if .Vars.rhel7cis_run_heavy_tests }}
+  {{ if .Vars.rhel7cis_level_1 }}
+    {{ if .Vars.rhel7cis_rule_1_2_5 }}
+command:
+  security-updates:
+    title: 1.2.5 | Ensure updates, patches, and additional security software are installed
+    exit-status:
+      or:
+      - 0
+      - 1
+    timeout: {{ .Vars.timeout_ms }}
+    exec: yum check-update | grep -c amzn2-core
+    stdout:
+    - '0'
+    - '!/^[1-9]/'
     meta:
       server: 1
-      workstation: 1
+      workstation: NA
       CIS_ID:
       - 1.2.5
       CISv8:
-      - 4.8
-      CISv8_IG1: false
+      - 7.3
+      - 7.4
+      CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - SI-2
+    {{ end }}
   {{ end }}
 {{ end }}

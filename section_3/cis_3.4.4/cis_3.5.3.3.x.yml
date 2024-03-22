@@ -1,0 +1,129 @@
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_ipv6_required }}
+  {{ if eq .Vars.rhel7cis_firewall "iptables" }}
+  {{ if .Vars.rhel7cis_rule_3_5_3_3_1 }}
+command:
+  ip6tables_loopback:
+    title: 3.5.3.3.1 | Ensure ip6tables loopback traffic is configured
+    exec: cat {{ .Vars.rhel7cis_ip6tables_boot_config }}
+    exit-status: 0
+    stdout:
+    - '/^-A INPUT -i lo -j ACCEPT/'
+    - '/^-A OUTPUT -o lo -j ACCEPT/'
+    - '/^-A INPUT -s ::1\/128 -j DROP/'
+    - '!/^-A INPUT -i ::1\/128 -j DROP/'
+    - '!/^-A OUTPUT -o lo -j DROP/'
+    - '!/^-A INPUT -s ::1\/128 -j ACCEPT/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.5.3.3.1
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  {{ end }}
+  {{ if .Vars.rhel7cis_rule_3_5_3_3_2 }}
+  ip6tables_outbound_est:
+    title: 3.5.3.3.2 | Ensure ip6tables outbound and established connections are configured
+    exec: cat {{ .Vars.rhel7cis_ip6tables_boot_config }}
+    exit-status: 0
+    stdout:
+    - '/^-A INPUT -p tcp -m state --state ESTABLISHED -j ACCEPT/'
+    - '/^-A INPUT -p udp -m state --state ESTABLISHED -j ACCEPT/'
+    - '/^-A INPUT -p icmp -m state --state ESTABLISHED -j ACCEPT/'
+    - '/^-A INPUT -p tcp -m tcp --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT/'
+    - '/^-A OUTPUT -p tcp -m state --state NEW,ESTABLISHED -j ACCEPT/'
+    - '/^-A OUTPUT -p udp -m state --state NEW,ESTABLISHED -j ACCEPT/'
+    - '/^-A OUTPUT -p icmp -m state --state NEW,ESTABLISHED -j ACCEPT/'
+    - '/^-A OUTPUT -p tcp -m tcp --sport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT/'
+    - '!/^-A (OUTPUT|INPUT) -p tcp -m state --state ESTABLISHED -j REJECT/'
+    - '!/^-A (OUTPUT|INPUT) -p udp -m state --state ESTABLISHED -j REJECT/'
+    - '!/^-A (OUTPUT|INPUT) -p tcp -m tcp --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j REJECT/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.5.3.3.2
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  {{ end }}
+  {{ if .Vars.rhel7cis_rule_3_5_3_3_3 }}
+  ip6tables_manual:
+   title: 3.5.3.3.3 | Ensure ip6tables rules exist for all open ports
+   exec: echo "Manual - Ensure ip6tables rules exist for all open ports"
+   exit-status: 0
+   stdout:
+   - '!/^Manual/'
+   meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.5.3.3.3
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  {{ end }}
+  {{ if .Vars.rhel7cis_rule_3_5_3_3_4 }}
+  iptable_def_deny:
+    title: 3.5.3.3.4 | Ensure ip6tables default deny firewall policy
+    exec: ip6tables -L | grep Chain
+    exit-status: 0
+    stdout:
+    - '/^Chain INPUT \(policy (DROP|REJECT)\)/'
+    - '/^Chain FORWARD \(policy (DROP|REJECT)\)/'
+    - '/^Chain OUTPUT \(policy (DROP|REJECT)\)/'
+    - '!/^Chain (INPUT|FORWARD|OUTPUT) \(policy (ACCEPT|RETURN)\)/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.5.3.3.4
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  {{ end }}
+  {{ if .Vars.rhel7cis_rule_3_5_3_3_5 }}
+file:
+  {{ .Vars.rhel7cis_ip6tables_boot_config }}:
+    title: 3.5.3.3.5 | Ensure ip6tables rules are saved
+    exists: true
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.5.3.3.6
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  {{ end }}
+  {{ end }}
+  {{ if .Vars.rhel7cis_rule_3_5_3_3_6 }}
+service:
+  ip6tables:
+     title: 3.5.3.3.6 | Ensure iptables is enabled and running
+    enabled: true
+    running: true
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.5.3.3.6
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  {{ end }}
+{{ end }}

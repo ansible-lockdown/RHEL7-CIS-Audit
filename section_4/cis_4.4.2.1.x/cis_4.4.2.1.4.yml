@@ -1,0 +1,41 @@
+---
+
+{{ if .Vars.rhel7cis_level_2 }}
+  {{ if .Vars.rhel7cis_rule_4_4_2_1_4 }}
+file:
+  faillock_system_auth_root_lock:
+    title: 4.4.2.1.4 | Ensure password failed attempts lockout includes root account | system-auth
+    path: /etc/pam.d/system-auth
+    exists: true
+    contents:
+    - '/^auth\s+required\s+pam_faillock.so\s+preauth.*unlock_time=(0|9[0-9][0-9]|[1-9][0-9]{3,})\b/'
+    - '/^auth\s+\[default=die\]\s+pam_faillock.so\s+authfail.*(even_deny_root|root_unlock_time=([6-9][0-9]{1,}))\b/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 4.4.2.1.4
+      CISv8: 6.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: NA
+  faillock_password_auth_root_lock:
+    title: 4.4.2.1.4 | Ensure password failed attempts lockout includes root account | password-auth
+    path: /etc/pam.d/password-auth
+    exists: true
+    contents:
+    - '/^auth\s+required\s+pam_faillock.so\s+preauth.*unlock_time=(0|9[0-9][0-9]|[1-9][0-9]{3,})\b/'
+    - '/^auth\s+\[default=die\]\s+pam_faillock.so\s+authfail.*(even_deny_root|root_unlock_time=([6-9][0-9]{1,}))\b/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 4.4.2.1.4
+      CISv8: 6.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}

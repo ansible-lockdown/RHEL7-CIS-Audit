@@ -1,35 +1,44 @@
-{{ if .Vars.rhel7cis_level1 }}
-command:
+{{ if .Vars.rhel7cis_level_2 }}
   {{ if .Vars.rhel7cis_rule_1_2_3 }}
-  gpg_check_global:
-    title: 1.2.3 | Ensure gpgcheck is globally active | yum.conf
-    exit-status: 0
-    exec: "if [ `grep -c -E '^\\s*gpgcheck.*0' /etc/yum.conf` -ge 1 ]; then echo FAIL; elif [ `grep -c -E '^\\s*gpgcheck.*1' /etc/yum.conf` -ge 1 ]; then echo Passed_Check;fi"
-    timeout: {{ .Vars.timeout_ms }}
+file:
+  repogpg_check_conf:
+    title: 1.2.3 | Ensure repo_gpgcheck is globally activated
+    path: /etc/yum.conf
+    exists: true
+    contents:
+    - '/^gpgcheck\s*=\s*1/'
+    - '!/^gpgcheck\s*=\s*0/'
     meta:
-      server: 1
-      workstation: 1
-      CIS_ID: 
+      server: 2
+      workstation: NA
+      CIS_ID:
       - 1.2.3
       CISv8:
       - 7.3
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  gpg_check_repo:
-    title: 1.2.3 | Ensure gpgcheck is globally active | yum.conf.d
+      NIST800-53R5:
+      - SI-2
+command:
+  repo_gpgcheck_repo:
+    title: 1.2.3 | Ensure repo_gpgcheck is globally active | yum.conf.d
     exit-status: 0
-    exec: "if [ `grep -c -E '^\\s*gpgcheck.*0' /etc/yum.repos.d/*.repo` -ge 1 ]; then echo FAIL; elif [ `grep -c -E '^\\s*gpgcheck.*1' /etc/yum.repos.d/*.repo` -ge 1 ]; then echo Passed_Check;fi"
+    exec: if [[ $(grep -Eh "repo_gpgcheck\s*=\s*0" /etc/yum.repos.d/*) ]]; then echo FAIL; else echo PASS; fi
+    stdout:
+    - '/^PASS/'
     timeout: {{ .Vars.timeout_ms }}
     meta:
-      server: 1
-      workstation: 1
-      CIS_ID: 
+      server: 2
+      workstation: NA
+      CIS_ID:
       - 1.2.3
       CISv8:
       - 7.3
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - SI-2
   {{ end }}
 {{ end }}

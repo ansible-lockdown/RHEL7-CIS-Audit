@@ -1,18 +1,61 @@
-{{ if .Vars.rhel7cis_rule_4_2_3 }}
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_4_2_3 }}
 command:
-  logfile_configured:
-    title: 4.2.3 | Ensure permissions on all logfiles are configured
-    exec: find /var/log -type f -perm /g+wx,o+rwx -exec ls -l {} \;
+  /etc/ssh/ssh_pub_host_key_user:
+    title: 4.2.3 | Ensure permissions on SSH public host key files are configured | user
+    exec: "userkeys=$(sudo find /etc/ssh/ -name *_key.pub -type f ! -user root ); echo $userkeys"
     exit-status: 0
     stdout: ['!/./']
     meta:
       server: 1
-      workstation: 1
-      CIS_ID: 
+      workstation: NA
+      CIS_ID:
       - 4.2.3
       CISv8:
       - 3.3
-      CISv8_IG1: true
+      CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  /etc/ssh/ssh_pub_host_key_group:
+    title: 4.2.3 | Ensure permissions on SSH public host key files are configured | group
+    exec: "groupkeys=$(sudo find /etc/ssh/ -name *_key.pub -type f ! -group root ); echo $groupkeys"
+    exit-status: 0
+    stdout: ['!/./']
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.2.3
+      CISv8:
+      - 3.3
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  /etc/ssh/ssh_pub_host_key_perms:
+    title: 4.2.3 | Ensure permissions on SSH public host key files are configured | perms
+    exec: "keysperm=$(sudo find /etc/ssh/ -name *_key.pub -type f  -perm /137 ); echo $keyperms"
+    exit-status: 0
+    stdout: ['!/./']
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.2.3
+      CISv8:
+      - 3.3
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
 {{ end }}

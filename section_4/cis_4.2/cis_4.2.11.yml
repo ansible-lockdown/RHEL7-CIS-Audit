@@ -1,0 +1,30 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_4_2_11 }}
+file:
+  sshd_ignorerhosts:
+    title: 4.2.11 | Ensure sshd IgnoreRhosts is enabled
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/^(?i)IgnoreRhosts yes/'
+    - '!/^(?i)IgnoreRhosts no/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.2.11
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

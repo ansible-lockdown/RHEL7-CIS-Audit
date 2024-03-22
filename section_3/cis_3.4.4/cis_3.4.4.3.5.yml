@@ -1,0 +1,22 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_3_4_4_3_5 }}
+file:
+  {{ .Vars.rhel7cis_ip6tables_boot_config }}:
+    title: 3.4.4.3.5 | Ensure ip6tables rules are saved
+    exists: true
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.4.4.3.5
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CA-9
+  {{ end }}
+{{ end }}

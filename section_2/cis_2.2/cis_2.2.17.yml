@@ -1,36 +1,46 @@
-{{ if not .Vars.rhel7cis_nfs_server }}
-  {{ if .Vars.rhel7cis_rule_2_2_17  }}
-    {{ if .Vars.rhel7cis_level1 }}
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_2_2_17 }}
+    {{ if not .Vars.rhel7cis_squid_server }}
 package:
-  nfs-utils:
-    title: 2.2.17 | Ensure nfs-utils is not installed or the nfs-server service is masked | Installed
+  squid_pkg:
+    title: 2.2.17 | Ensure web proxy server services are not in use | pkg removed
+    name: squid
     installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.17
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-service:
-  nfs-server:
-    title: 2.2.17 | Ensure nfs-utils is not installed or the nfs-server service is masked | masked
-    enabled: false
-    running: false
-    skip: false
+      NIST800-53R5:
+      - CM-6
+      - CM-7
+      {{ end }}
+      {{ if .Vars.rhel7cis_squid_mask }}
+file:
+  squid_service_masked:
+    title: 2.2.17 | Ensure web proxy server services are not in use | masked
+    path: /etc/systemd/system/squid.service
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.17
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-7
     {{ end }}
   {{ end }}
 {{ end }}

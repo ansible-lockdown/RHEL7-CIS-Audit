@@ -1,0 +1,41 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_4_4_2_4_3 }}
+file:
+  strong_hash_pamunix_system_auth:
+    title: 4.4.2.4.3 | Ensure pam_unix includes a strong password hashing algorithm | system-auth
+    path: /etc/pam.d/system-auth
+    exists: true
+    contents:
+    - '/^(auth|account|password|session)\s*(requisite|required|sufficient)\s*pam_unix.*sha512/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.4.2.4.3
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - IA-5
+  strong_hash_pamunix_password_auth:
+    title: 4.4.2.4.3| Ensure pam_unix includes a strong password hashing algorithm | password-auth
+    path: /etc/pam.d/password-auth
+    exists: true
+    contents:
+    - '/^(auth|account|password|session)\s*(requisite|required|sufficient)\s*pam_unix.*sha512/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.4.2.4.3
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - IA-5
+  {{ end }}
+{{ end }}

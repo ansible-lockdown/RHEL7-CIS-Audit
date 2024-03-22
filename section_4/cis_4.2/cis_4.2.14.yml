@@ -1,0 +1,29 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_4_2_14 }}
+file:
+  sshd_loglevel:
+    title: 4.2.14 | Ensure sshd LogLevel is configured
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/^(?i)LogLevel (VERBOSE|INFO)/'
+    - '!/^(?i)LogLevel DEBUG/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.2.14
+      CISv8:
+      - 8.2
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-3
+      - AU-12
+      - SI-5
+ {{ end }}
+{{ end }}

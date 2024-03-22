@@ -1,0 +1,42 @@
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_3_1_3 }}
+    {{ if not .Vars.rhel7cis_bluetooth_mask }}
+package:
+  bluetooth-pkg:
+    title: 3.1.3 | Ensure bluetooth services are not in use | package
+    name: bluetooth
+    installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID: 3.1.3
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
+    {{ if not .Vars.rhel7cis_bluetooth_service }}
+file:
+  bluetooth_masked:
+    title: 3.1.2 | Ensure bluetooth services are not in use | masked
+    path: /etc/systemd/system/bluetooth.service
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID: 3.1.3
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
+  {{ end }}
+{{ end }}

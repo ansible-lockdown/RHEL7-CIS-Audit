@@ -1,20 +1,62 @@
-{{ if not .Vars.rhel7cis_avahi_server }}
-  {{ if .Vars.rhel7cis_level1 }}
-    {{ if .Vars.rhel7cis_rule_2_2_3 }}
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_2_2_3 }}
+    {{ if not .Vars.rhel7cis_dhcp_server }}
 package:
-  avahi:
-    title: 2.2.3 | Ensure Avahi Server is not installed
+  dhcp_pkg:
+    title: 2.2.3 | Ensure dhcp server services are not in use | pkg removed
+    name: dhcp-server
     installed: false
     meta:
       server: 1
-      workstation: 2
-      CIS_ID: 
+      workstation: 1
+      CIS_ID:
       - 2.2.3
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+      {{ end }}
+      {{ if .Vars.rhel7cis_dhcp_mask }}
+file:
+  dhcp_service_masked:
+    title: 2.2.3 | Ensure dhcp server services are not in use | masked
+    path: /etc/systemd/system/dhcpd.service
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.3
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+  dhcp6_service_masked:
+    title: 2.2.3 | Ensure dhcp server services are not in use | masked
+    path: /etc/systemd/system/dhcpd6.service
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.3
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
     {{ end }}
   {{ end }}
 {{ end }}

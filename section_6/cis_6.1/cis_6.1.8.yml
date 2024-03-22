@@ -1,21 +1,27 @@
-{{ if .Vars.rhel7cis_level1 }}
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
   {{ if .Vars.rhel7cis_rule_6_1_8 }}
-command:
-  group_perms:
-    title: 6.1.8 | Ensure permissions on /etc/group are configured
-    exec:  stat -L -c "%a %U %G" /etc/group
-    exit-status: 0
-    stdout:
-    -  '/6[0,4][0,4] root root/'
+file:
+  /etc/gshadow-_perms:
+    title: 6.1.8 | Ensure permissions on /etc/gshadow- are configured
+    exists: true
+    path: /etc/gshadow-
+    mode: '0000'
+    owner: root
+    group: root
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 6.1.8
-      CISv8:
-      - 3.3
+      CISv8: 3.3
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
   {{ end }}
 {{ end }}
+

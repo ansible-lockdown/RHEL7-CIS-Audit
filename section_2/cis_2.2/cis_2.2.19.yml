@@ -1,36 +1,44 @@
-{{ if not .Vars.rhel7cis_rsyncd_server }}
+{{ if .Vars.rhel7cis_level_1 }}
   {{ if .Vars.rhel7cis_rule_2_2_19 }}
-    {{ if .Vars.rhel7cis_level1 }}
+    {{ if not .Vars.rhel7cis_xinetd_server }}
 package:
-  rsync:
-    title: 2.2.19 | Ensure rsync is not installed or the rsyncd service is masked | Package
+  xinetd_pkg:
+    title: 2.2.19 | Ensure xinetd services are not in use | pkg removed
+    name: xinetd
     installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.19
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-service:
-  rsync:
-    title: 2.2.19 | Ensure rsync is not installed or the rsyncd service is masked | Service
-    enabled: false
-    running: false
-    skip: false
+      NIST800-53R5:
+      - CM-7
+      {{ end }}
+      {{ if .Vars.rhel7cis_xinetd_mask }}
+file:
+  xinetd_service_masked:
+    title: 2.2.19 | Ensure xinetd services are not in use | masked
+    path: /etc/systemd/system/xinetd.service
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.19
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
     {{ end }}
   {{ end }}
 {{ end }}

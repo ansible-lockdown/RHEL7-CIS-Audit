@@ -1,0 +1,41 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_4_4_2_3_2 }}
+file:
+  remember_pwhistory_system_auth:
+    title: 4.4.2.3.2 | Ensure password history remember is configured | system-auth
+    path: /etc/pam.d/system-auth
+    exists: true
+    contents:
+    - '/^password\s+required\s+pam_pwhistory.so.*remember=(2[4-9]|[3-5][0-9])/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.4.2.3.2
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - IA-5
+  remember_pwquality_password_auth:
+    title: 4.4.2.3.2 | Ensure password history remember is configured | password-auth
+    path: /etc/pam.d/password-auth
+    exists: true
+    contents:
+    - '/^password\s+required\s+pam_pwhistory.so.*remember=(2[4-9]|[3-5][0-9])/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.4.2.3.2
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - IA-5
+  {{ end }}
+{{ end }}

@@ -1,0 +1,32 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_4_4_2_2_4 }}
+file:
+  complex_pwquality:
+    title: 4.4.2.2.4 | Ensure password complexity is configured
+    path: /etc/security/pwquality.conf
+    exists: true
+    contents:
+    {{ if .Vars.rhel7cis_pwquality_minclass }}
+    - '/^minclass\s*=\s*([4-9])/'
+    {{ end }}
+    {{ if not .Vars.rhel7cis_pwquality_minclass }}
+    - '/^dcredit\s*=\s*-1\b/'
+    - '/^ucredit\s*=\s*-1\b/'
+    - '/^ocredit\s*=\s*-1\b/'
+    - '/^lcredit\s*=\s*-1\b/'
+    {{ end }}
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.4.2.2.4
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - IA-5
+  {{ end }}
+{{ end }}

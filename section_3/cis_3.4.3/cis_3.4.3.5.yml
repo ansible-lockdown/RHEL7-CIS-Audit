@@ -1,0 +1,60 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_3_4_3_5 }}
+command:
+  nftables_loopback_manual:
+    title: 3.4.3.5 | Ensure nftables loopback traffic is configured
+    exec: nft list ruleset | awk '/hook input/,/}/' | grep 'iif "lo" accept'
+    exit-status: 0
+    stdout:
+    - '/iif "lo" accept/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.4.3.5
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CA-9
+  nftables_loopback_source:
+    title: 3.4.3.5 | Ensure nftables loopback traffic is configured
+    exec: nft list ruleset | awk '/hook input/,/}/' | grep 'ip saddr'
+    exit-status: 0
+    stdout:
+    - '/ip saddr 127.0.0.0/8 counter.*drop/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.4.3.5
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CA-9
+    {{ if .Vars.rhel7cis_ipv6_required }}
+  nftables_loopback_ipv6:
+    title: 3.4.3.5 | Ensure nftables loopback traffic is configured
+    exec: nft list ruleset | awk '/hook input/,/}/' | grep 'ip6 saddr'
+    exit-status: 0
+    stdout:
+    - '/ip6 saddr ::1 counter packets.*drop/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.4.3.5
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CA-9
+    {{ end }}
+  {{ end }}
+{{ end }}

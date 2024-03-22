@@ -2,7 +2,7 @@
 
 ## Overview
 
-based on CIS 3.1.1
+based on CIS 4.0.0
 
 Set of configuration files and directories to run the first stages of CIS of RHEL/CentOS 7 servers
 
@@ -14,11 +14,11 @@ Goss is run based on the goss.yml file in the top level directory. This specifie
 
 ## Join us
 
-On our [Discord Server](https://discord.gg/JFxpSgPFEJ) to ask questions, discuss features, or just chat with other Ansible-Lockdown users
+On our [Discord Server](https://www.lockdownenterprise.com/discord) to ask questions, discuss features, or just chat with other Ansible-Lockdown users
 
 ## Requirements
 
-You must have [goss](https://github.com/aelsabbahy/goss/) available to your host you would like to test.
+You must have [goss](https://goss.rocks) available to your host you would like to test.
 
 You must have sudo/root access to the system as some commands require privilege information.
 
@@ -26,9 +26,7 @@ Assuming you have already clone this repository you can run goss from where you 
 
 Please refer to the audit documentation for usage.
 
-- [Audit Documents](https://github.com/ansible-lockdown/RHEL7-CIS-Audit/docs/Security_remediation_and_auditing.md)
-
-This also works alongside the [Ansible Lockdown RHEL7-CIS role](https://github.com/ansible-lockdown/RHEL7-CIS)
+This also works alongside the [Ansible Lockdown AMAZON2-CIS role](https://github.com/ansible-lockdown/AMAZON2-CIS)
 
 Which will:
 
@@ -53,7 +51,7 @@ If a site has specific options e.g. password complexity these can also be set.
 
 ## Usage
 
-You must have [goss](https://github.com/aelsabbahy/goss/) available to your host you would like to test.
+You must have [goss](https://goss.rocks) available to your host you would like to test.
 
 You must have root access to the system as some commands require privilege information.
 
@@ -125,14 +123,24 @@ Count: 12, Failed: 0, Skipped: 0
 - changing the output
 
 ```sh
-# /usr/local/bin/goss -g /home/bolly/rh7_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate -f documentation
-Title: 1.1.20 Check for removeable media nodev
-Command: floppy_nodev: exit-status: matches expectation: [0]
-Command: floppy_nodev: stdout: matches expectation: [OK]
-< -------cut ------- >
-Title: 1.1.20 Check for removeable media noexec
-Command: floppy_noexec: exit-status: matches expectation: [0]
-Command: floppy_noexec: stdout: matches expectation: [OK]
+# /usr/local/bin/goss -g /home/bolly/rh7_cis_goss/section_1/cis_1.1/cis_1.4.1.yml  validate -f documentation
+Title: 1.4.1 | Ensure address space layout randomization (ASLR) is enabled | sysctl_configured
+Meta:
+    CIS_ID: [1.4.1]
+    CISv8: [10.5]
+    CISv8_IG1: true
+    CISv8_IG2: true
+    CISv8_IG3: true
+    NIST800-53R5: [CM-6 CM-6b]
+    server: 1
+    workstation: NA
+Command: aslr_enabled_2: stdout:
+Expected
+    "object: *bytes.Reader"
+to have patterns
+    ["/^kernel.randomize_va_space=2/"]
+the missing elements were
+    ["/^kernel.randomize_va_space=2/"]
 
 
 Total Duration: 0.022s
@@ -149,19 +157,7 @@ In this case installed or skipped using the standard name for a package to be in
 
 ## Extra settings
 
-Some sections can have several options in that case the skip flag maybe passed to the test.
-e.g.
-
-- section_1/cis/1.8 - need to review the MOTD and issue files for bespoke content
-- section_1/cis_1.10/cis_1.10.yml  - Has gdm either not installed or configured default to not installed and skipped configured.
-- section_2/cis_2.2/cis_chrony_2.2.1.1.yml - this is chosen between ntp of chrony in the goss file
-
 ## further information
 
 - [goss documentation](https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#patterns)
 - [CIS standards](https://www.cisecurity.org)
-
-## Outstanding
-
-- 3.5.3.1.x - iptables and ip6tables not completed although not rh7 default fw
-- manual or not scored tasks are not included

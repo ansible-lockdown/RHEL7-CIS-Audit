@@ -1,0 +1,19 @@
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_3_4_1_1 }}
+package:
+  iptables_installed:
+    title: 3.4.1.1 | Ensure iptables package is installed
+    name: iptables
+    installed: true
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.4.1.1
+      CISv8: 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CA-9
+  {{ end }}
+{{ end }}

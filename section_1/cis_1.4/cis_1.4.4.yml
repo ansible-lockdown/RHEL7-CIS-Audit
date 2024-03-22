@@ -1,0 +1,22 @@
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_1_4_4 }}
+file:
+  core_dumps_storage:
+    title: 1.4.4 | Ensure core dumps are restricted | security/limits.conf
+    path: /etc/systemd/coredump.conf
+    exists: true
+    contents:
+    - '/^Storage\s*=\s*none/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.4.4
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+  {{ end }}
+{{ end }}

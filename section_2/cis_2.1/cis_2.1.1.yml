@@ -1,20 +1,39 @@
-{{ if not .Vars.rhel7cis_xinetd_required }}
-  {{ if .Vars.rhel7cis_level1 }}
+# CIS for Chrony
+{{ if eq .Vars.rhel7cis_time_synchronization "chrony" }}
+  {{ if .Vars.rhel7cis_level_1 }}
     {{ if .Vars.rhel7cis_rule_2_1_1 }}
 package:
-  xinetd:
-    title: 2.1.1 | Ensure xinetd is not installed
-    installed: false
+  chrony:
+    title: 2.1.1 | Ensure time synchronization is in use
+    installed: true
     meta:
       server: 1
-      workstation: 1
-      CIS_ID: 
+      workstation: NA
+      CIS_ID:
       - 2.1.1
       CISv8:
-      - 4.8
+      - 8.4
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-3
+      - AU-12
+service:
+  chronyd:
+    title: 2.1.2 | Ensure chrony is configured | running
+    enabled: true
+    running: true
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.1.2
+      CISv8:
+      - 8.4
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
     {{ end }}
-  {{ end }} 
+  {{ end }}
 {{ end }}

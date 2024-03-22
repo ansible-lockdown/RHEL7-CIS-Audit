@@ -1,0 +1,30 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_4_2_17 }}
+file:
+  sshd_maxsessions:
+    title: 4.2.17 | Ensure sshd MaxSessions is configured
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/^(?i)MaxSessions ([2-9]|10)/'
+    - '!/^(?i)MaxSessions (1[1-9]{2,5})/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.2.17
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

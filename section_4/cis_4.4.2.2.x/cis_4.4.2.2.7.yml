@@ -1,0 +1,24 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_4_4_2_2_7 }}
+file:
+  dickchk_pwquality:
+    title: 4.4.2.2.7 | Ensure password maximum sequential characters is configured
+    path: /etc/security/pwquality.conf
+    exists: true
+    contents:
+    - '!/^dictcheck\s*=\s*0\b/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.4.2.2.7
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - IA-5
+  {{ end }}
+{{ end }}

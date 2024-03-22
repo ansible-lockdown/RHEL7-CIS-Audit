@@ -11,28 +11,47 @@ gossfile:
   section_3/cis_3.1/*.yml: {}
   section_3/cis_3.2/*.yml: {}
   section_3/cis_3.3/*.yml: {}
-  section_3/cis_3.4/*.yml: {}
+  section_3/cis_3.4.1/*.yml: {}
   {{ end }}
-  
-  {{ if eq .Vars.rhel7cis_firewall "firewalld" }}
-  section_3/cis_3.5/cis_3.5.1.*.yml: {}
+
+  {{ if eq .Vars.rhel7cis_system_firewall "firewalld" }}
+  section_3/cis_3.4.2/cis_3.4.2.*.yml: {}
   {{ end }}
-  {{ if eq .Vars.rhel7cis_firewall "nftables" }}
-  section_3/cis_3.5/cis_3.5.2.*.yml: {}
+  {{ if eq .Vars.rhel7cis_system_firewall "nftables" }}
+  section_3/cis_3.4.3/cis_3.4.3.*.yml: {}
   {{ end }}
-  {{ if eq .Vars.rhel7cis_firewall "iptables" }}
-  section_3/cis_3.5/cis_3.5.3.*.yml: {}
+  {{ if eq .Vars.rhel7cis_system_firewall "iptables" }}
+  section_3/cis_3.4.4/cis_3.4.4.1.*.yml: {}
+  section_3/cis_3.4.4/cis_3.4.4.2.*.yml: {}
+  {{ if .Vars.rhel7cis_ipv6_required }}
+  section_3/cis_3.4.4/cis_3.4.4.3.*.yml: {}
+  {{ end }}
   {{ end }}
 
   {{ if .Vars.rhel7cis_section4 }}
-  {{ if .Vars.rhel7cis_level2 }}
-  section_4/cis_4.1/*.yml: {}
-  {{ end }}
+  section_4/cis_4.1.x/*.yml: {}
   section_4/cis_4.2/*.yml: {}
+  section_4/cis_4.3/*.yml: {}
+  section_4/cis_4.4.1.x/*.yml: {}
+  section_4/cis_4.4.2.1.x/*.yml: {}
+  section_4/cis_4.4.2.2.x/*.yml: {}
+  section_4/cis_4.4.2.3.x/*.yml: {}
+  section_4/cis_4.4.2.4.x/*.yml: {}
   {{ end }}
 
   {{ if .Vars.rhel7cis_section5 }}
-  section_5/*/*.yml: {}
+  {{ if eq .Vars.rhel7cis_syslog "rsyslog"}}
+  section_5/cis_5.1.1/*.yml: {}
+  {{ end }}
+  {{ if eq .Vars.rhel7cis_syslog "journald"}}
+  section_5/cis_5.1.2/*.yml: {}
+  {{ end }}
+  section_5/cis_5.1.3/*.yml: {}
+  section_5/cis_5.1.4/*.yml: {}
+  {{ if .Vars.rhel7cis_level_2 }}
+  section_5/cis_5.2.*/*.yml: {}
+  {{ end }}
+  section_5/cis_5.3/*.yml: {}
   {{ end }}
 
   {{ if .Vars.rhel7cis_section6 }}

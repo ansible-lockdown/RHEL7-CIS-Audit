@@ -1,44 +1,45 @@
-
-{{ if .Vars.rhel7cis_rule_1_4_2 }}
-  {{ if .Vars.rhel7cis_legacy_boot }}
-file:
-  {{ .Vars.rhel7cis_bootloader_file }}:
-    title: 1.4.2 | Ensure permissions on bootloader config are configured | grub file
-    exists: true
-    owner: root
-    group: root
-    mode: "0600"
-    {{ if .Vars.rhel7cis_set_boot_pass }}
-    contains: [GRUB2_PASSWORD=<encrypted-password>]
-    {{ end }}
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_1_4_2 }}
+kernel-param:
+  ptrace_scope:
+    title: 1.4.2 | Ensure ptrace_scope is restricted | sysctl_live
+    name: kernel.yama.ptrace_scope
+    value: '1'
     meta:
       server: 1
-      workstation: 1
-      CIS_ID: 
+      workstation: NA
+      CIS_ID:
       - 1.4.2
       CISv8:
-      - 4.1
+      - 10.5
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
-{{ if not .Vars.rhel7cis_legacy_boot }}
+      NIST800-53R5:
+      - CM-6
+      - CM-6b
 command:
-  check_efi mount_opts:
-    title: 1.4.2 | Ensure permissions on bootloader config are configured | efi mount check
-    exec: grep /boot/efi /etc/fstab
-    exit-status: 0
+  ptrace_scope_conf:
+    title: 1.4.2 | Ensure ptrace_scope is restricted | sysctl_configured
+    exit-status:
+      or:
+      - 0
+      - 1
+    exec: 'grep -h "kernel\.yama\.ptrace_scope" /etc/sysctl.conf /etc/sysctl.d/*'
     stdout:
-    - '/.*\s/boot/efi vfat defaults,umask=0027,fmask=0077,uid=0,gid=0 0 0/'
+    - '/^kernel.yama.ptrace_scope\s*=\s*1/'
     meta:
       server: 1
-      workstation: 1
-      CIS_ID: 
+      workstation: NA
+      CIS_ID:
       - 1.4.2
       CISv8:
-      - 4.1
+      - 10.5
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-6b
   {{ end }}
 {{ end }}

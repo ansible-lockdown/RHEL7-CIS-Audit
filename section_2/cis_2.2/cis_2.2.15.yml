@@ -1,20 +1,65 @@
-{{ if not .Vars.rhel7cis_telnet_server }}
-  {{ if .Vars.rhel7cis_level1 }}
-    {{ if .Vars.rhel7cis_rule_2_2_15 }}
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_2_2_15 }}
+    {{ if not .Vars.rhel7cis_telnet_server }}
 package:
-  telnet-server:
-    title: 2.2.15 | Ensure telnet-server is not installed
+  telnet_pkg:
+    title: 2.2.15 | Ensure telnet server services are not in use | pkg removed
+    name: telnet-server
     installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.15
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+      - CM-11
+      {{ end }}
+      {{ if .Vars.rhel7cis_telnet_mask }}
+file:
+  telnet_service_masked:
+    title: 2.2.15 | Ensure telnet server services are not in use | masked
+    path: /etc/systemd/system/telnet.service
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.15
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+      - CM-11
+  telnet_socket_masked:
+    title: 2.2.15 | Ensure telnet server services are not in use | masked
+    path: /etc/systemd/system/telnet.socket
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.15
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+      - CM-11
     {{ end }}
   {{ end }}
 {{ end }}

@@ -1,0 +1,24 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_4_4_1_1 }}
+command:
+  pam_latest:
+    title: 4.4.1.1 | Ensure latest version of pam is installed
+    exec: yum update pam
+    exit-status: 0
+    stdout:
+    - '/^No packages marked for update/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.4.1.1
+      CISv8:
+      - NA
+      CISv8_IG1: NA
+      CISv8_IG2: NA
+      CISv8_IG3: NA
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}

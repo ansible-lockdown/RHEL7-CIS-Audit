@@ -1,21 +1,21 @@
-{{ if .Vars.rhel7cis_level1 }}
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
   {{ if .Vars.rhel7cis_rule_5_3_1 }}
-file:
-  /etc/ssh/sshd_config:
-    title: 5.3.1 | Ensure permissions on /etc/ssh/sshd_config are configured
-    exists: true
-    mode: "0600"
-    owner: root
-    group: root
+package:
+  aide:
+    title: 5.3.1 | Ensure AIDE is installed
+    installed: true
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
-      - 5.3.1
+      CIS_ID:
+      - 1.3.1
       CISv8:
-      - 3.3
-      CISv8_IG1: true
-      CISv8_IG2: true
+      - 3.14
+      CISv8_IG1: false
+      CISv8_IG2: false
       CISv8_IG3: true
+      NIST800-53R5: AU-2
   {{ end }}
 {{ end }}

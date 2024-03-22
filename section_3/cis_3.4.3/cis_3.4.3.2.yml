@@ -1,0 +1,39 @@
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_3_4_3_2 }}
+command:
+  iptables_flushed:
+    title: 3.4.3.2 | Ensure iptables are flushed with nftables | ipv4
+    exec: iptables -L
+    stdout: ['!/./']
+    exit-status: 0
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.4.3.2
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CA-9
+  iptables6_flushed:
+    title: 3.4.3.2 | Ensure iptables are flushed with nftables | ipv6
+    exec: ip6tables -L
+    stdout: ['!/./']
+    exit-status: 0
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.4.3.2
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CA-9
+  {{ end }}
+{{ end }}

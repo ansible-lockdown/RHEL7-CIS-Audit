@@ -1,0 +1,15 @@
+rules:
+  document-start:
+    present: false
+  braces:
+    forbid: false
+    min-spaces-inside: 0
+    max-spaces-inside: 5
+  indentation:
+    spaces: 2
+    indent-sequences: false
+    check-multi-line-strings: false
+  new-lines:
+    type: unix
+  truthy:
+    allowed-values: ['true', 'false']

@@ -1,0 +1,28 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_4_2_6 }}
+file:
+  sshd_ciphers:
+    title: 4.2.6 | Ensure sshd Ciphers are configured
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - {{ .Vars.rhel7cis_sshd.ciphers }}
+    {{ range .Vars.rhel7cis_ssh_weak_ciphers }}
+    - '!/{{ . }}/'
+    {{ end }}
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.2.6
+      CISv8:
+      - 3.10
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - SC-8
+  {{ end }}
+{{ end }}

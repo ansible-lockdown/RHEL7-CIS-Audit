@@ -1,0 +1,41 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_4_4_2_4_1 }}
+file:
+  nullok_pamunix_system_auth:
+    title: 4.4.2.4.1 | Ensure pam_unix does not include nullok | system-auth
+    path: /etc/pam.d/system-auth
+    exists: true
+    contents:
+    - '!/^(auth|account|password|session)\s*(requisite|required|sufficient)\s*pam_unix.*nullok/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.4.2.4.1
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - NA
+  nullok_pamunix_password_auth:
+    title: 4.4.2.4.1 | Ensure pam_unix does not include nullok | password-auth
+    path: /etc/pam.d/password-auth
+    exists: true
+    contents:
+    - '!/^(auth|account|password|session)\s*(requisite|required|sufficient)\s*pam_unix.*nullok/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.4.2.4.1
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - NA
+  {{ end }}
+{{ end }}

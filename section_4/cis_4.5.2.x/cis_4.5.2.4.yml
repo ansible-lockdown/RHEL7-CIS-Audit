@@ -1,0 +1,23 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_4_5_2_4 }}
+command:
+  root_password_set:
+    title: 4.5.2.4 | Ensure root password is set
+    exec: passwd -S root | egrep -e "(Password set, SHA512 crypt|Password locked)
+    exit-status: 0
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.5.2.4
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}
+

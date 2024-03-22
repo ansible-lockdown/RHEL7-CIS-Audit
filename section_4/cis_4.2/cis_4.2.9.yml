@@ -1,0 +1,26 @@
+---
+
+{{ if .Vars.rhel7cis_level_2 }}
+  {{ if .Vars.rhel7cis_rule_4_2_9 }}
+file:
+  sshd_gssapiauth:
+    title: 4.2.9 | Ensure sshd GSSAPIAuthentication is disabled
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/^(?i)gssapiauthentication no/'
+    - '!/^(?i)gssapiauthentication yes/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 4.2.9
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+  {{ end }}
+{{ end }}

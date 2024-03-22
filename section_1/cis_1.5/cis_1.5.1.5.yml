@@ -1,0 +1,49 @@
+---
+
+{{ if .Vars.rhel7cis_level_2 }}
+  {{ if eq .Vars.rhel7cis_selinux_state "enforcing" }}
+    {{ if .Vars.rhel7cis_rule_1_5_1_5 }}
+command:
+  selinux_run_enforcing:
+    title: 1.5.1.5 | Ensure the SELinux mode is enforcing | running
+    exit-status: 0
+    exec: "getenforce"
+    stdout:
+    - "Enforcing"
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.5.1.5
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+file:
+  selinux_enforcing_config:
+    title: 1.5.1.5 | Ensure the SELinux mode is enforcing| config
+    exists: true
+    path: /etc/selinux/config
+    contents:
+    - '/SELINUX\s*=\s*enforcing/'
+    - '!/^SELINUX\s*=\s*disabled/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.5.1.5
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+    {{ end }}
+  {{ end }}
+{{ end }}

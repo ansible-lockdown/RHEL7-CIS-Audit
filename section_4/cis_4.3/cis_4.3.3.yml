@@ -1,0 +1,47 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_4_3_3 }}
+file:
+  sudoers_log_setting:
+    title: 4.3.3 | Ensure sudo log file exists | config
+    path: /etc/sudoers
+    exists: true
+    contents:
+    - '/^Defaults\s+logfile="/var/log/sudo.log"/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.3.3
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-3
+      - AU-12
+command:
+  log_sudoers_d:
+    title: 4.3.3 | Ensure sudo log file exists | sudoers.d
+    exec: "grep -c '^Defaults logfile=/var/log/*.log' /etc/sudoers.d/.*/"
+    exit-status:
+      lt: 3
+    stdout:
+    - '/[1:99]/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.2.3
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-3
+      - AU-12
+  {{ end }}
+{{ end }}

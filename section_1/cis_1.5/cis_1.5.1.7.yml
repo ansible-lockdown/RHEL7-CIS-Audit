@@ -1,0 +1,20 @@
+{{ if .Vars.rhel7cis_level_1 }}
+package:
+  {{ if .Vars.rhel7cis_rule_1_5_1_7 }}
+  mcstrans:
+    title: 1.5.1.7 | Ensure the MCS Translation Service (mcstrans) is not installed
+    installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.5.1.7
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - SI-4
+  {{ end }}
+{{ end }}

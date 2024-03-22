@@ -1,0 +1,24 @@
+---
+
+{{ if .Vars.rhel7cis_level_1 }}
+  {{ if .Vars.rhel7cis_rule_3_4_4_2_6 }}
+service:
+  iptables_running:
+    title: 3.4.4.2.6 | Ensure iptables is enabled and active
+    name: iptables
+    enabled: true
+    running: true
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.4.4.2.6
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CA-9
+  {{ end }}
+{{ end }}
