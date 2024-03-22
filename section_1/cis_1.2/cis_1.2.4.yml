@@ -8,8 +8,8 @@ command:
     timeout: {{ .Vars.timeout_ms }}
     exec: "yum repolist"
     stdout:
-    - '/amzn2-core\/2\/x86_64/'
-    - '/amzn2extra-docker\/2\/x86_64/'
+    - '/base\/7\/x86_64/'
+    - '/updates\/7\/x86_64/'
     meta:
       server: 1
       workstation: NA

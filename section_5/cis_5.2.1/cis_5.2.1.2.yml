@@ -8,8 +8,8 @@ command:
     exec: grep "audit=" /boot/grub2/grub.cfg
     exit-status: 0
     stdout:
-    - '/^\s*linux /boot/vmlinuz-.*\saudit=1.*/'
-    - '!/^\s*linux /boot/vmlinuz-.*\saudit=0.*/'
+    - '/^\s*linux \/vmlinuz-.*\saudit=1.*/'
+    - '!/^\s*linux \/vmlinuz-.*\saudit=0.*/'
     meta:
       server: 2
       workstation: 2

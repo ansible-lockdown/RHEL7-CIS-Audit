@@ -1,5 +1,6 @@
 {{ if .Vars.rhel7cis_level_1 }}
   {{ if .Vars.rhel7cis_rule_2_2_12 }}
+    {{ if not .Vars.rhel7cis_rpc_mask }}
     {{ if not .Vars.rhel7cis_rpc_server }}
 package:
   rpcbind_pkg:
@@ -23,7 +24,7 @@ package:
       {{ if .Vars.rhel7cis_rpc_mask }}
 file:
   rpcbind_service_masked:
-    title: 2.2.12 | Ensure rpc services are not in use | masked
+    title: 2.2.12 | Ensure rpc services are not in use | masked service
     path: /etc/systemd/system/rpcbind.service
     exists: true
     filetype: symlink
@@ -42,7 +43,7 @@ file:
       - CM-6
       - CM-7
   rpcbind_socket_masked:
-    title: 2.2.12 | Ensure rpc services are not in use | masked
+    title: 2.2.12 | Ensure rpc services are not in use | masked socket
     path: /etc/systemd/system/rpcbind.socket
     exists: true
     filetype: symlink
@@ -62,4 +63,5 @@ file:
       - CM-7
     {{ end }}
   {{ end }}
+{{ end }}
 {{ end }}
