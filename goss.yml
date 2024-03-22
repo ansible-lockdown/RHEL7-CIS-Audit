@@ -1,6 +1,14 @@
 gossfile:
   {{ if .Vars.rhel7cis_section1 }}
-  section_1/*/*.yml: {}
+  section_1/cis_1.1/*.yml: {}
+  section_1/cis_1.2/*.yml: {}
+  section_1/cis_1.3/*.yml: {}
+  section_1/cis_1.4/*.yml: {}
+  section_1/cis_1.5/*.yml: {}
+  section_1/cis_1.6/*.yml: {}
+  {{ if eq .Vars.rhel7cis_gui}}
+  section_1/cis_1.7/*.yml: {}
+  {{ end }}
   {{ end }}
 
   {{ if .Vars.rhel7cis_section2 }}

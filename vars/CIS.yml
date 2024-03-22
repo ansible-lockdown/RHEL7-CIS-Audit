@@ -35,82 +35,84 @@ rhel7cis_bootloader_user: /boot/grub2/user.cfg
 ## Section 1 rules
 ##
 # Section 1 is Initial Setup (Filesystem Configuration, Configure Software Updates, Configure Sudo, Filesystem Integrity Checking, Secure Boot Settings, Additional Process Hardening, Mandatory Access Control, and Warning Banners)
+# Section 1 rules
 # Configure Filesystem Kernel Modules
-## Configure Filesystem Kernel Modules
-rhel7cis_rule_1_1_1_1: true
-rhel7cis_rule_1_1_1_2: true
-rhel7cis_rule_1_1_1_3: true
-rhel7cis_rule_1_1_1_4: true
-rhel7cis_rule_1_1_1_5: true
-rhel7cis_rule_1_1_1_6: true
-rhel7cis_rule_1_1_1_7: true
-rhel7cis_rule_1_1_1_8: true
+rhel8cis_rule_1_1_1_1: true
+rhel8cis_rule_1_1_1_2: true
+rhel8cis_rule_1_1_1_3: true
+rhel8cis_rule_1_1_1_4: true
+rhel8cis_rule_1_1_1_5: true
+rhel8cis_rule_1_1_1_6: true
+rhel8cis_rule_1_1_1_7: true
+rhel8cis_rule_1_1_1_8: true
 
 # /tmp
-rhel7cis_rule_1_1_2_1_1: true
-rhel7cis_rule_1_1_2_1_2: true
-rhel7cis_rule_1_1_2_1_3: true
-rhel7cis_rule_1_1_2_1_4: true
+rhel8cis_rule_1_1_2_1_1: true
+rhel8cis_rule_1_1_2_1_2: true
+rhel8cis_rule_1_1_2_1_3: true
+rhel8cis_rule_1_1_2_1_4: true
 
 # /dev/shm
-rhel7cis_rule_1_1_2_2_1: true
-rhel7cis_rule_1_1_2_2_2: true
-rhel7cis_rule_1_1_2_2_3: true
-rhel7cis_rule_1_1_2_2_4: true
+rhel8cis_rule_1_1_2_2_1: true
+rhel8cis_rule_1_1_2_2_2: true
+rhel8cis_rule_1_1_2_2_3: true
+rhel8cis_rule_1_1_2_2_4: true
 
 # /home
-rhel7cis_rule_1_1_2_3_1: true
-rhel7cis_rule_1_1_2_3_2: true
-rhel7cis_rule_1_1_2_3_3: true
+rhel8cis_rule_1_1_2_3_1: true
+rhel8cis_rule_1_1_2_3_2: true
+rhel8cis_rule_1_1_2_3_3: true
 
 # /var
-rhel7cis_rule_1_1_2_4_1: true
-rhel7cis_rule_1_1_2_4_2: true
-rhel7cis_rule_1_1_2_4_3: true
+rhel8cis_rule_1_1_2_4_1: true
+rhel8cis_rule_1_1_2_4_2: true
+rhel8cis_rule_1_1_2_4_3: true
 
 # /var/tmp
-rhel7cis_rule_1_1_2_5_1: true
-rhel7cis_rule_1_1_2_5_2: true
-rhel7cis_rule_1_1_2_5_3: true
-rhel7cis_rule_1_1_2_5_4: true
+rhel8cis_rule_1_1_2_5_1: true
+rhel8cis_rule_1_1_2_5_2: true
+rhel8cis_rule_1_1_2_5_3: true
+rhel8cis_rule_1_1_2_5_4: true
 
 # /var/log
-rhel7cis_rule_1_1_2_6_1: true
-rhel7cis_rule_1_1_2_6_2: true
-rhel7cis_rule_1_1_2_6_3: true
-rhel7cis_rule_1_1_2_6_4: true
+rhel8cis_rule_1_1_2_6_1: true
+rhel8cis_rule_1_1_2_6_2: true
+rhel8cis_rule_1_1_2_6_3: true
+rhel8cis_rule_1_1_2_6_4: true
 
 # /var/log/audit
-rhel7cis_rule_1_1_2_7_1: true
-rhel7cis_rule_1_1_2_7_2: true
-rhel7cis_rule_1_1_2_7_3: true
-rhel7cis_rule_1_1_2_7_4: true
+rhel8cis_rule_1_1_2_7_1: true
+rhel8cis_rule_1_1_2_7_2: true
+rhel8cis_rule_1_1_2_7_3: true
+rhel8cis_rule_1_1_2_7_4: true
 
-# Software and Patch management
-rhel7cis_rule_1_2_1: true
-rhel7cis_rule_1_2_2: true
-rhel7cis_rule_1_2_3: true
-rhel7cis_rule_1_2_4: true
-rhel7cis_rule_1_2_5: true
+# DNF - Patching
+rhel8cis_rule_1_2_1: true
+rhel8cis_rule_1_2_2: true
+rhel8cis_rule_1_2_3: true
+rhel8cis_rule_1_2_4: true
+rhel8cis_rule_1_2_5: true
 
-# Secure boot settings
-rhel7cis_rule_1_3_1: true
+# bootloader grub
+rhel8cis_rule_1_3_1: true
+rhel8cis_rule_1_3_2: true
+rhel8cis_rule_1_3_3: true
 
-# Additional Process Hardening
-rhel7cis_rule_1_4_1: true
-rhel7cis_rule_1_4_2: true
-rhel7cis_rule_1_4_3: true
-rhel7cis_rule_1_4_4: true
+# kernel sysctl and coredumps
+rhel8cis_rule_1_4_1: true
+rhel8cis_rule_1_4_2: true
+rhel8cis_rule_1_4_3: true
+rhel8cis_rule_1_4_4: true
 
 # SElinux
-rhel7cis_rule_1_5_1_1: true
-rhel7cis_rule_1_5_1_2: true
-rhel7cis_rule_1_5_1_3: true
-rhel7cis_rule_1_5_1_4: true
-rhel7cis_rule_1_5_1_5: true
-rhel7cis_rule_1_5_1_6: true
-rhel7cis_rule_1_5_1_7: true
-rhel7cis_rule_1_5_1_8: true
+rhel8cis_rule_1_5_1_1: true
+rhel8cis_rule_1_5_1_2: true
+rhel8cis_rule_1_5_1_3: true
+rhel8cis_rule_1_5_1_4: true
+rhel8cis_rule_1_5_1_5: true
+rhel8cis_rule_1_5_1_6: true
+rhel8cis_rule_1_5_1_7: true
+rhel8cis_rule_1_5_1_8: true
 
 # Command line banner warnings
 rhel7cis_rule_1_6_1: true
@@ -119,6 +121,18 @@ rhel7cis_rule_1_6_3: true
 rhel7cis_rule_1_6_4: true
 rhel7cis_rule_1_6_5: true
 rhel7cis_rule_1_6_6: true
+
+# Gnome and Desktop
+rhel7cis_rule_1_7_1: true
+rhel7cis_rule_1_7_2: true
+rhel7cis_rule_1_7_3: true
+rhel7cis_rule_1_7_4: true
+rhel7cis_rule_1_7_5: true
+rhel7cis_rule_1_7_6: true
+rhel7cis_rule_1_7_7: true
+rhel7cis_rule_1_7_8: true
+rhel7cis_rule_1_7_9: true
+rhel7cis_rule_1_7_10: true
 
 ##
 ## Section 2 rules
@@ -448,6 +462,8 @@ rhel7cis_set_boot_pass: false
 # Warning Banner Content (issue, issue.net, motd)
 rhel7cis_warning_banner: Authorized uses only. All activity may be monitored and reported.
 # End Banner
+
+rhel7cis_gui: false
 
 ####
 ## Section 2 variables
