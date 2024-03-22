@@ -16,7 +16,7 @@ mount:
     {{ end }}
     meta:
       server: 1
-      workstation: NA
+      workstation: 1
       CIS_ID:
       - 1.1.2.3.2
       - 1.1.2.3.3
@@ -24,7 +24,7 @@ mount:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-      NIST800-53R5:
+      NIST800-53R4:
       - AC-2
       - MP-2
 file:
@@ -39,7 +39,7 @@ file:
      - '/\s\/home.*{{ if .Vars.rhel7cis_rule_1_1_2_3_3 }}nosuid{{ end }}.*/'
      meta:
       server: 1
-      workstation: NA
+      workstation: 1
       CIS_ID:
       - 1.1.2.3.2
       - 1.1.2.3.3
@@ -47,7 +47,7 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-      NIST800-53R5:
+      NIST800-53R4:
       - AC-2
       - MP-2
   {{ end }}
